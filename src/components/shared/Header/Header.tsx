@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           Are you a non technical founder?
         </h4>
 
-        <h1 className="text-white text-[32px] text-center font-bold mt-4">
+        <h1 className="text-white text-[32px] md:text-[64px] text-center font-bold mt-4">
           <span className="font-normal">Hire the</span>
           <br />
           top 1% engineers <span className="font-normal">to</span>

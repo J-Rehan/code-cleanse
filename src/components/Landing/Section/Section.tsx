@@ -32,7 +32,7 @@ const Section: React.FC<SectionProps> = (props) => {
         }`}
       >
         <div>
-          <h2 className="mt-4 text-[32px] font-light text-dark leading-10">
+          <h2 className="mt-4 text-[32px] md:text-[40px] font-light text-dark leading-10">
             {subtitle}
           </h2>
           <Image
