@@ -1,9 +1,15 @@
 import type { AppProps } from 'next/app'
+import Header from '../components/shared/Header/Header'
 import '../core/styles/root.css'
 
 const App: React.FC<AppProps> = (props) => {
   const { Component, pageProps } = props
-  return <Component {...pageProps} />
+  return (
+    <div>
+      <Header />
+      <Component {...pageProps} />
+    </div>
+  )
 }
 
 export default App
