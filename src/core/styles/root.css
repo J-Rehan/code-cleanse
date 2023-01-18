@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header {
+  background-image: url('/header-bg-mobile.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+}
+
+.footer {
+  background-image: url('/header-bg-desktop.png');
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    background-image: url('/header-bg-desktop.png');
+  }
+}
+
+.image-container {
+  width: 100%;
+}
+
+.image-container > div {
+  position: unset !important;
+}
+
+.image-container .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
