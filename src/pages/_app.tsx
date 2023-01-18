@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app'
+import Footer from '../components/shared/Footer/Footer'
 import Header from '../components/shared/Header/Header'
 import '../core/styles/root.css'
 
@@ -8,6 +9,7 @@ const App: React.FC<AppProps> = (props) => {
     <div>
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </div>
   )
 }

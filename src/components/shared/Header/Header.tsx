@@ -4,7 +4,7 @@ import { Typewriter } from 'react-simple-typewriter'
 
 const Header: React.FC = () => {
   return (
-    <header className="header p-6 flex flex-col justify-between">
+    <header className="header p-6 flex flex-col justify-between h-[100vh]">
       <nav className="flex justify-between items-center">
         <Link href="/">
           <Image src="/logo-full.png" width={200} height={32} alt="logo" />
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
       </nav>
 
       <div className="flex flex-col items-center">
-        <h4 className="text-white text-base font-normal leading-5 px-2 py-1 border-[0.5px] border-white rounded">
+        <h4 className="text-white text-center text-base font-normal leading-5 px-2 py-1 border-[0.5px] border-white rounded">
           Are you a non technical founder?
         </h4>
 
@@ -36,8 +36,8 @@ const Header: React.FC = () => {
           </div>
         </h1>
 
-        <Link href="/hire">
-          <button className="mt-12 text-base leading-5 font-bold text-dark bg-white w-[340px] p-4 rounded-lg">
+        <Link href="/hire" className="mt-12">
+          <button className="text-base leading-5 font-bold text-dark bg-white min-w-[300px] sm:w-[340px] p-4 rounded-lg">
             Hire Experts Now
           </button>
         </Link>
