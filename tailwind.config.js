@@ -10,7 +10,9 @@ module.exports = {
         aqua: '#3AD6F9',
         blue: '#009BE0',
         dark: '#333333',
+        dark2: '#666666',
         gray: '#eaeaea',
+        green: '#008000',
       },
     },
     fontFamily: {
