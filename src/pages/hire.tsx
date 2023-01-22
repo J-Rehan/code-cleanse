@@ -7,11 +7,17 @@ import { Form, FormikProvider, useFormik } from 'formik'
 import { hireValidationSchema } from '../core/validation/hire'
 import { steps } from '../core/config/Steps'
 import useSteps from '../hooks/useSteps'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 
-const initialValues = {
+export const initialValues = {
   fullName: '',
   email: '',
   phone: '',
+  productCategory: '',
+  description: '',
+  plan: '',
 }
 
 const HirePage: NextPage = () => {
@@ -25,12 +31,22 @@ const HirePage: NextPage = () => {
     },
   })
 
-  console.log('Errors: ', formik.errors)
-  console.log('Values: ', formik.values)
+  useEffect(() => {
+    const step = window.location.hash.split('#')[1]
+    if (step) {
+      dispatch({ type: 'SET_STEP', payload: Number(step) })
+    }
+  }, [dispatch])
+
+  // console.log('Errors: ', formik.errors)
+  // console.log('Values: ', formik.values)
 
   return (
     <FormikProvider value={formik}>
       <Form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
+        <Head>
+          <title>Hire Code Cleanse</title>
+        </Head>
         <div className="h-screen flex flex-col">
           <div className="hire-header w-full bg-black p-6">
             <div className="flex justify-between items-center">

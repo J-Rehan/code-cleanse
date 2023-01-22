@@ -3,14 +3,22 @@ import React, { createContext, PropsWithChildren, useReducer } from 'react'
 const initialState = {
   currentStep: 0,
   steps: [
-    { index: 1, name: 'About you' },
-    { index: 2, name: 'Your project' },
-    { index: 3, name: 'Hire plan' },
+    { index: 1, name: 'About you', fields: ['fullName', 'email', 'phone'] },
+    {
+      index: 2,
+      name: 'Your project',
+      fields: ['productCategory', 'description'],
+    },
+    {
+      index: 3,
+      name: 'Hire plan',
+      fields: ['plan', 'cardNumber', 'expirationDate', 'cvc'],
+    },
   ],
 }
 
 type InitialState = typeof initialState
-type ActionTypes = 'NEXT_STEP'
+type ActionTypes = 'NEXT_STEP' | 'SET_STEP'
 
 export const StepsContext = createContext<{
   state: InitialState
@@ -27,7 +35,11 @@ const stepsReducer = (
   const { type } = action
   switch (type) {
     case 'NEXT_STEP':
+      window?.history.pushState(null, '', `#${state.currentStep + 1}`)
       return { ...state, currentStep: state.currentStep + 1 }
+    case 'SET_STEP':
+      window?.history.pushState(null, '', `#${action.payload}`)
+      return { ...state, currentStep: action.payload }
     default:
       return state
   }

@@ -1,5 +1,11 @@
 import { useField } from 'formik'
-import { DetailedHTMLProps, Fragment, InputHTMLAttributes } from 'react'
+import {
+  ChangeEventHandler,
+  DetailedHTMLProps,
+  Fragment,
+  InputHTMLAttributes,
+} from 'react'
+import { cn } from '../../../../utils/style'
 
 interface FormikTextInputProps
   extends DetailedHTMLProps<
@@ -7,10 +13,11 @@ interface FormikTextInputProps
     HTMLInputElement
   > {
   label?: string
+  formatter?: (value: string) => string
 }
 
 const FormikTextInput: React.FC<FormikTextInputProps> = (props) => {
-  const { label, name, className = '', ...restProps } = props
+  const { label, name, className = '', formatter, ...restProps } = props
   const [field, meta, helpers] = useField(name as any)
 
   const hasError = meta.error && meta.touched
@@ -78,6 +85,14 @@ const FormikTextInput: React.FC<FormikTextInputProps> = (props) => {
     }
   }
 
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    let value = event.target.value
+    if (formatter && typeof formatter === 'function') {
+      value = formatter(event.target.value)
+    }
+    helpers.setValue(value)
+  }
+
   return (
     <div className={className}>
       <label htmlFor={`${name}-field`} className="mb-1 text-sm font-normal">
@@ -86,13 +101,15 @@ const FormikTextInput: React.FC<FormikTextInputProps> = (props) => {
       <div className="relative">
         <input
           id={`${name}-field`}
-          className={`text-sm font-normal rounded-lg p-4 bg-white border-[#BFBFBF] border w-full focus:shadow-md transition-all duration-100 focus:transition-all focus:duration-100 ${
-            hasError
-              ? 'border-red-500'
-              : 'border-[#009BE0] focus:outline-[#2C39BC]'
-          }`}
+          className={cn(
+            `text-sm font-normal rounded-lg p-4 bg-white border-[#BFBFBF] border w-full focus:shadow-md transition-all duration-100 focus:transition-all focus:duration-100 focus:outline-[#2C39BC] ${
+              hasError ? 'border-red-500' : 'border-[#009BE0]'
+            }`,
+            meta.touched && !meta.error ? 'border-[#009BE0]' : '',
+          )}
           {...field}
           {...restProps}
+          onChange={handleChange}
         />
         <div className="absolute right-[5%] top-[50%] transform translate-y-[-40%]">
           {actionImage}

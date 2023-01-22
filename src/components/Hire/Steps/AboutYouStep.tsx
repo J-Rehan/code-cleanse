@@ -4,14 +4,18 @@ import Button from '../../shared/Button/Button'
 import FormikTextInput from '../../shared/Formik/FormikTextInput/FormikTextInput'
 
 const AboutYouStep: React.FC = () => {
-  const { dispatch } = useSteps()
+  const { state, dispatch } = useSteps()
   const formik = useFormikContext()
 
   const nextStep = () => {
     dispatch({ type: 'NEXT_STEP' })
   }
 
-  const disabled = Object.keys(formik.errors).length > 0
+  const step = state.steps.find((step) => step.name === 'About you')
+
+  const disabled = !!Object.keys(formik.errors).find((key) =>
+    step?.fields.includes(key),
+  )
 
   return (
     <div className="py-8 px-6 flex flex-col h-full">
