@@ -109,9 +109,12 @@ const HirePlanStep: React.FC = () => {
             </span>
           </p>
         )}
-        <Button disabled={disabled} onClick={nextStep} className="mt-4">
+
+        <Button type="submit" disabled={disabled} className="mt-4">
           <span>
-            <strong>Hire plan</strong>
+            <strong>
+              {formik.isSubmitting ? 'Processing...' : 'Hire plan'}
+            </strong>
           </span>
         </Button>
       </div>

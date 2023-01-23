@@ -21,6 +21,7 @@ export const initialValues = {
 }
 
 const HirePage: NextPage = () => {
+  const router = useRouter()
   const { state, dispatch } = useSteps()
   const formik = useFormik({
     initialValues,
@@ -28,6 +29,11 @@ const HirePage: NextPage = () => {
     validationSchema: hireValidationSchema,
     onSubmit(values) {
       console.log(values)
+      formik.setSubmitting(true)
+      setTimeout(() => {
+        formik.setSubmitting(false)
+        router.push('/developer-detail')
+      }, 3000)
     },
   })
 

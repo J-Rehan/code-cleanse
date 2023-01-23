@@ -40,3 +40,21 @@ export const hireValidationSchema = Yup.object()
     cvc: Yup.string().length(3, 'Invalid CVC').required('CVC is required!'),
   })
   .required('All the fields are required')
+
+export const developerValidationSchema = Yup.object()
+  .shape({
+    fullName: Yup.string()
+      .min(2, 'Too short name!')
+      .max(100, 'Too Long Name!')
+      .matches(/^[A-Za-z ]*$/, 'Please enter valid name!')
+      .required("Developer's full name is required!"),
+    phone: Yup.string()
+      .min(5, 'Too short phone')
+      .max(20, 'Too long phone')
+      .required("Developer's phone number is required!"),
+    skype: Yup.string()
+      .min(1, 'Too short name')
+      .max(100, 'Too Long Name')
+      .required("Developer's skype is required!"),
+  })
+  .required('All the fields are required')

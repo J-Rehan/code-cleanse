@@ -12,6 +12,7 @@ interface FormikTextInputProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
+  name: string
   label?: string
   formatter?: (value: string) => string
 }
@@ -103,7 +104,7 @@ const FormikTextInput: React.FC<FormikTextInputProps> = (props) => {
           id={`${name}-field`}
           className={cn(
             `text-sm font-normal rounded-lg p-4 bg-white border-[#BFBFBF] border w-full focus:shadow-md transition-all duration-100 focus:transition-all focus:duration-100 focus:outline-[#2C39BC] ${
-              hasError ? 'border-red-500' : 'border-[#009BE0]'
+              hasError ? 'border-red-500' : ''
             }`,
             meta.touched && !meta.error ? 'border-[#009BE0]' : '',
           )}
