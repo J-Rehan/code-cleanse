@@ -15,15 +15,19 @@ export const hireValidationSchema = Yup.object()
       .min(5, 'Too short phone')
       .max(20, 'Too long phone')
       .required('Your phone number is required!'),
-    productCategory: Yup.array()
-      .of(
-        Yup.mixed().oneOf(
-          ['Android App', 'iOS App', 'Web Application', 'Other'],
-          'Invalid product category',
-        ),
-      )
-      .min(1, 'Please select a product category!')
-      .required('Please select a product category!'),
+    productCategory: Yup.lazy((val) =>
+      Array.isArray(val)
+        ? Yup.array()
+            .of(
+              Yup.mixed().oneOf(
+                ['Android App', 'iOS App', 'Web Application', 'Others'],
+                'Invalid product category',
+              ),
+            )
+            .min(1, 'Please select a product category!')
+            .required('Please select a product category!')
+        : Yup.string().required('Please select a product category!'),
+    ),
     description: Yup.string()
       .min(2, 'Too short description')
       .max(5000, 'Too long description')
@@ -31,13 +35,6 @@ export const hireValidationSchema = Yup.object()
     plan: Yup.mixed()
       .oneOf(['Monthly', 'Yearly'])
       .required('Please select a plan!'),
-    // cardNumber: Yup.string()
-    //   .length(19, 'Invalid card number')
-    //   .required('Card number is required!'),
-    // expirationDate: Yup.string()
-    //   .length(5, 'Invalid expiration date')
-    //   .required('Expiration date is required!'),
-    // cvc: Yup.string().length(3, 'Invalid CVC').required('CVC is required!'),
   })
   .required('All the fields are required')
 

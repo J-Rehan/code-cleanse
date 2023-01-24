@@ -1,13 +1,12 @@
 import { useFormikContext } from 'formik'
 import useSteps from '../../../hooks/useSteps'
-import { cn } from '../../../utils/style'
 
 const Steps: React.FC = () => {
   const { state, dispatch } = useSteps()
   const formik = useFormikContext()
 
   return (
-    <div className="bg-white steps-container flex justify-around">
+    <div className="bg-white steps-container flex justify-center">
       {state.steps.map((step, index) => {
         const isInvalid = Object.keys(formik.errors).find((key) =>
           step.fields?.includes(key),
@@ -22,18 +21,20 @@ const Steps: React.FC = () => {
           }
         }
 
+        if (step.name === 'Hire plan') color = 'bg-dark2'
+
         return (
           <div
             key={step.name}
             onClick={() => dispatch({ type: 'SET_STEP', payload: step.index })}
-            className={`flex flex-col items-center border-b-[3px] w-full py-4 border-transparent hover:border-[#33333380] transition-all duration-300 cursor-pointer ${
+            className={`flex md:max-w-[130px] flex-col items-center border-b-[3px] w-full py-4 border-transparent hover:border-[#33333380] transition-all duration-300 cursor-pointer ${
               state.currentStep === step.index ? 'border-[#333333]' : ''
             }`}
           >
             <div
               className={`text-white text-sm text-center flex items-center justify-center w-5 h-5 rounded-full ${color}`}
             >
-              {isInvalid ? (
+              {isInvalid || step.name === 'Hire plan' ? (
                 index + 1
               ) : (
                 <svg

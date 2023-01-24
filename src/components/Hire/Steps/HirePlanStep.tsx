@@ -55,6 +55,12 @@ const HirePlanStep: React.FC = () => {
           Enter your credit card details
         </h4>
 
+        {formik.values.errorMessage && (
+          <span className="text-red-500 font-bold uppercase">
+            {formik.values.errorMessage}
+          </span>
+        )}
+
         <PaymentElement id="payment-element" className="h-full" />
       </div>
 

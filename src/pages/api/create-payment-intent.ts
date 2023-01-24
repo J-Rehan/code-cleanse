@@ -14,10 +14,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { amount } = req.body
 
-    console.log(req.body)
-
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: 250.0 * 100,
+      amount: amount * 100,
       currency: 'usd',
       automatic_payment_methods: { enabled: true },
     })

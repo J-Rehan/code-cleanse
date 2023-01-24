@@ -23,7 +23,7 @@ const AboutYouStep: React.FC = () => {
         Tell us a bit about you
       </h2>
 
-      <div className="mt-11 mb-auto overflow-y-scroll">
+      <div className="mt-11 mb-auto">
         <FormikTextInput
           required
           autoFocus
