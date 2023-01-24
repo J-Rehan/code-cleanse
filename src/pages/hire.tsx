@@ -1,13 +1,15 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import StepsHeader from '../components/Hire/StepsHeader/StepsHeader'
-import Button from '../components/shared/Button/Button'
 import { Form, FormikProvider, useFormik } from 'formik'
 import { hireValidationSchema } from '../core/validation/hire'
 import { steps } from '../core/config/Steps'
 import useSteps from '../hooks/useSteps'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
@@ -23,17 +25,31 @@ export const initialValues = {
 const HirePage: NextPage = () => {
   const router = useRouter()
   const { state, dispatch } = useSteps()
+  const stripe = useStripe()
+  const elements = useElements()
   const formik = useFormik({
     initialValues,
     validateOnMount: true,
     validationSchema: hireValidationSchema,
-    onSubmit(values) {
-      console.log(values)
+    async onSubmit(values, formik) {
       formik.setSubmitting(true)
-      setTimeout(() => {
-        formik.setSubmitting(false)
-        router.push('/developer-detail')
-      }, 3000)
+      const { error } = await stripe!.confirmPayment({
+        elements: elements!,
+        confirmParams: {
+          // Make sure to change this to your payment completion page
+          return_url: `${window.location.origin}/developer-detail`,
+        },
+        redirect: 'if_required',
+      })
+
+      if (error) {
+        if (error.type === 'card_error' || error.type === 'validation_error') {
+          alert(error.message)
+          // setMessage(error.message)
+        } else {
+          alert('An unexpected error occured.')
+        }
+      }
     },
   })
 
@@ -80,4 +96,40 @@ const HirePage: NextPage = () => {
   )
 }
 
-export default HirePage
+const HireRoot: React.FC = () => {
+  const [stripePromise, setStripePromise] = useState<any>(null)
+  const [clientSecret, setClientSecret] = useState('')
+
+  useEffect(() => {
+    setStripePromise(
+      loadStripe(
+        'pk_test_51MT6H0Ew4G60H813u3itsxedG5YDQ4GlIqiOPk41BhwbWV2GcZ7kWMHMWVOSs12y7ePXlTvRvIvWNVE3b8IVqBZV00sJ0iRZ18',
+      ),
+    )
+  }, [])
+
+  useEffect(() => {
+    fetch('/api/create-payment-intent', {
+      method: 'POST',
+      body: JSON.stringify({
+        amount: 500,
+      }),
+    }).then(async (result) => {
+      var { clientSecret } = await result.json()
+      setClientSecret(clientSecret)
+    })
+  }, [])
+
+  if (!stripePromise || !clientSecret) {
+    // TODO: Replace with loader...
+    return <div />
+  }
+
+  return (
+    <Elements stripe={stripePromise} options={{ clientSecret }}>
+      <HirePage />
+    </Elements>
+  )
+}
+
+export default HireRoot

@@ -2,7 +2,6 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Header from '../components/shared/Header/Header'
-import { cn } from '../utils/style'
 
 const HireSuccessPage: NextPage = () => {
   const haveDeveloper = 'NO'

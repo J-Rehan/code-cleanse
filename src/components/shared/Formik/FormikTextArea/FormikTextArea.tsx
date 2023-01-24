@@ -24,7 +24,7 @@ const FormikTextArea: React.FC<FormikTextAreaProps> = (props) => {
       <div className="relative">
         <textarea
           className={cn(
-            `text-sm font-normal rounded-lg p-4 bg-white border-[#BFBFBF] border w-full focus:shadow-md transition-all duration-100 focus:transition-all focus:duration-100 focus:outline-[#2C39BC] ${
+            `text-sm font-normal rounded-lg p-4 bg-white border-[#BFBFBF] border w-full focus:shadow-md transition-all duration-100 focus:transition-all focus:duration-100 focus:outline-none focus:border-[#2C39BC] ${
               hasError ? 'border-red-500' : ''
             }`,
             meta.touched && !meta.error

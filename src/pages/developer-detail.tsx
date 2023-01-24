@@ -9,6 +9,7 @@ import { cn } from '../utils/style'
 import Button from '../components/shared/Button/Button'
 import { developerValidationSchema } from '../core/validation/hire'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const initialValues = {
   fullName: '',
@@ -17,7 +18,8 @@ const initialValues = {
 }
 
 const DeveloperDetailPage: NextPage = () => {
-  const [contentHeight, setContentHeight] = useState(60)
+  const router = useRouter()
+  // const [contentHeight, setContentHeight] = useState(20)
   const [haveDeveloper, setHaveDeveloper] = useState<'YES' | 'NO' | null>(null)
   const [agreed, setAgreed] = useState(false)
   const formik = useFormik({
@@ -25,18 +27,9 @@ const DeveloperDetailPage: NextPage = () => {
     validateOnMount: true,
     validationSchema: developerValidationSchema,
     onSubmit(values) {
-      console.log(values)
+      router.push('/hire-success')
     },
   })
-
-  useEffect(() => {
-    // let timeout = setTimeout(() => {
-    //   setContentHeight(60)
-    // }, 3000)
-    // return () => {
-    //   clearTimeout(timeout)
-    // }
-  }, [])
 
   const disabled = Object.values(formik.errors).length > 0 || !agreed
 
@@ -84,9 +77,7 @@ const DeveloperDetailPage: NextPage = () => {
                   <p>view contact details</p>
                 </Link>
               </div>
-              <div
-                className={`h-[${contentHeight}vh] transition-all duration-300 ease-in-out bg-white py-8 px-6`}
-              >
+              <div className={`bg-white py-8 px-6`} style={{}}>
                 <h4 className="text-dark font-medium">
                   Tell us more about your current team
                 </h4>

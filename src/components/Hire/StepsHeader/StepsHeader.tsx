@@ -3,7 +3,7 @@ import useSteps from '../../../hooks/useSteps'
 import { cn } from '../../../utils/style'
 
 const Steps: React.FC = () => {
-  const { state } = useSteps()
+  const { state, dispatch } = useSteps()
   const formik = useFormikContext()
 
   return (
@@ -12,18 +12,26 @@ const Steps: React.FC = () => {
         const isInvalid = Object.keys(formik.errors).find((key) =>
           step.fields?.includes(key),
         )
+
+        let color = 'bg-blue'
+        if (isInvalid) {
+          if (state.currentStep > step.index) {
+            color = 'bg-red-500'
+          } else {
+            color = 'bg-dark2'
+          }
+        }
+
         return (
           <div
             key={step.name}
+            onClick={() => dispatch({ type: 'SET_STEP', payload: step.index })}
             className={`flex flex-col items-center border-b-[3px] w-full py-4 border-transparent hover:border-[#33333380] transition-all duration-300 cursor-pointer ${
               state.currentStep === step.index ? 'border-[#333333]' : ''
             }`}
           >
             <div
-              className={cn(
-                'text-white text-sm text-center flex items-center justify-center w-5 h-5 rounded-full',
-                !isInvalid ? 'bg-blue' : 'bg-dark2',
-              )}
+              className={`text-white text-sm text-center flex items-center justify-center w-5 h-5 rounded-full ${color}`}
             >
               {isInvalid ? (
                 index + 1
@@ -43,9 +51,10 @@ const Steps: React.FC = () => {
               )}
             </div>
             <span
-              className={`text-dark2 text-sm mt-[6px] font-normal ${
-                !isInvalid ? 'text-blue' : ''
-              }`}
+              className={`text-dark2 text-sm mt-[6px] font-normal text-${color.replace(
+                'bg-',
+                '',
+              )}`}
             >
               {step.name}
             </span>

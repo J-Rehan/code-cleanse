@@ -26,6 +26,7 @@ const AboutYouStep: React.FC = () => {
       <div className="mt-11 mb-auto overflow-y-scroll">
         <FormikTextInput
           required
+          autoFocus
           type="text"
           label="Your name"
           name="fullName"

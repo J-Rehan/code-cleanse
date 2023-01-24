@@ -31,13 +31,13 @@ export const hireValidationSchema = Yup.object()
     plan: Yup.mixed()
       .oneOf(['Monthly', 'Yearly'])
       .required('Please select a plan!'),
-    cardNumber: Yup.string()
-      .length(19, 'Invalid card number')
-      .required('Card number is required!'),
-    expirationDate: Yup.string()
-      .length(5, 'Invalid expiration date')
-      .required('Expiration date is required!'),
-    cvc: Yup.string().length(3, 'Invalid CVC').required('CVC is required!'),
+    // cardNumber: Yup.string()
+    //   .length(19, 'Invalid card number')
+    //   .required('Card number is required!'),
+    // expirationDate: Yup.string()
+    //   .length(5, 'Invalid expiration date')
+    //   .required('Expiration date is required!'),
+    // cvc: Yup.string().length(3, 'Invalid CVC').required('CVC is required!'),
   })
   .required('All the fields are required')
 

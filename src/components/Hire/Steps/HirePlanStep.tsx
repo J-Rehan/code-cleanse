@@ -1,15 +1,11 @@
 import { useFormikContext } from 'formik'
 import Image from 'next/image'
+import { PaymentElement } from '@stripe/react-stripe-js'
+
 import useSteps from '../../../hooks/useSteps'
 import { initialValues } from '../../../pages/hire'
-import {
-  formatCreditCardNumber,
-  formatCVC,
-  formatExpirationDate,
-} from '../../../utils/formatter'
 import Button from '../../shared/Button/Button'
 import FormikRadioGroup from '../../shared/Formik/FormikRadioGroup/FormikRadioGroup'
-import FormikTextInput from '../../shared/Formik/FormikTextInput/FormikTextInput'
 
 const plans = [
   {
@@ -36,15 +32,12 @@ const formatter = new Intl.NumberFormat('en-US', {
 const HirePlanStep: React.FC = () => {
   const formik = useFormikContext<typeof initialValues>()
   const { state, dispatch } = useSteps()
+
   const step = state.steps.find((step) => step.name === 'Hire plan')
 
-  const disabled = !!Object.keys(formik.errors).find((key) =>
-    step?.fields.includes(key),
-  )
-
-  const nextStep = () => {
-    dispatch({ type: 'NEXT_STEP' })
-  }
+  const disabled =
+    !!Object.keys(formik.errors).find((key) => step?.fields.includes(key)) ||
+    formik.isSubmitting
 
   return (
     <div className="py-8 px-6 flex flex-col h-full">
@@ -57,44 +50,21 @@ const HirePlanStep: React.FC = () => {
         <FormikRadioGroup name="plan" items={plans} />
       </div>
 
-      <div className="mt-10 mb-auto">
+      <div className="mt-10 flex-1">
         <h4 className="uppercase text-xs font-semibold mb-4">
           Enter your credit card details
         </h4>
 
-        <FormikTextInput
-          label="Card number"
-          name="cardNumber"
-          pattern="[\d| ]{16,22}"
-          maxLength={19}
-          formatter={formatCreditCardNumber}
-          placeholder="Enter your card number"
-        />
-
-        <div className="flex space-x-4 mt-8">
-          <FormikTextInput
-            label="Expiration date"
-            name="expirationDate"
-            placeholder="MM/YY"
-            formatter={formatExpirationDate}
-          />
-
-          <FormikTextInput
-            label="Expiration date"
-            name="cvc"
-            placeholder="XXX"
-            formatter={formatCVC}
-          />
-        </div>
-
-        <Image
-          src="/powered-by-stripe.png"
-          width={140}
-          height={28}
-          alt="powered-by-stripe"
-          className="mt-10 mb-6 mx-auto"
-        />
+        <PaymentElement id="payment-element" className="h-full" />
       </div>
+
+      <Image
+        width={140}
+        height={28}
+        alt="powered-by-stripe"
+        src="/powered-by-stripe.png"
+        className="mt-10 mb-6 mx-auto"
+      />
 
       <div className="pt-2 border-t border-t-[#e7e7e7]">
         {formik.values.plan && (
@@ -111,11 +81,7 @@ const HirePlanStep: React.FC = () => {
         )}
 
         <Button type="submit" disabled={disabled} className="mt-4">
-          <span>
-            <strong>
-              {formik.isSubmitting ? 'Processing...' : 'Hire plan'}
-            </strong>
-          </span>
+          <strong>{formik.isSubmitting ? 'Processing...' : 'Hire plan'}</strong>
         </Button>
       </div>
     </div>
