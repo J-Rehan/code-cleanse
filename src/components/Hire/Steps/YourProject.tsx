@@ -87,8 +87,8 @@ const YourProject: React.FC = () => {
         <div className="flex items-center p-4 space-x-4 bg-[#EBF9FF] border rounded-md border-[#009BE0] mb-6">
           <Image src="/icons/smile.png" height={24} width={24} alt="Smile" />
           <p className="text-base">
-            Don't worry if you don't have all information available. Inform as
-            much as you can.
+            Don&lsquo;t worry if you don&lsquo;t have all information available.
+            Inform as much as you can.
           </p>
         </div>
 
@@ -185,7 +185,7 @@ const YourProject: React.FC = () => {
 
             <div className="mt-6">
               <label htmlFor="" className="mb-1 text-sm font-normal">
-                Developer's Role
+                Developer&lsquo;s Role
               </label>
               <Select
                 classNames={{ control: () => 'p-2' }}

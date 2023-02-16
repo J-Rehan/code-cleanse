@@ -25,7 +25,7 @@ const HireSuccessPage: NextPage = () => {
           Please schedule a meeting with us to prepare your first report.
         </p>
 
-        <InlineWidget url="https://calendly.com/zeektate" />
+        <InlineWidget url="https://calendly.com/codecleanse" />
       </div>
 
       <div className="pt-8 border-t border-t-gray flex flex-col items-center">
