@@ -3,6 +3,22 @@ import useSteps from '../../../hooks/useSteps'
 import Button from '../../shared/Button/Button'
 import FormikTextInput from '../../shared/Formik/FormikTextInput/FormikTextInput'
 
+const normalizeInput = (value: any, previousValue: any) => {
+  if (!value) return value
+  const currentValue = value.replace(/[^\d]/g, '')
+  const cvLength = currentValue.length
+
+  if (!previousValue || value.length > previousValue.length) {
+    if (cvLength < 4) return currentValue
+    if (cvLength < 7)
+      return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`
+    return `(${currentValue.slice(0, 3)}) ${currentValue.slice(
+      3,
+      6,
+    )}-${currentValue.slice(6, 10)}`
+  }
+}
+
 const AboutYouStep: React.FC = () => {
   const { state, dispatch } = useSteps()
   const formik = useFormikContext()
@@ -47,6 +63,10 @@ const AboutYouStep: React.FC = () => {
           name="phone"
           placeholder="Enter your cell phone number"
           className="mt-6"
+          formatter={(value) => {
+            // @ts-ignore
+            return normalizeInput(value)
+          }}
         />
         <FormikTextInput
           required

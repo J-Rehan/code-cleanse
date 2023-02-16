@@ -10,13 +10,20 @@ import FormikRadioGroup from '../../shared/Formik/FormikRadioGroup/FormikRadioGr
 const plans = [
   {
     id: '1',
+    value: 'OneTime',
+    title: 'One Time Review',
+    subtitle: '$1499 / month',
+    callout: 'Paid monthly',
+  },
+  {
+    id: '2',
     value: 'Monthly',
     title: 'Monthly',
     subtitle: '$1000 / month',
     callout: 'Paid monthly',
   },
   {
-    id: '2',
+    id: '3',
     value: 'Yearly',
     title: 'Yearly',
     subtitle: '$850 / month',

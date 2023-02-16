@@ -32,13 +32,6 @@ const HireSuccessPage: NextPage = () => {
         <p>In the meantime add us to your code base</p>
         <div className="flex space-x-4 items-center mt-4">
           <Image src="/icons/github.png" width={100} height={40} alt="Github" />
-          <Image src="/icons/gitlab.png" width={100} height={40} alt="Github" />
-          <Image
-            src="/icons/bitbucket.png"
-            width={100}
-            height={40}
-            alt="Github"
-          />
         </div>
         <p className="text-2xl font-light mt-2">@codecleanse</p>
         <p className="mt-2 font-light">

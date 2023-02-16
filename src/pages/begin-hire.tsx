@@ -49,7 +49,7 @@ const BeginHirePage: NextPage = () => {
           </div>
         </div>
         <Link href="/hire">
-          <Button onClick={() => {}} className="md:max-w-[40%] mx-auto mt-12">
+          <Button onClick={() => {}} className="md:max-w-[500px] mx-auto mt-12">
             <span>
               <strong>Start:</strong> Tell us about yourself
             </span>
