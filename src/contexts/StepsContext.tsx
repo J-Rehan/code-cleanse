@@ -3,14 +3,18 @@ import React, { createContext, PropsWithChildren, useReducer } from 'react'
 const initialState = {
   currentStep: 0,
   steps: [
-    { index: 1, name: 'About you', fields: ['fullName', 'email', 'phone'] },
     {
-      index: 2,
+      index: 0,
+      name: 'Sign Up',
+      fields: ['fullName', 'email', 'phone', 'password', 'confirmPassword'],
+    },
+    {
+      index: 1,
       name: 'Your project',
       fields: ['productCategory', 'description'],
     },
     {
-      index: 3,
+      index: 2,
       name: 'Hire plan',
       fields: ['plan', 'cardNumber', 'expirationDate', 'cvc'],
     },

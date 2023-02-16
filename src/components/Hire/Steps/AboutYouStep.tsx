@@ -11,7 +11,7 @@ const AboutYouStep: React.FC = () => {
     dispatch({ type: 'NEXT_STEP' })
   }
 
-  const step = state.steps.find((step) => step.name === 'About you')
+  const step = state.steps.find((step) => step.name === 'Sign Up')
 
   const disabled = !!Object.keys(formik.errors).find((key) =>
     step?.fields.includes(key),
@@ -19,8 +19,8 @@ const AboutYouStep: React.FC = () => {
 
   return (
     <div className="py-8 px-6 flex flex-col h-full">
-      <h2 className="text-dark text-2xl font-normal">
-        Tell us a bit about you
+      <h2 className="text-dark text-2xl font-normal text-center">
+        Create your account
       </h2>
 
       <div className="mt-11 mb-auto">
@@ -48,9 +48,30 @@ const AboutYouStep: React.FC = () => {
           placeholder="Enter your cell phone number"
           className="mt-6"
         />
+        <FormikTextInput
+          required
+          type="password"
+          label="Password"
+          name="password"
+          placeholder="Enter password"
+          className="mt-6"
+        />
+        <FormikTextInput
+          required
+          type="password"
+          label="Confirm Password"
+          name="confirmPassword"
+          placeholder="Enter password"
+          className="mt-6"
+        />
       </div>
 
-      <Button disabled={disabled} onClick={nextStep} className="mt-4">
+      <Button
+        type="button"
+        disabled={disabled}
+        onClick={nextStep}
+        className="mt-4"
+      >
         <span>
           <strong>Next:</strong> Your project
         </span>

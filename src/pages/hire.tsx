@@ -24,6 +24,7 @@ export const initialValues = {
   description: '',
   plan: 'Yearly',
   errorMessage: '',
+  developers: [{ name: '', email: '', role: '' }],
 }
 
 const HirePage: NextPage = () => {
@@ -44,7 +45,7 @@ const HirePage: NextPage = () => {
         elements: elements!,
         confirmParams: {
           // Make sure to change this to your payment completion page
-          return_url: `${window.location.origin}/developer-detail`,
+          return_url: `${window.location.origin}/hire-success`,
         },
         redirect: 'if_required',
       })
@@ -58,7 +59,7 @@ const HirePage: NextPage = () => {
         toast.error('Payment failed!')
       } else {
         toast.success('Payment successful!')
-        router.push('/developer-detail')
+        router.push('/hire-success')
         dispatch({ type: 'SET_STEP', payload: 0 })
       }
       formik.setSubmitting(false)
@@ -69,7 +70,7 @@ const HirePage: NextPage = () => {
     fetchClientSecret(
       formik.values.plan === 'Monthly' ? monthlyCost : yearlyCost,
     )
-  }, [formik.values.plan])
+  }, [])
 
   useEffect(() => {
     const step = window.location.hash.split('#')[1]
@@ -104,7 +105,7 @@ const HirePage: NextPage = () => {
 
           <StepsHeader />
 
-          <div className="md:relative md:w-[448px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
+          <div className="md:relative md:w-[520px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
             {steps[state.currentStep]?.component}
           </div>
         </div>

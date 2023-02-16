@@ -4,8 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Typewriter } from 'react-simple-typewriter'
 import Section from '../components/Landing/Section/Section'
+import Button from '../components/shared/Button/Button'
 import Footer from '../components/shared/Footer/Footer'
 import Header from '../components/shared/Header/Header'
+import { features } from '../core/config/app'
+import { engineers } from '../core/config/engineers'
 
 const HomePage: NextPage = () => {
   return (
@@ -37,7 +40,7 @@ const HomePage: NextPage = () => {
             </div>
           </h1>
 
-          <Link href="/hire" className="mt-12">
+          <Link href="/begin-hire" className="mt-12">
             <button className="text-base leading-5 font-bold text-dark bg-white min-w-[300px] sm:w-[340px] p-4 rounded-lg">
               Hire Experts Now
             </button>
@@ -45,47 +48,12 @@ const HomePage: NextPage = () => {
         </div>
         <div />
       </Header>
-      <main className="px-6 py-9">
+      <main className="pt-9">
         <Head>
           <title>Code Cleanse</title>
         </Head>
         <div className="max-w-[394px] flex flex-col w-full items-center mx-auto">
-          <h1 className="text-2xl font-normal text-center">
-            Trusted by leading organizations
-          </h1>
-
-          <div className="flex justify-around mt-6 w-[332px]">
-            <Image
-              src="/meta.png"
-              width={38}
-              height={32}
-              alt="meta"
-              className="object-contain"
-            />
-            <Image
-              src="/upwork.png"
-              width={72}
-              height={40}
-              alt="upwork"
-              className="object-contain"
-            />
-            <Image
-              src="/pseg.png"
-              width={76}
-              height={20}
-              alt="pseg"
-              className="object-contain"
-            />
-            <Image
-              src="/uber.png"
-              width={52}
-              height={30}
-              alt="uber"
-              className="object-contain"
-            />
-          </div>
-
-          <div className="mt-6 space-y-4 flex flex-col items-center">
+          <div className="space-y-4 flex flex-col items-center">
             <div className="flex items-center">
               <Image src="/user-three.png" width={24} height={24} alt="user" />
               <span className="ml-2 text-sm font-light">500+ Clients</span>
@@ -110,54 +78,151 @@ const HomePage: NextPage = () => {
         <div className="max-w-[1024px] mx-auto">
           <div className="my-8 bg-gray h-[1px] w-full" />
 
-          <div className="flex flex-col items-center">
-            <Section
-              title="About us"
-              subtitle="Code Cleanse Lorem ipsum dolar sit amet"
-              imageUrl="/section1-image.png"
-              desktopImageUrl="/section1-image-desktop.png"
-              description="Code Cleanse Lorem ipsuNullam lacus leo, posuere eget mauris ac, scelerisque congue dui duis maximus."
-              items={[
-                'Nullam porta, augue in tempusj',
-                'Hendrerit sapien quam elementum',
-                'Vivamus pharetra enim pellentesque.',
-                'Nunc sit amet accumsan urna',
-              ]}
-            />
+          <div className="px-6">
+            <h3 className="text-center text-2xl text-dark">
+              Hundreds of rigorously selected I.T. proffessionals from all over
+              the world.
+            </h3>
 
-            <div className="mt-14 mb-8 bg-gray h-[1px] w-full" />
+            <div className="flex space-x-2 mt-8 overflow-x-scroll pb-4">
+              {engineers.map((engineer) => {
+                return (
+                  <div className="flex flex-col items-center" key={engineer.id}>
+                    <Image
+                      width={104}
+                      height={104}
+                      src={engineer.imageUrl}
+                      alt={engineer.name}
+                      className="rounded-[28px]"
+                    />
+                    <p className="min-w-[164px] text-dark mt-4 text-center font-semibold text-base">
+                      {engineer.name}
+                    </p>
+                    <p className="text-sm text-dark">{engineer.role}</p>
+                    <p className="mt-3 text-sm text-dark2">Previously at</p>
+                    <Image
+                      width={100}
+                      className="object-cover mt-1.5"
+                      height={32}
+                      alt="Previously at"
+                      src={`/images/previously-at/${engineer.lastCompany}.png`}
+                    />
+                  </div>
+                )
+              })}
 
-            <Section
-              reverse
-              title="Our Team"
-              subtitle="Our Team Lorem ipsum dolar sit amet"
-              imageUrl="/section2-image.png"
-              desktopImageUrl="/section2-image-desktop.png"
-              description="Code Cleanse Lorem ipsuNullam lacus leo, posuere eget mauris ac, scelerisque congue dui duis maximus."
-              items={[
-                'Nullam porta, augue in tempusj',
-                'Hendrerit sapien quam elementum',
-                'Vivamus pharetra enim pellentesque.',
-                'Nunc sit amet accumsan urna',
-              ]}
-            />
+              <div className="flex flex-col items-center">
+                <Image
+                  width={104}
+                  height={104}
+                  src="/images/group-image.png"
+                  alt="Group Image"
+                  className="rounded-[28px]"
+                />
+                <p className="min-w-[164px] text-dark mt-4 text-center font-semibold text-base">
+                  1000+
+                </p>
+                <p className="text-sm text-dark">All you need</p>
+                <p className="mt-3 text-sm text-dark2"></p>
+                <div className="flex space-x-2">
+                  <Image
+                    width={100}
+                    className="object-contain mt-1.5"
+                    height={32}
+                    alt="Previously at"
+                    src="/pseg.png"
+                  />
+                  <Image
+                    width={100}
+                    className="object-contain mt-1.5"
+                    height={32}
+                    alt="Previously at"
+                    src="/reddit.png"
+                  />
+                  <Image
+                    width={100}
+                    className="object-contain mt-1.5"
+                    height={32}
+                    alt="Previously at"
+                    src="/capital-one.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <div className="mt-14 mb-8 bg-gray h-[1px] w-full" />
+          <div className="my-8 bg-gray h-[1px] w-full" />
 
-            <Section
-              title="Our Services"
-              subtitle="Our services Lorem ipsum dolar sit amet"
-              imageUrl="/section3-image.png"
-              desktopImageUrl="/section3-image-desktop.png"
-              description="Code Cleanse Lorem ipsuNullam lacus leo, posuere eget mauris ac, scelerisque congue dui duis maximus."
-              items={[
-                'Nullam porta, augue in tempusj',
-                'Hendrerit sapien quam elementum',
-                'Vivamus pharetra enim pellentesque.',
-                'Nunc sit amet accumsan urna',
-              ]}
+          <div className="px-6 flex flex-col md:flex-row md:items-center md:space-x-10">
+            <p className="text-2xl">
+              We provide <strong>non-technical founders</strong> with the peace
+              of mind and transparency they need to manage their development
+              teams effectively.
+            </p>
+            <Image
+              width={342}
+              height={200}
+              src="/section1-img.png"
+              alt="Section 1"
+              className="mt-6 mx-auto"
             />
           </div>
+
+          <div className="my-6 bg-gray h-[1px] w-full" />
+
+          <div className="px-6 flex flex-col-reverse md:flex-row md:items-center md:space-x-10">
+            <Image
+              width={342}
+              height={200}
+              src="/section2-img.png"
+              alt="Section 1"
+              className="mt-6 mx-auto"
+            />
+            <p className="text-2xl">
+              Our rigorous hiring process ensures that{' '}
+              <strong>we only work with the top 1%</strong> of engineers
+              worldwide, so you can trust that your development team is in good
+              hands with us.
+            </p>
+          </div>
+        </div>
+
+        <div className="px-8 mt-10 py-10 bg-[#f8f8f8]">
+          <div className="max-w-[1024px] mx-auto">
+            <p className="text-2xl text-center">Here is what we provide as</p>
+            <p className="text-2xl text-center mb-10">
+              one-time or ongoing service:
+            </p>
+
+            <div className="grid grid-cols-12 gap-4">
+              {features.map((feature) => {
+                return (
+                  <div
+                    key={feature.id}
+                    className="col-span-12 md:col-span-4 p-6 flex flex-col justify-center items-center bg-white space-y-1"
+                  >
+                    <Image
+                      src={feature.icon}
+                      width={32}
+                      height={32}
+                      alt={feature.name}
+                    />
+                    <h3 className="text-base font-bold text-center">
+                      {feature.name}
+                    </h3>
+                    <p className="text-sm text-center">{feature.description}</p>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+          <Link href="/begin-hire">
+            <Button onClick={() => {}} className="md:max-w-[40%] mx-auto mt-12">
+              <span>
+                <strong>Start:</strong> Tell us about yourself
+              </span>
+            </Button>
+          </Link>
         </div>
       </main>
       <Footer />

@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 .header {
-  background-image: url('/header-bg-mobile.png');
+  background-image: url('/header-bg-desktop.png');
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   background-color: black;
 }
 

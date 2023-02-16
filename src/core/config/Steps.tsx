@@ -5,11 +5,7 @@ import YourProject from '../../components/Hire/Steps/YourProject'
 
 export const steps = [
   {
-    id: 'benefits',
-    component: <BenefitsStep />,
-  },
-  {
-    id: 'about-you',
+    id: 'sign-up',
     component: <AboutYouStep />,
   },
   {
