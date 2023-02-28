@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Typewriter } from 'react-simple-typewriter'
 import Section from '../components/Landing/Section/Section'
+import Testimonials from '../components/Landing/Testimonials/Testimonials'
 import Button from '../components/shared/Button/Button'
 import Footer from '../components/shared/Footer/Footer'
 import Header from '../components/shared/Header/Header'
@@ -52,7 +53,7 @@ const HomePage: NextPage = () => {
         <Head>
           <title>Code Cleanse</title>
         </Head>
-        <div className="max-w-[394px] flex flex-col w-full items-center mx-auto">
+        <div className="max-w-[394px] flex flex-col w-full items-center mx-auto pb-7">
           <div className="space-y-4 flex flex-col items-center">
             <div className="flex items-center">
               <Image src="/user-three.png" width={24} height={24} alt="user" />
@@ -76,15 +77,18 @@ const HomePage: NextPage = () => {
         </div>
 
         <div className="max-w-[1024px] mx-auto">
-          <div className="my-8 bg-gray h-[1px] w-full" />
-
-          <div className="px-6">
+          <div className="mb-12 px-6 rounded-none border-t border-b md:border-l md:border-r border-[#d7d7d7] p-10 md:rounded-[48px]">
             <h3 className="text-center text-2xl text-dark">
               Hundreds of rigorously selected I.T. proffessionals from all over
               the world.
             </h3>
 
-            <div className="flex space-x-2 mt-8 overflow-x-scroll pb-4">
+            <div
+              className="engineers flex space-x-2 mt-8 overflow-x-scroll lg:overflow-x-hidden pb-4"
+              style={{
+                scrollbarWidth: 'none',
+              }}
+            >
               {engineers.map((engineer) => {
                 return (
                   <div className="flex flex-col items-center" key={engineer.id}>
@@ -150,9 +154,11 @@ const HomePage: NextPage = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="my-8 bg-gray h-[1px] w-full" />
+        <Testimonials />
 
+        <div className="max-w-[1024px] mx-auto pt-[56px]">
           <div className="px-6 flex flex-col md:flex-row md:items-center md:space-x-10">
             <p className="text-2xl">
               We provide <strong>non-technical founders</strong> with the peace

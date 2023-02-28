@@ -14,6 +14,9 @@ module.exports = {
         gray: '#eaeaea',
         green: '#008000',
       },
+      boxShadow: {
+        custom1: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      },
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],

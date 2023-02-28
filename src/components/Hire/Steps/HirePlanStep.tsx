@@ -1,6 +1,5 @@
 import { useFormikContext } from 'formik'
 import Image from 'next/image'
-import { PaymentElement } from '@stripe/react-stripe-js'
 
 import useSteps from '../../../hooks/useSteps'
 import { initialValues } from '../../../pages/hire'
@@ -13,21 +12,27 @@ const plans = [
     value: 'OneTime',
     title: 'One Time Review',
     subtitle: '$1499 / month',
-    callout: 'Paid monthly',
+    callout: '',
+    description:
+      "Optimize your code's quality with our comprehensive one-time review. Quickly identify and address any issues to ensure success.",
   },
   {
     id: '2',
     value: 'Monthly',
-    title: 'Monthly',
-    subtitle: '$1000 / month',
-    callout: 'Paid monthly',
+    title: 'Annual Plan',
+    subtitle: '$850 / month',
+    callout: 'Most Economic',
+    description:
+      'Save big with our annual plan. Monthly code reviews keep your code optimized for success year-round, without breaking the bank.',
   },
   {
     id: '3',
     value: 'Yearly',
-    title: 'Yearly',
-    subtitle: '$850 / month',
-    callout: 'Paid annually',
+    title: 'Monthly Plan',
+    subtitle: '$900 / month',
+    callout: 'Most Flexible',
+    description:
+      'Stay ahead of the competition with our monthly review service. Our experts provide insightful feedback to keep your code in top shape.',
   },
 ]
 
@@ -41,6 +46,10 @@ const HirePlanStep: React.FC = () => {
   const { state, dispatch } = useSteps()
 
   const step = state.steps.find((step) => step.name === 'Hire plan')
+
+  const nextStep = () => {
+    dispatch({ type: 'NEXT_STEP' })
+  }
 
   const disabled =
     !!Object.keys(formik.errors).find((key) => step?.fields.includes(key)) ||
@@ -67,8 +76,6 @@ const HirePlanStep: React.FC = () => {
             {formik.values.errorMessage}
           </span>
         )}
-
-        <PaymentElement id="payment-element" className="h-full" />
       </div>
 
       <Image
@@ -93,8 +100,8 @@ const HirePlanStep: React.FC = () => {
           </p>
         )}
 
-        <Button type="submit" disabled={disabled} className="mt-4">
-          <strong>{formik.isSubmitting ? 'Processing...' : 'Hire plan'}</strong>
+        <Button onClick={nextStep} disabled={disabled} className="mt-4">
+          <strong>Select Plan</strong>
         </Button>
       </div>
     </div>

@@ -21,6 +21,7 @@
     "react-calendly": "^4.1.1",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
+    "react-modal-video": "^2.0.0",
     "react-select": "^5.7.0",
     "react-simple-typewriter": "^5.0.1",
     "stripe": "^11.7.0",

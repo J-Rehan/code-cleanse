@@ -7,6 +7,7 @@ export type RadioItem = {
   title: string
   subtitle: string
   callout: string
+  description?: string
 }
 
 interface FormikTextInputProps
@@ -31,38 +32,49 @@ const FormikRadioGroup: React.FC<FormikTextInputProps> = (props) => {
           const isChecked = field.value === item.value
 
           return (
-            <label
-              key={item.value}
-              className={cn(
-                'flex items-center p-4 rounded-[4px] border cursor-pointer',
-                isChecked ? 'border-blue' : 'border-[#dddddd]',
-              )}
-            >
-              <Field
-                type="radio"
-                name={name}
-                value={item.value}
-                checked={isChecked}
-                className="mr-2 hidden"
-              />
-              <div
+            <div key={item.value}>
+              <label
                 className={cn(
-                  'w-6 h-6 border rounded-full flex justify-center items-center',
-                  isChecked ? 'border-blue' : 'border-dark',
+                  'flex items-center justify-between p-4 rounded-[4px] border cursor-pointer border-[#dddddd]',
+                  isChecked
+                    ? 'bg-blue bg-opacity-10 rounded-bl-none rounded-br-none'
+                    : '',
                 )}
               >
-                {isChecked && <div className="w-3 h-3 bg-blue rounded-full" />}
-              </div>
+                <Field
+                  type="radio"
+                  name={name}
+                  value={item.value}
+                  checked={isChecked}
+                  className="mr-2 hidden"
+                />
 
-              <div className="mr-auto ml-2">
-                <h3 className="text-base text-dark font-light">{item.title}</h3>
-                <h3 className="text-sm text-dark font-light">
-                  {item.subtitle}
-                </h3>
-              </div>
-
-              <span className="text-xs font-light">{item.callout}</span>
-            </label>
+                <div className="ml-2">
+                  <h3 className="text-xl text-dark font-light">{item.title}</h3>
+                  <h3 className="text-sm text-dark font-light">
+                    {item.subtitle}
+                  </h3>
+                </div>
+                <span className="text-base font-light text-green">
+                  {item.callout}
+                </span>
+                <div
+                  className={cn(
+                    'w-6 h-6 border rounded-full flex justify-center items-center',
+                    isChecked ? 'border-blue' : 'border-dark',
+                  )}
+                >
+                  {isChecked && (
+                    <div className="w-3 h-3 bg-blue rounded-full" />
+                  )}
+                </div>
+              </label>
+              {isChecked && (
+                <p className="p-4 border border-t-0 rounded-b-[4px] border-[#dddddd]">
+                  {item.description}
+                </p>
+              )}
+            </div>
           )
         })}
       </div>
