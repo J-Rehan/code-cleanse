@@ -67,10 +67,6 @@ const HirePlanStep: React.FC = () => {
       </div>
 
       <div className="mt-10 flex-1">
-        <h4 className="uppercase text-xs font-semibold mb-4">
-          Enter your credit card details
-        </h4>
-
         {formik.values.errorMessage && (
           <span className="text-red-500 font-bold uppercase">
             {formik.values.errorMessage}
@@ -78,32 +74,9 @@ const HirePlanStep: React.FC = () => {
         )}
       </div>
 
-      <Image
-        width={140}
-        height={28}
-        alt="powered-by-stripe"
-        src="/powered-by-stripe.png"
-        className="mt-10 mb-6 mx-auto"
-      />
-
-      <div className="pt-2 border-t border-t-[#e7e7e7]">
-        {formik.values.plan && (
-          <p className="text-center">
-            <span>
-              paying today:{' '}
-              <strong className="text-green font-semibold">
-                {formatter.format(
-                  formik.values.plan === 'Yearly' ? 850 * 12 : 1000,
-                )}
-              </strong>
-            </span>
-          </p>
-        )}
-
-        <Button onClick={nextStep} disabled={disabled} className="mt-4">
-          <strong>Select Plan</strong>
-        </Button>
-      </div>
+      <Button onClick={nextStep} disabled={disabled}>
+        <strong>Select Plan</strong>
+      </Button>
     </div>
   )
 }
