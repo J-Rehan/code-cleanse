@@ -1,14 +1,38 @@
 import { useFormikContext } from 'formik'
+import { useRouter } from 'next/router'
 import useSteps from '../../../hooks/useSteps'
 
 const Steps: React.FC = () => {
   const { state, dispatch } = useSteps()
   const formik = useFormikContext()
+  const router = useRouter()
+
+  const goBack = () => {
+    dispatch({ type: 'SET_STEP', payload: 2 })
+  }
 
   return (
     <div className="bg-white steps-container flex justify-center">
       {state.currentStep === 3 ? (
-        <div>One last Step</div>
+        <div className="flex items-center my-6 min-w-[520px] justify-between">
+          <svg
+            onClick={goBack}
+            className="cursor-pointer"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 16L0 8L8 0L9.425 1.4L3.825 7H16V9H3.825L9.425 14.6L8 16Z"
+              fill="#1C1B1F"
+            />
+          </svg>
+
+          <p className="text-2xl text-dark">One last Step</p>
+          <p />
+        </div>
       ) : (
         state.steps.map((step, index) => {
           const isInvalid = Object.keys(formik.errors).find((key) =>

@@ -1,4 +1,5 @@
 import React, { createContext, PropsWithChildren, useReducer } from 'react'
+import Router from 'next/router'
 
 const initialState = {
   currentStep: 0,
@@ -36,13 +37,18 @@ const stepsReducer = (
   state: InitialState,
   action: { type: ActionTypes; payload?: any },
 ) => {
+  const url = new URL(window.location)
   const { type } = action
   switch (type) {
     case 'NEXT_STEP':
-      window?.history.pushState(null, '', `#${state.currentStep + 1}`)
+      url.searchParams.set('step', String(state.currentStep + 1))
+      window.history.pushState(null, '', url.toString())
+
       return { ...state, currentStep: state.currentStep + 1 }
     case 'SET_STEP':
-      window?.history.pushState(null, '', `#${action.payload}`)
+      url.searchParams.set('step', String(action.payload))
+      window.history.pushState(null, '', url.toString())
+
       return { ...state, currentStep: action.payload }
     default:
       return state

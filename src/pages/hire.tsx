@@ -73,11 +73,10 @@ const HirePage: NextPage = () => {
   }, [])
 
   useEffect(() => {
-    const step = window.location.hash.split('#')[1]
-    if (step) {
-      dispatch({ type: 'SET_STEP', payload: Number(step) })
-    }
-  }, [dispatch])
+    const url = new URL(window.location)
+    const step = url.searchParams.get('step')
+    if (step) dispatch({ type: 'SET_STEP', payload: Number(step) })
+  }, [dispatch, window.location])
 
   return (
     <FormikProvider value={formik}>
