@@ -14,10 +14,10 @@ const Testimonials: React.FC = () => {
   return (
     <div className="py-8 px-4 md:py-8 bg-[#f8f8f8]">
       <ModalVideo
-        channel="youtube"
+        channel="custom"
         autoplay
         isOpen={isVideoModalOpen}
-        videoId="a3ICNMQW7Ok"
+        url={selectedTestimonial?.videoUrl}
         onClose={() => setIsVideoModalOpen(false)}
       />
 
@@ -71,20 +71,45 @@ const Testimonials: React.FC = () => {
                     </div>
                   </div>
                   <p className="text-dark text-base">”{testimonial.content}”</p>
-                  <div className="mt-4 flex items-center">
-                    <Image
-                      width={56}
-                      height={56}
-                      className="rounded-full w-14 h-14 object-cover object-top mr-2"
-                      src={testimonial.client.imageUrl}
-                      alt={testimonial.client.name}
-                    />
-                    <div className="text-dark">
-                      <p className="text-base">{testimonial.client.name}</p>
-                      <p className="text-sm">
-                        {testimonial.client.role} of{' '}
-                        {testimonial.client.company}
-                      </p>
+                  <div className="mt-4 flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Image
+                        width={56}
+                        height={56}
+                        className="rounded-full w-14 h-14 object-cover object-top mr-2"
+                        src={testimonial.client.imageUrl}
+                        alt={testimonial.client.name}
+                      />
+                      <div className="text-dark">
+                        <p className="text-base">{testimonial.client.name}</p>
+                        <p className="text-sm">
+                          {testimonial.client.role} of{' '}
+                          <a
+                            href={testimonial.productUrl}
+                            target="_blank"
+                            className="text-blue"
+                            rel="noreferrer"
+                          >
+                            {testimonial.client.company}
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <a
+                        href={testimonial.productUrl}
+                        target="_blank"
+                        className="text-blue"
+                        rel="noreferrer"
+                      >
+                        <img
+                          // width={40}
+                          // height={40}
+                          alt="App Icon"
+                          className="rounded-md w-10 h-10 object-contain"
+                          src={testimonial.iconUrl}
+                        />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -96,7 +121,7 @@ const Testimonials: React.FC = () => {
             onClick={() => setIsVideoModalOpen(true)}
           >
             <img
-              className="w-full h-full object-cover object-top rounded-[48px]"
+              className="w-full h-[550px] object-center object-cover rounded-[48px]"
               src={selectedTestimonial?.videoThumbnail}
               alt={selectedTestimonial.client.name}
             />

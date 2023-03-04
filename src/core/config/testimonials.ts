@@ -2,40 +2,46 @@ export const testimonials = [
   {
     id: '1',
     client: {
-      name: 'John Smith',
-      role: 'CEO',
-      company: 'XYZ Corporation',
-      imageUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+      name: 'Madelyn Nick',
+      role: 'Founder',
+      company: 'Reco App',
+      imageUrl: '/testimonials/madelyn-profile.png',
     },
     content:
       'CodeClanse helped us streamline our operations and increase efficiency',
-    videoThumbnail: 'https://s3.envato.com/files/344889773/B94A9728.jpg',
+    videoThumbnail: '/testimonials/madelyn-thumbnail.png',
+    videoUrl: '/testimonials/madelyn-video.mp4',
+    iconUrl: '/testimonials/reco-logo.webp',
+    productUrl: 'https://therecoapp.com/',
   },
   {
     id: '2',
     client: {
-      name: 'Jane Doe',
-      role: 'COO',
-      company: 'ABC Inc.',
-      imageUrl:
-        'https://images.pexels.com/photos/355036/pexels-photo-355036.jpeg?h=350&auto=compress&cs=tinysrgb',
+      name: 'Aly Johnson',
+      role: 'Founder',
+      company: 'Village App',
+      imageUrl: '/testimonials/aly-thumbnail.png',
     },
     content:
       "We couldn't have done it without CodeClanse's expertise and guidance",
-    videoThumbnail:
-      'https://media.istockphoto.com/id/1266809632/photo/focused-young-indian-woman-holding-negotiations-video-call-with-clients.jpg?s=612x612&w=0&k=20&c=ZCvcIYKDcDYznzIG7GOq1N4gdRCKLtFuDrOJ5K8P4bc=',
+    videoThumbnail: '/testimonials/aly-thumbnail.png',
+    videoUrl: '/testimonials/aly-video.mp4',
+    iconUrl: '/testimonials/village-app.webp',
+    productUrl: 'https://www.thevillageapp.co/',
   },
   {
     id: '3',
     client: {
-      name: 'Bob Johnson',
-      role: 'CTO',
-      company: 'LMS Enterprises',
-      imageUrl: 'https://randomuser.me/api/portraits/men/36.jpg',
+      name: 'Nicholas Nedelisky',
+      role: 'Founder',
+      company: 'Foodiaz',
+      imageUrl: '/testimonials/nic-profile.png',
     },
     content:
       'Their solutions exceeded expectations and helped us stay ahead of the curve',
-    videoThumbnail:
-      'https://images.pond5.com/business-man-talking-web-camera-footage-160264989_iconl.jpeg',
+    videoThumbnail: '/testimonials/nic-thumbnail.png',
+    videoUrl: '/testimonials/nic-video.mp4',
+    iconUrl: '/testimonials/foodiaz-app.jpeg',
+    productUrl: 'https://www.foodiaz.com/',
   },
 ]
