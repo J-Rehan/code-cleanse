@@ -13,7 +13,13 @@ const Header: React.FC<HeaderProps> = (props) => {
     <header className="header flex flex-col justify-between h-[100vh]">
       <nav className="flex justify-between items-center p-6 lg:w-[1024px] lg:mx-auto">
         <Link href="/">
-          <Image src="/logo-full.png" width={200} height={32} alt="logo" />
+          <Image
+            priority
+            src="/logo-full.png"
+            width={200}
+            height={32}
+            alt="logo"
+          />
         </Link>
         <div className="hidden md:flex md:space-x-6">
           <Link href="/about">

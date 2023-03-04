@@ -15,16 +15,16 @@ export const engineers = [
   },
   {
     id: '3',
-    name: 'Noor Zainab',
+    name: 'Zsolt Racz',
     role: 'Sr. Backend Enginner',
-    imageUrl: '/images/engineers/noor.jpeg',
-    lastCompany: 'spacex',
+    imageUrl: '/zsolt.jpeg',
+    lastCompany: 'reddit',
   },
   {
     id: '4',
     name: 'Asim Maqsood',
     role: 'Full Stack Engineer',
     imageUrl: '/images/engineers/asim.jpeg',
-    lastCompany: 'iqui',
+    lastCompany: 'accedo.',
   },
 ]

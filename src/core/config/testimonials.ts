@@ -26,8 +26,8 @@ export const testimonials = [
       "We couldn't have done it without CodeClanse's expertise and guidance",
     videoThumbnail: '/testimonials/aly-thumbnail.png',
     videoUrl: '/testimonials/aly-video.mp4',
-    iconUrl: '/testimonials/village-app.webp',
-    productUrl: 'https://www.thevillageapp.co/',
+    iconUrl: '/testimonials/village-app.png',
+    productUrl: 'https://www.villageappco.com/',
   },
   {
     id: '3',

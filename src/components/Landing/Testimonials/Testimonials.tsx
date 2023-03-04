@@ -1,25 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ModalVideo from 'react-modal-video'
+import ReactPlayer from 'react-player'
+import 'node_modules/video-react/dist/video-react.css'
+import { Player, BigPlayButton } from 'video-react'
 import { testimonials } from '../../../core/config/testimonials'
 import { cn } from '../../../utils/style'
 
 const Testimonials: React.FC = () => {
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  // const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [selectedTestimonial, setSelectedTestimonial] = useState(
     testimonials[0],
   )
 
+  useEffect(() => {
+    document.addEventListener(
+      'play',
+      function (e) {
+        var videos = document.getElementsByTagName('video')
+        for (var i = 0, len = videos.length; i < len; i++) {
+          if (videos[i] != e.target) {
+            videos[i].pause()
+          }
+        }
+      },
+      true,
+    )
+    // TODO: clear listener
+  }, [])
+
   return (
     <div className="py-8 px-4 md:py-8 bg-[#f8f8f8]">
-      <ModalVideo
+      {/* <ModalVideo
         channel="custom"
         autoplay
         isOpen={isVideoModalOpen}
         url={selectedTestimonial?.videoUrl}
         onClose={() => setIsVideoModalOpen(false)}
-      />
+      /> */}
 
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl text-dark text-center">Client Testimonials:</h2>
@@ -43,32 +62,18 @@ const Testimonials: React.FC = () => {
                       'md:shadow-transparent',
                   )}
                 >
-                  <div
-                    className="md:hidden relative mb-4"
-                    onClick={() => {
-                      setSelectedTestimonial(testimonial)
-                      setIsVideoModalOpen(true)
-                    }}
-                  >
-                    <img
-                      className="w-full h-full object-cover object-top rounded-[48px]"
-                      src={testimonial?.videoThumbnail}
-                      alt={testimonial.client.name}
-                    />
-                    <div className="w-[40px] h-[40px] bg-white absolute top-1/2 left-1/2 z-10 rounded-full flex justify-center items-center transform -translate-x-1/2 -translate-y-1/2 hover:shadow-lg">
-                      <svg
-                        width="12"
-                        height="16"
-                        viewBox="0 0 30 34"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0.250061 4.00596C0.250061 0.92676 3.58339 -0.997734 6.25006 0.541867L28.0001 13.0992C30.6667 14.6388 30.6667 18.4878 28.0001 20.0274L6.25006 32.5848C3.58339 34.1244 0.250062 32.1999 0.250062 29.1207L0.250061 4.00596Z"
-                          fill="#D9D9D9"
-                        />
-                      </svg>
-                    </div>
+                  <div className="md:hidden relative mb-4">
+                    <Player
+                      playsInline
+                      width="auto"
+                      height={500}
+                      fluid={false}
+                      aspectRadio="4:3"
+                      poster={testimonial.videoThumbnail}
+                      src={testimonial.videoUrl}
+                    >
+                      <BigPlayButton position="center">Hello</BigPlayButton>
+                    </Player>
                   </div>
                   <p className="text-dark text-base">”{testimonial.content}”</p>
                   <div className="mt-4 flex items-center justify-between">
@@ -116,11 +121,20 @@ const Testimonials: React.FC = () => {
               )
             })}
           </div>
-          <div
-            className="hidden md:block col-span-7 relative cursor-pointer"
-            onClick={() => setIsVideoModalOpen(true)}
-          >
-            <img
+
+          <div className="hidden relative md:block col-span-7 cursor-pointer">
+            <Player
+              playsInline
+              width="auto"
+              height={500}
+              fluid={false}
+              aspectRadio="4:3"
+              poster={selectedTestimonial.videoThumbnail}
+              src={selectedTestimonial.videoUrl}
+            >
+              <BigPlayButton position="center" />
+            </Player>
+            {/* <img
               className="w-full h-[550px] object-center object-cover rounded-[48px]"
               src={selectedTestimonial?.videoThumbnail}
               alt={selectedTestimonial.client.name}
@@ -138,7 +152,7 @@ const Testimonials: React.FC = () => {
                   fill="#D9D9D9"
                 />
               </svg>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
