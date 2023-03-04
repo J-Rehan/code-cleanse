@@ -15,21 +15,6 @@ export const testimonials = [
     productUrl: 'https://www.myrecoapp.com/',
   },
   {
-    id: '2',
-    client: {
-      name: 'Aly Johnson',
-      role: 'Founder',
-      company: 'Village App',
-      imageUrl: '/testimonials/aly-thumbnail.png',
-    },
-    content:
-      "We couldn't have done it without CodeClanse's expertise and guidance",
-    videoThumbnail: '/testimonials/aly-thumbnail.png',
-    videoUrl: '/testimonials/aly-video.mp4',
-    iconUrl: '/testimonials/village-app.png',
-    productUrl: 'https://www.villageappco.com/',
-  },
-  {
     id: '3',
     client: {
       name: 'Nicholas Nedelisky',
@@ -43,5 +28,20 @@ export const testimonials = [
     videoUrl: '/testimonials/nic-video.mp4',
     iconUrl: '/testimonials/foodiaz-app.jpeg',
     productUrl: 'https://www.foodiaz.com/',
+  },
+  {
+    id: '2',
+    client: {
+      name: 'Aly Johnson',
+      role: 'Founder',
+      company: 'Village App',
+      imageUrl: '/testimonials/aly-thumbnail.png',
+    },
+    content:
+      "We couldn't have done it without CodeClanse's expertise and guidance",
+    videoThumbnail: '/testimonials/aly-thumbnail.png',
+    videoUrl: '/testimonials/aly-video.mp4',
+    iconUrl: '/testimonials/village-app.png',
+    productUrl: 'https://www.villageappco.com/',
   },
 ]
