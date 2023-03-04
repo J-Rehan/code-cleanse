@@ -25,6 +25,6 @@ export const engineers = [
     name: 'Asim Maqsood',
     role: 'Full Stack Engineer',
     imageUrl: '/images/engineers/asim.jpeg',
-    lastCompany: 'accedo.',
+    lastCompany: 'accedo',
   },
 ]
