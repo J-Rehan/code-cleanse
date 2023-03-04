@@ -50,7 +50,7 @@ const Testimonials: React.FC = () => {
 
         <div className="grid grid-cols-12 mt-12 space-x-4">
           <div className="col-span-12 md:col-span-5 space-y-2">
-            {testimonials.map((testimonial) => {
+            {testimonials.map((testimonial, index) => {
               return (
                 <div
                   key={testimonial.id}
@@ -71,6 +71,7 @@ const Testimonials: React.FC = () => {
                       height={500}
                       fluid={false}
                       aspectRadio="4:3"
+                      preload={index === 0}
                       poster={testimonial.videoThumbnail}
                       src={testimonial.videoUrl}
                     >
