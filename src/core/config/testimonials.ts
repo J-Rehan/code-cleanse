@@ -2,7 +2,7 @@ export const testimonials = [
   {
     id: '1',
     client: {
-      name: 'Madelyn Nick',
+      name: 'Madelyn Allor',
       role: 'Founder',
       company: 'Reco App',
       imageUrl: '/testimonials/madelyn-profile.png',
@@ -11,8 +11,8 @@ export const testimonials = [
       'CodeClanse helped us streamline our operations and increase efficiency',
     videoThumbnail: '/testimonials/madelyn-thumbnail.png',
     videoUrl: '/testimonials/madelyn-video.mp4',
-    iconUrl: '/testimonials/reco-logo.webp',
-    productUrl: 'https://therecoapp.com/',
+    iconUrl: '/testimonials/reco-logo.png',
+    productUrl: 'https://www.myrecoapp.com/',
   },
   {
     id: '2',

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ModalVideo from 'react-modal-video'
 import ReactPlayer from 'react-player'
 import 'node_modules/video-react/dist/video-react.css'
@@ -9,10 +9,12 @@ import { testimonials } from '../../../core/config/testimonials'
 import { cn } from '../../../utils/style'
 
 const Testimonials: React.FC = () => {
+  const x = useRef(null)
   // const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const [selectedTestimonial, setSelectedTestimonial] = useState(
     testimonials[0],
   )
+  console.log(x.current)
 
   useEffect(() => {
     document.addEventListener(
@@ -124,6 +126,7 @@ const Testimonials: React.FC = () => {
 
           <div className="hidden relative md:block col-span-7 cursor-pointer">
             <Player
+              ref={x}
               playsInline
               width="auto"
               height={500}
