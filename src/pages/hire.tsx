@@ -59,8 +59,29 @@ const HirePage: NextPage = () => {
         toast.error('Payment failed!')
       } else {
         toast.success('Payment successful!')
-        router.push('/hire-success')
-        dispatch({ type: 'SET_STEP', payload: 0 })
+        fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: values.email,
+          }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res)
+            if (res.success) {
+              router.push('/hire-success')
+              dispatch({ type: 'SET_STEP', payload: 0 })
+            } else {
+              console.log(res)
+            }
+          })
+          .catch((error) => {
+            console.log('error', error)
+          })
       }
       formik.setSubmitting(false)
     },
