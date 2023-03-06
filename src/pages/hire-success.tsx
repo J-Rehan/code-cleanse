@@ -3,10 +3,8 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import ModalVideo from 'react-modal-video'
-import { InlineWidget, PopupWidget, PopupButton } from 'react-calendly'
+import { PopupButton } from 'react-calendly'
 import Button from '../components/shared/Button/Button'
-import Header from '../components/shared/Header/Header'
 
 const HireSuccessPage: NextPage = () => {
   const haveDeveloper = 'NO'
@@ -19,14 +17,6 @@ const HireSuccessPage: NextPage = () => {
 
   return (
     <div>
-      <ModalVideo
-        channel="youtube"
-        autoplay
-        isOpen={isVideoModalOpen}
-        videoId="a3ICNMQW7Ok"
-        onClose={() => setIsVideoModalOpen(false)}
-      />
-
       <div className="hire-header w-full bg-black p-6">
         <div className="flex justify-between items-center">
           <div />

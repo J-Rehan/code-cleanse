@@ -7,13 +7,11 @@ import { Toaster } from 'react-hot-toast'
 const App: React.FC<AppProps> = (props) => {
   const { Component, pageProps } = props
   return (
-    <div>
-      <StepsProvider>
-        <Toaster />
-        <NextNProgress color="#009BE0" />
-        <Component {...pageProps} />
-      </StepsProvider>
-    </div>
+    <StepsProvider>
+      <Toaster />
+      <NextNProgress color="#009BE0" />
+      <Component {...pageProps} />
+    </StepsProvider>
   )
 }
 

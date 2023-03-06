@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const msg = {
         to: email, // Change to your recipient
-        from: 'zeektate7@gmail.com', // Change to your verified sender
+        from: 'rehanm9181@gmail.com', // Change to your verified sender
         subject: 'Code Cleanse - Payment Successful',
         html: template,
       }

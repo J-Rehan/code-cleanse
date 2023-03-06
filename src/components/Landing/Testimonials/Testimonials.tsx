@@ -52,11 +52,12 @@ const Testimonials: React.FC = () => {
                   onClick={() => setSelectedTestimonial(testimonial)}
                   className={cn(
                     'rounded-[48px] p-6 cursor-pointer transition-all duration-200',
-                    'bg-white shadow-custom1',
-                    selectedTestimonial?.id !== testimonial.id &&
-                      'md:bg-transparent',
+                    'bg-white shadow-custom1 border',
                     selectedTestimonial?.id !== testimonial.id &&
                       'md:shadow-transparent',
+                    selectedTestimonial.id === testimonial.id
+                      ? 'border-[#3AD6F9]'
+                      : 'border-[#DDDDDD]',
                   )}
                 >
                   <div className="flex justify-center md:hidden relative mb-4">
