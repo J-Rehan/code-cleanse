@@ -1,9 +1,7 @@
 import sgMail from '@sendgrid/mail'
 import { NextApiRequest, NextApiResponse } from 'next'
 import template from '../../core/email-templates/paymentSuccess'
-sgMail.setApiKey(
-  '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',
-)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
@@ -11,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const msg = {
         to: email, // Change to your recipient
-        from: 'rehanm9181@gmail.com', // Change to your verified sender
+        from: 'zeektate7@gmail.com', // Change to your verified sender
         subject: 'Code Cleanse - Payment Successful',
         html: template,
       }

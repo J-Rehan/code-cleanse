@@ -15,7 +15,7 @@ export const testimonials = [
     productUrl: 'https://www.myrecoapp.com/',
   },
   {
-    id: '3',
+    id: '2',
     client: {
       name: 'Nicholas Nedelisky',
       role: 'Founder',
@@ -30,7 +30,7 @@ export const testimonials = [
     productUrl: 'https://www.foodiaz.com/',
   },
   {
-    id: '2',
+    id: '3',
     client: {
       name: 'Aly Johnson',
       role: 'Founder',
