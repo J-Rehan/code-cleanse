@@ -43,8 +43,8 @@ const Testimonials: React.FC = () => {
           Real Stories from Real Customers
         </h2>
 
-        <div className="grid grid-cols-12 mt-12 gap-8 items-center justify-center">
-          <div className="col-span-12 md:col-span-5 space-y-6">
+        <div className="flex mt-12 gap-8 items-center justify-center">
+          <div className="md:w-[40%] space-y-6">
             {testimonials.map((testimonial, index) => {
               return (
                 <div
@@ -117,7 +117,7 @@ const Testimonials: React.FC = () => {
             })}
           </div>
 
-          <div className="hidden relative col-span-7 cursor-pointer text-center md:flex">
+          <div className="hidden relative cursor-pointer text-center md:flex">
             <video
               key={selectedTestimonial.id}
               height="100%"
