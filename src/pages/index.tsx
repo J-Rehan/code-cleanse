@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { Typewriter } from 'react-simple-typewriter'
 import Section from '../components/Landing/Section/Section'
 import Testimonials from '../components/Landing/Testimonials/Testimonials'
@@ -11,11 +12,32 @@ import Footer from '../components/shared/Footer/Footer'
 import Header from '../components/shared/Header/Header'
 import { features } from '../core/config/app'
 import { engineers } from '../core/config/engineers'
+import 'animate.css'
 
 const HomePage: NextPage = () => {
+  const [scrolled, setScrolled] = useState(0)
+
+  useEffect(() => {
+    const listener = function () {
+      setScrolled(this.scrollY)
+    }
+
+    window.addEventListener('scroll', listener)
+
+    return () => {
+      window.removeEventListener('scroll', listener)
+    }
+  }, [])
+
   return (
     <>
-      <div className="fixed md:hidden w-full bottom-0 left-0 z-10">
+      {/* {scrolled > 600 && ( */}
+      <div
+        className={`animate__animated ${
+          scrolled > 600 ? 'animate__slideInUp' : 'animate__slideOutDown'
+        } fixed md:hidden w-full bottom-0 left-0 z-10`}
+        style={{ animationDuration: '0.5s' }}
+      >
         <div className="bg-[#1C1731] py-[18px] px-4 flex items-center justify-between">
           <Image
             priority
@@ -26,12 +48,13 @@ const HomePage: NextPage = () => {
           />
           <Link
             href="/begin-hire"
-            className="bg-white max-w-[182px] flex items-center justify-center rounded-lg w-full p-4 text-black font-bold text-base"
+            className="bg-white max-w-[280px] flex items-center justify-center rounded-lg w-full p-4 text-black font-bold text-base"
           >
             Hire Experts Now
           </Link>
         </div>
       </div>
+      {/* )} */}
       <div>
         <Header>
           <div className="flex flex-col items-center p-6">
@@ -120,7 +143,7 @@ const HomePage: NextPage = () => {
               </h3>
 
               <div
-                className="engineers flex justify-center space-x-2 mt-8 overflow-x-scroll lg:overflow-x-hidden pb-4"
+                className="engineers px-14 flex space-x-2 mt-8 overflow-x-scroll lg:overflow-x-hidden pb-4"
                 style={{
                   scrollbarWidth: 'none',
                 }}
