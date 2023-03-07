@@ -112,6 +112,7 @@ const HirePage: NextPage = () => {
               <div />
               <Link href="/">
                 <Image
+                  priority
                   src="/logo-full.png"
                   width={200}
                   height={32}

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -17,6 +18,7 @@ const HomePage: NextPage = () => {
       <div className="fixed md:hidden w-full bottom-0 left-0 z-10">
         <div className="bg-[#1C1731] py-[18px] px-4 flex items-center justify-between">
           <Image
+            priority
             src="/logo-icon.png"
             width={32}
             height={32}
@@ -111,12 +113,14 @@ const HomePage: NextPage = () => {
           <div className="max-w-[1024px] mx-auto">
             <div className="mb-12 px-6 rounded-none border-t border-b md:border-l md:border-r border-[#d7d7d7] p-10 md:rounded-[48px]">
               <h3 className="text-center text-2xl text-dark">
-                Hundreds of rigorously selected I.T. proffessionals from all
-                over the world.
+                Hundreds of rigorously selected I.T. professionals
+              </h3>
+              <h3 className="text-center text-2xl text-dark">
+                from all over the world.
               </h3>
 
               <div
-                className="engineers flex space-x-2 mt-8 overflow-x-scroll lg:overflow-x-hidden pb-4"
+                className="engineers flex justify-center space-x-2 mt-8 overflow-x-scroll lg:overflow-x-hidden pb-4"
                 style={{
                   scrollbarWidth: 'none',
                 }}
@@ -139,13 +143,13 @@ const HomePage: NextPage = () => {
                       </p>
                       <p className="text-sm text-dark">{engineer.role}</p>
                       <p className="mt-3 text-sm text-dark2">Previously at</p>
-                      <Image
-                        width={100}
-                        className="object-cover mt-1.5"
-                        height={32}
+                      {/* <div className="w-[120px] h-[24px] bg-blue"> */}
+                      <img
+                        className="mt-1.5 w-[120px] h-[24px]"
                         alt="Previously at"
                         src={`/images/previously-at/${engineer.lastCompany}.png`}
                       />
+                      {/* </div> */}
                     </div>
                   )
                 })}
@@ -162,28 +166,12 @@ const HomePage: NextPage = () => {
                     1000+
                   </p>
                   <p className="text-sm text-dark">All you need</p>
-                  <p className="mt-3 text-sm text-dark2"></p>
+                  <p className="mt-3 text-sm text-dark2">Coming from</p>
                   <div className="flex space-x-2">
-                    <Image
-                      width={100}
-                      className="object-contain mt-1.5"
-                      height={32}
+                    <img
+                      className="object-contain mt-1.5 w-[120px] h-[24px]"
                       alt="Previously at"
-                      src="/pseg.png"
-                    />
-                    <Image
-                      width={100}
-                      className="object-contain mt-1.5"
-                      height={32}
-                      alt="Previously at"
-                      src="/reddit.png"
-                    />
-                    <Image
-                      width={100}
-                      className="object-contain mt-1.5"
-                      height={32}
-                      alt="Previously at"
-                      src="/capital-one.png"
+                      src="/images/previously-at/others.png"
                     />
                   </div>
                 </div>

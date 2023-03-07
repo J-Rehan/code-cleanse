@@ -6,7 +6,13 @@ const Footer: React.FC = () => {
     <footer className="footer text-white p-8">
       <div className="max-w-[1024px] mx-auto md:flex justify-between ">
         <Link href="/">
-          <Image src="/logo-full.png" width={200} height={32} alt="logo" />
+          <Image
+            priority
+            src="/logo-full.png"
+            width={200}
+            height={32}
+            alt="logo"
+          />
         </Link>
 
         <div className="mt-6 flex justify-between md:mt-0">

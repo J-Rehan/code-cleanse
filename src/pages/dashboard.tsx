@@ -9,7 +9,13 @@ const DashboardPage: NextPage = () => {
         <div className="flex justify-between items-center">
           <div />
           <Link href="/">
-            <Image src="/logo-full.png" width={200} height={32} alt="logo" />
+            <Image
+              priority
+              src="/logo-full.png"
+              width={200}
+              height={32}
+              alt="logo"
+            />
           </Link>
           <Link href="/">
             <Image src="/close.png" width={24} height={24} alt="close" />
