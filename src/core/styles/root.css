@@ -85,3 +85,17 @@
     overflow: auto !important;
   }
 }
+
+ul.slider.animated {
+  align-items: center !important;
+}
+
+.carousel-slider {
+  padding-bottom: 80px;
+}
+
+.carousel .control-dots {
+  display: flex;
+  justify-content: center;
+  @apply space-x-2;
+}

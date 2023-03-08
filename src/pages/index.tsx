@@ -253,12 +253,7 @@ const HomePage: NextPage = () => {
                       key={feature.id}
                       className="col-span-12 md:col-span-4 p-6 flex flex-col justify-center items-center bg-white space-y-1"
                     >
-                      <Image
-                        src={feature.icon}
-                        width={32}
-                        height={32}
-                        alt={feature.name}
-                      />
+                      {feature.icon}
                       <h3 className="text-base font-bold text-center">
                         {feature.name}
                       </h3>

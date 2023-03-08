@@ -127,9 +127,7 @@ const HirePage: NextPage = () => {
 
           <StepsHeader />
 
-          <div className="md:relative md:w-[520px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
-            {steps[state.currentStep]?.component}
-          </div>
+          {steps[state.currentStep]?.component}
         </div>
       </Form>
     </FormikProvider>
