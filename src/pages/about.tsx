@@ -168,7 +168,7 @@ const AboutPage: NextPage = () => {
               </dl>
               <div className="mt-10">
                 <a href="#" className="text-base font-medium text-indigo-600">
-                  Learn more about how we're changing the world
+                  Learn more about how we&apos;re changing the world
                   <span aria-hidden="true"> &rarr;</span>
                 </a>
               </div>
