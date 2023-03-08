@@ -13,6 +13,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.2",
     "@headlessui/react": "^1.7.13",
+    "@heroicons/react": "^2.0.16",
     "@sendgrid/mail": "^7.7.0",
     "@stripe/react-stripe-js": "^1.16.4",
     "@stripe/stripe-js": "^1.46.0",
