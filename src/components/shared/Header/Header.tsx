@@ -29,6 +29,10 @@ const Header: React.FC<HeaderProps> = (props) => {
           <Link href="/contact">
             <span className="text-white">Contact</span>
           </Link>
+
+          <Link href="/blog">
+            <span className="text-white">Blog</span>
+          </Link>
         </div>
         <div className="md:hidden">
           <Menu
@@ -44,6 +48,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           >
             <MenuItem href="/about">About</MenuItem>
             <MenuItem href="/contact">Contact</MenuItem>
+            <MenuItem href="/blog">Blog</MenuItem>
           </Menu>
         </div>
       </nav>
