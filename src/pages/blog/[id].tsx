@@ -13,9 +13,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   })
 
+  console.log(params.id)
+
   const { items } = await client.getEntries<IBlogFields>({
     content_type: 'blog',
-    'fields.slug': params.slug,
+    'fields.slug': params.id,
   })
 
   return {
@@ -29,15 +31,35 @@ interface Props {
 
 export const options = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <p className="mt-5">{children}</p>,
+    [BLOCKS.PARAGRAPH]: (node, children) => (
+      <p className="mt-5 text-[#1f2937] leading-7">{children}</p>
+    ),
     [BLOCKS.HEADING_1]: (node, children) => (
       <h1 className="text-3xl font-bold">{children}</h1>
     ),
     [BLOCKS.HEADING_2]: (node, children) => (
-      <h1 className="text-2xl font-bold">{children}</h1>
+      <h2 className="text-2xl font-bold">{children}</h2>
     ),
     [BLOCKS.HEADING_3]: (node, children) => (
-      <h1 className="text-xl font-bold">{children}</h1>
+      <h3 className="text-xl font-bold">{children}</h3>
+    ),
+    [BLOCKS.HEADING_4]: (node, children) => (
+      <h4 className="text-lg font-bold">{children}</h4>
+    ),
+    [BLOCKS.HEADING_5]: (node, children) => (
+      <h5 className="text-base font-bold">{children}</h5>
+    ),
+    [BLOCKS.HEADING_6]: (node, children) => (
+      <h6 className="text-sm font-bold">{children}</h6>
+    ),
+    [BLOCKS.UL_LIST]: (node, children) => (
+      <ul className="list-disc">{children}</ul>
+    ),
+    [BLOCKS.OL_LIST]: (node, children) => (
+      <ol className="list-decimal">{children}</ol>
+    ),
+    [BLOCKS.LIST_ITEM]: (node, children) => (
+      <li className="ml-12">{children}</li>
     ),
   },
 }
