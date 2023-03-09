@@ -9,6 +9,7 @@ import Button from '../../shared/Button/Button'
 import FormikRadioGroup from '../../shared/Formik/FormikRadioGroup/FormikRadioGroup'
 import { useState } from 'react'
 import { cn } from '../../../utils/style'
+import PricingCard from '../PricingCard/PricingCard'
 
 const plans = [
   {
@@ -38,17 +39,13 @@ const plans = [
     value: 'Yearly',
     title: 'Monthly Plan',
     cost: 900,
+    isOneTime: false,
     costFrequency: 'Paid monthly',
     callout: 'Most Flexible',
     description:
       'Stay ahead of the competition with our monthly review service. Our experts provide insightful feedback to keep your code in top shape.',
   },
 ]
-
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-})
 
 const HirePlanStep: React.FC = () => {
   const formik = useFormikContext<typeof initialValues>()
@@ -64,67 +61,68 @@ const HirePlanStep: React.FC = () => {
 
   return (
     <div className="py-8 px-6 flex flex-col h-full">
-      <h2 className="text-dark text-2xl font-normal mb-8">Hire Code Cleanse</h2>
+      <h2 className="text-black text-2xl font-semibold text-center">
+        Let us manage your technical team
+      </h2>
 
-      <div className="">
-        <h4 className="uppercase text-xs font-semibold mb-4">
-          Choose your plan
-        </h4>
+      <h4 className="text-black text-2xl font-normal mb-20 text-center">
+        white you focus on growing your business.
+      </h4>
 
-        <Carousel
-          centerMode
-          centerSlidePercentage={80}
-          showThumbs={false}
-          onChange={setCurrentStep}
-          renderIndicator={(goTo, selected) => {
+      <div>
+        <div className="hidden md:flex items-start justify-center">
+          {plans.map((plan, index) => {
+            const handleCardSelect = () => {
+              formik.setFieldValue('plan', plan.value)
+            }
+
             return (
-              <div
-                onClick={goTo}
-                className={cn(
-                  'cursor-pointer w-2 h-2 bg-dark2 rounded-full',
-                  selected && 'w-8 bg-[#000]',
-                )}
+              <PricingCard
+                {...plan}
+                key={plan.id}
+                className="max-w-[268px]"
+                onClick={handleCardSelect}
+                selected={formik.values.plan === plan.value}
+                onSelect={() => dispatch({ type: 'NEXT_STEP' })}
               />
             )
-          }}
-          showArrows={false}
-          showStatus={false}
-          onClickItem={setCurrentStep}
-          selectedItem={currentStep}
-        >
-          {plans.map((plan, index) => {
-            return (
-              <div
-                key={plan.id}
-                className={cn(
-                  'border rounded-2xl mr-4',
-                  currentStep === index ? 'border-blue' : 'border-[#ddd]',
-                )}
-              >
-                <div className="pt-10 px-6 pb-6 border-b border-[#ddd]">
-                  <h2 className="text-xl text-black font-[300]">
-                    {plan.title}
-                  </h2>
-                  <h3 className="mt-2 text-green font-[500] text-xl">
-                    ${plan.cost}
-                    {!plan.isOneTime && ' /mo'}
-                  </h3>
-                  <h4 className="text-sm font-light">{plan.costFrequency}</h4>
-                </div>
-                <div
-                  className={cn('p-6', currentStep === index ? 'pb-4' : 'pb-8')}
-                >
-                  <p className="text-sm text-center">{plan.description}</p>
-                  {currentStep === index && (
-                    <Button onClick={handleSelect} className="py-3 mt-10">
-                      Select Plan
-                    </Button>
-                  )}
-                </div>
-              </div>
-            )
           })}
-        </Carousel>
+        </div>
+
+        <div className="md:hidden">
+          <Carousel
+            centerMode
+            centerSlidePercentage={80}
+            showThumbs={false}
+            onChange={setCurrentStep}
+            renderIndicator={(goTo, selected) => {
+              return (
+                <div
+                  onClick={goTo}
+                  className={cn(
+                    'cursor-pointer w-2 h-2 bg-dark2 rounded-full',
+                    selected && '!w-8 bg-[#000]',
+                  )}
+                />
+              )
+            }}
+            showArrows={false}
+            showStatus={false}
+            onClickItem={setCurrentStep}
+            selectedItem={currentStep}
+          >
+            {plans.map((plan, index) => {
+              return (
+                <PricingCard
+                  {...plan}
+                  key={plan.id}
+                  selected={index === currentStep}
+                  onSelect={handleSelect}
+                />
+              )
+            })}
+          </Carousel>
+        </div>
       </div>
 
       <div className="mt-10 flex-1">
