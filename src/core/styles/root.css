@@ -23,10 +23,11 @@
 }
 
 .footer {
-  background-image: url('/header-bg-desktop.png');
+  background-image: url('/header-bg.png');
   background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: right;
 }
 
 .hire-header {

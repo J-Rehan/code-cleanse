@@ -22,7 +22,7 @@ export const initialValues = {
   phone: '',
   productCategory: '',
   description: '',
-  plan: 'Yearly',
+  plan: 'Monthly',
   errorMessage: '',
   developers: [{ name: '', email: '', role: '' }],
 }

@@ -40,7 +40,7 @@ const Testimonials: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl text-dark text-center">Client Testimonials:</h2>
         <h2 className="mt-2 text-3xl text-dark text-center">
-          Real Stories from Real Customers
+          Real Stories from Real Founders
         </h2>
 
         <div className="flex mt-12 gap-8 items-center justify-center">

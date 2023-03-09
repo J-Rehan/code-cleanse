@@ -1,12 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 
 const stats = [
-  { label: 'Founded', value: '2021' },
-  { label: 'Employees', value: '5' },
-  { label: 'Beta Users', value: '521' },
-  { label: 'Raised', value: '$25M' },
+  { label: 'Clients', value: '500+' },
+  { label: 'Projects', value: '1000+' },
+  { label: 'Bugs Fixed', value: '10K+' },
+  { label: 'Domains', value: '20+' },
 ]
 
 const AboutPage: NextPage = () => {
@@ -75,17 +76,23 @@ const AboutPage: NextPage = () => {
               {/* Testimonial card*/}
               <div className="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl">
                 <img
-                  className="absolute inset-0 h-full w-full object-cover"
-                  src="https://images.unsplash.com/photo-1521510895919-46920266ddb3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&fp-x=0.5&fp-y=0.6&fp-z=3&width=1440&height=1440&sat=-100"
+                  className="absolute inset-0 h-full w-full object-cover object-[20%]"
+                  src="/testimonials/aly-thumbnail.png"
                   alt=""
                 />
                 <div className="absolute inset-0 bg-indigo-500 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-600 via-indigo-600 opacity-90" />
                 <div className="relative px-8">
                   <div>
-                    <img
+                    {/* <img
                       className="h-12"
                       src="https://tailwindui.com/img/logos/workcation.svg?color=white"
+                      alt="Workcation"
+                    /> */}
+
+                    <img
+                      className="h-12 filter invert"
+                      src="testimonials/village-app.png"
                       alt="Workcation"
                     />
                   </div>
@@ -100,15 +107,14 @@ const AboutPage: NextPage = () => {
                         <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                       </svg>
                       <p className="relative">
-                        Tincidunt integer commodo, cursus etiam aliquam neque,
-                        et. Consectetur pretium in volutpat, diam. Montes, magna
-                        cursus nulla feugiat dignissim id lobortis amet.
+                        We couldn&apos;t have done it without CodeClanse&apos;s
+                        expertise and guidance
                       </p>
                     </div>
 
                     <footer className="mt-4">
                       <p className="text-base font-semibold text-indigo-200">
-                        Sarah Williams, CEO at Workcation
+                        Aly Johnson, Founder at Village App
                       </p>
                     </footer>
                   </blockquote>
@@ -121,30 +127,33 @@ const AboutPage: NextPage = () => {
             {/* Content area */}
             <div className="pt-12 sm:pt-16 lg:pt-20">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                On a mission to empower teams
+                On a mission to empower non-technical founders
               </h2>
               <div className="mt-6 space-y-6 text-gray-500">
-                <p className="text-lg">
-                  Sagittis scelerisque nulla cursus in enim consectetur quam.
-                  Dictum urna sed consectetur neque tristique pellentesque.
-                  Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc
-                  nisl netus morbi vel porttitor vitae ut. Amet vitae fames
-                  senectus vitae.
+                <p className="text-base leading-7">
+                  At Code Cleanse, we understand that non-technical founders
+                  face unique challenges when it comes to managing their
+                  development team and ensuring their product is built to the
+                  highest standards, bug free and in a timely manner. With a
+                  lack of technical knowledge, it can be difficult to know
+                  whether your team is delivering the best possible product or
+                  if you&apos;re getting the value for your money.
                 </p>
                 <p className="text-base leading-7">
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
+                  That&apos;s why we created Code Cleanse - to help
+                  non-technical founders navigate the complex world of software
+                  development. We&apos;ve assembled a team of the top 1% of
+                  engineers who have gone through a rigorous hiring process, so
+                  you can be sure you&apos;re working with the best in the
+                  industry.
                 </p>
                 <p className="text-base leading-7">
-                  Rhoncus nisl, libero egestas diam fermentum dui. At quis
-                  tincidunt vel ultricies. Vulputate aliquet velit faucibus
-                  semper. Pellentesque in venenatis vestibulum consectetur nibh
-                  id. In id ut tempus egestas. Enim sit aliquam nec, a. Morbi
-                  enim fermentum lacus in. Viverra.
+                  Our mission is to empower non-technical founders by providing
+                  them with senior-level consultants who can manage their
+                  development team, ensure the best coding practices are
+                  followed, and identify and solve problems before they become
+                  major issues. With our help, you can focus on growing your
+                  business and leave the technical details to us.
                 </p>
               </div>
             </div>
@@ -166,12 +175,6 @@ const AboutPage: NextPage = () => {
                   </div>
                 ))}
               </dl>
-              <div className="mt-10">
-                <a href="#" className="text-base font-medium text-indigo-600">
-                  Learn more about how we&apos;re changing the world
-                  <span aria-hidden="true"> &rarr;</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>

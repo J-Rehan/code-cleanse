@@ -58,7 +58,7 @@ const HomePage: NextPage = () => {
       <div>
         <Header>
           <div className="flex flex-col items-center p-6">
-            <h4 className="text-white text-center text-base font-normal leading-5 px-2 py-1 border-[0.5px] border-white rounded">
+            <h4 className="text-white text-center text-lg md:text-2xl leading-7 px-4 py-2 border-[0.5px] border-white rounded font-bold">
               Are you a non technical founder?
             </h4>
 
@@ -73,11 +73,13 @@ const HomePage: NextPage = () => {
                   cursor
                   cursorBlinking
                   typeSpeed={80}
-                  deleteSpeed={50}
+                  deleteSpeed={60}
+                  delaySpeed={2000}
                   words={[
-                    'scale your code',
-                    'secure your code',
-                    'audit your app',
+                    'Review your code',
+                    'Manage your development team',
+                    'Ensure your app is scalable',
+                    'Ensure transparency in your development',
                   ]}
                 />
               </div>
@@ -241,9 +243,10 @@ const HomePage: NextPage = () => {
 
           <div className="px-8 mt-10 py-10 bg-[#f8f8f8]">
             <div className="max-w-[1024px] mx-auto">
-              <p className="text-2xl text-center">Here is what we provide as</p>
-              <p className="text-2xl text-center mb-10">
-                one-time or ongoing service:
+              <p className="text-lg md:text-2xl max-w-[600px] mx-auto mb-4 text-center">
+                We’ll make sure your mobile or web application is built the
+                right way. Here is what we check for on a monthly basis to
+                ensure your development team is on the right track:
               </p>
 
               <div className="grid grid-cols-12 gap-4">

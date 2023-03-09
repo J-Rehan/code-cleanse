@@ -10,11 +10,17 @@ import FormikTextArea from '../../shared/Formik/FormikTextArea/FormikTextArea'
 import FormikTextInput from '../../shared/Formik/FormikTextInput/FormikTextInput'
 
 const helpOptions = [
-  { value: 'manage-dev-team', label: 'I need to manage my development team' },
-  { value: 'need-code-review', label: 'I need to perform code review' },
   {
-    value: 'performance-improvement',
-    label: 'I need to improve the performance my existing application',
+    value: 'One time code review and analysis ',
+    label: 'One time code review and analysis',
+  },
+  {
+    value: 'Monthly development oversight',
+    label: 'Monthly development oversight',
+  },
+  {
+    value: 'Code Review and Monthly Development Oversight',
+    label: 'Code Review and Monthly Development Oversight',
   },
 ]
 
@@ -88,8 +94,8 @@ const YourProject: React.FC = () => {
           <div className="flex items-center p-4 space-x-4 bg-[#EBF9FF] border rounded-md border-[#009BE0] mb-6">
             <Image src="/icons/smile.png" height={24} width={24} alt="Smile" />
             <p className="text-base">
-              Don&lsquo;t worry if you don&lsquo;t have all information
-              available. Inform as much as you can.
+              Don&lsquo;t worry if you don&lsquo;t have all of this information
+              yet. Fill as much as you can.
             </p>
           </div>
 

@@ -248,19 +248,19 @@ const ContactPage: NextPage = () => {
                   <div className="ml-3">
                     <p className="text-base text-[#6b7280]">
                       By selecting this, you agree to the{' '}
-                      <a
-                        href="#"
+                      <Link
+                        href="/terms-of-service"
+                        className="font-medium text-[#374151] underline"
+                      >
+                        Terms of Service
+                      </Link>{' '}
+                      and{' '}
+                      <Link
+                        href="/privacy-policy"
                         className="font-medium text-[#374151] underline"
                       >
                         Privacy Policy
-                      </a>{' '}
-                      and{' '}
-                      <a
-                        href="#"
-                        className="font-medium text-[#374151] underline"
-                      >
-                        Cookie Policy
-                      </a>
+                      </Link>
                       .
                     </p>
                   </div>
@@ -268,8 +268,9 @@ const ContactPage: NextPage = () => {
               </div>
               <div className="sm:col-span-2">
                 <button
+                  disabled={!agreed}
                   type="submit"
-                  className="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                  className="inline-flex w-full disabled:bg-[#ccc] items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                 >
                   Let&apos;s talk
                 </button>
