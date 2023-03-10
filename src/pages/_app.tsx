@@ -16,6 +16,8 @@ const App: React.FC<AppProps> = (props) => {
           url: 'https://www.codecleanse.com',
           siteName:
             'Code Cleanse - Simplifying software development for non-technical founders',
+          description:
+            'Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development.',
           images: [
             {
               url: 'https://www.codecleanse.com/list-item.png',

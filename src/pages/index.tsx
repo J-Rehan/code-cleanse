@@ -35,11 +35,11 @@ const HomePage: NextPage = () => {
       <Head>
         <title>
           Code Cleanse - Simplifying software development for non-technical
-          <meta
-            name="description"
-            content="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
-          />
         </title>
+        <meta
+          name="description"
+          content="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
+        />
       </Head>
       <NextSeo
         title="Code Cleanse - Simplifying software development for non-technical"
