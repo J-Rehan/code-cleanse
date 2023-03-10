@@ -172,13 +172,13 @@ const HomePage: NextPage = () => {
                       </p>
                       <p className="text-sm text-dark">{engineer.role}</p>
                       <p className="mt-3 text-sm text-dark2">Previously at</p>
-                      {/* <div className="w-[120px] h-[24px] bg-blue"> */}
-                      <img
-                        className="mt-1.5 w-[120px] h-[24px]"
+                      <Image
+                        width={120}
+                        height={24}
+                        className="mt-1.5"
                         alt="Previously at"
                         src={`/images/previously-at/${engineer.lastCompany}.png`}
                       />
-                      {/* </div> */}
                     </div>
                   )
                 })}
