@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer text-white p-8">
+    <footer className="footer text-white p-8 pb-32">
       <div className="max-w-[1024px] mx-auto md:flex justify-between ">
         <Link href="/">
           <Image
