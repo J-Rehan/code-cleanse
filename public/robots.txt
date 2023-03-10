@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://codecleanse.com
+
+# Sitemaps
+Sitemap: https://codecleanse.com/sitemap.xml

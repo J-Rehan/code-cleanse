@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import { NextSeo } from 'next-seo'
 
 const stats = [
   { label: 'Clients', value: '500+' },
@@ -13,6 +15,14 @@ const stats = [
 const AboutPage: NextPage = () => {
   return (
     <div>
+      <Head>
+        <title>About - Code Cleanse</title>
+      </Head>
+      <NextSeo
+        title="Code Cleanse - Simplifying software development for non-technical"
+        description="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
+        canonical="https://www.codecleanse.com"
+      />
       <div className="hire-header w-full bg-black p-6">
         <div className="flex justify-between items-center">
           <div />

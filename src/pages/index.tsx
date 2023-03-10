@@ -32,6 +32,11 @@ const HomePage: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>
+          Code Cleanse - Simplifying software development for non-technical
+        </title>
+      </Head>
       <NextSeo
         title="Code Cleanse - Simplifying software development for non-technical"
         description="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
@@ -98,9 +103,6 @@ const HomePage: NextPage = () => {
           <div />
         </Header>
         <main className="pt-9">
-          <Head>
-            <title>Code Cleanse</title>
-          </Head>
           <div className="max-w-[394px] flex flex-col w-full items-center mx-auto pb-7">
             <div className="space-y-4 flex flex-col items-center">
               <div className="flex items-center">
