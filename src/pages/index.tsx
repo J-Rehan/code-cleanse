@@ -11,6 +11,7 @@ import Button from '../components/shared/Button/Button'
 import Footer from '../components/shared/Footer/Footer'
 import Header from '../components/shared/Header/Header'
 import { features } from '../core/config/app'
+import { NextSeo } from 'next-seo'
 import { engineers } from '../core/config/engineers'
 import 'animate.css'
 
@@ -31,7 +32,11 @@ const HomePage: NextPage = () => {
 
   return (
     <>
-      {/* {scrolled > 600 && ( */}
+      <NextSeo
+        title="Code Cleanse - Simplifying software development for non-technical"
+        description="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
+        canonical="https://www.codecleanse.com"
+      />
       <div
         className={`animate__animated ${
           scrolled > 600 ? 'animate__slideInUp' : 'animate__slideOutDown'
@@ -54,7 +59,6 @@ const HomePage: NextPage = () => {
           </Link>
         </div>
       </div>
-      {/* )} */}
       <div>
         <Header>
           <div className="flex flex-col items-center p-6">

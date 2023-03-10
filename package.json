@@ -27,6 +27,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^8.5.2",
     "next": "13.1.2",
+    "next-seo": "^5.15.0",
     "nextjs-progressbar": "^0.0.16",
     "payment": "^2.4.6",
     "react": "18.2.0",

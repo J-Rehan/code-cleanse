@@ -13,8 +13,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   })
 
-  console.log(params.id)
-
   const { items } = await client.getEntries<IBlogFields>({
     content_type: 'blog',
     'fields.slug': params.id,

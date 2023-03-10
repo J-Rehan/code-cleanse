@@ -15,6 +15,7 @@ import Head from 'next/head'
 import useStripeClientSecret from '../hooks/useStripeClientSecret'
 import { monthlyCost, yearlyCost } from '../core/config/app'
 import { toast } from 'react-hot-toast'
+import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 export const initialValues = {
   fullName: '',
@@ -147,8 +148,20 @@ const HireRoot: React.FC = () => {
   }, [])
 
   if (!stripePromise || !clientSecret) {
-    // TODO: Replace with loader...
-    return <div />
+    return (
+      <div>
+        <CloseHeader />
+
+        <div className="flex w-full h-[90vh] justify-center items-center">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
