@@ -94,12 +94,12 @@ const HirePage: NextPage = () => {
     )
   }, [])
 
-  useEffect(() => {
-    // @ts-ignore
-    const url = new URL(window.location)
-    const step = url.searchParams.get('step')
-    if (step) dispatch({ type: 'SET_STEP', payload: Number(step) })
-  }, [dispatch, window.location])
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   const url = new URL(window.location)
+  //   const step = url.searchParams.get('step')
+  //   if (step) dispatch({ type: 'SET_STEP', payload: Number(step) })
+  // }, [dispatch, window.location])
 
   return (
     <FormikProvider value={formik}>
