@@ -10,7 +10,7 @@ const BeginHirePage: NextPage = () => {
   return (
     <div>
       <CloseHeader />
-      <StickyAction scrollThreshold={0} />
+      <StickyAction redirectUrl="/hire" scrollThreshold={0} />
       <div className="px-8 mt-10 py-10 bg-[#f8f8f8]">
         <div className="max-w-[1024px] mx-auto">
           <h2 className="text-3xl text-center md:px-20 text-dark font-semibold mb-8">
@@ -34,6 +34,16 @@ const BeginHirePage: NextPage = () => {
               )
             })}
           </div>
+          <Link href="/hire" className="hidden md:block">
+            <Button
+              onClick={() => {}}
+              className="md:max-w-[500px] mx-auto mt-12"
+            >
+              <span>
+                <strong>Start:</strong> Tell us about yourself
+              </span>
+            </Button>
+          </Link>
         </div>
       </div>
 

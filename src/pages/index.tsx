@@ -31,7 +31,7 @@ const HomePage: NextPage = () => {
         description="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
         canonical="https://www.codecleanse.com"
       />
-      <StickyAction />
+      <StickyAction redirectUrl="/begin-hire" />
       <div>
         <Header>
           <div className="flex flex-col items-center p-6">

@@ -19,13 +19,13 @@ import { firestore } from '../core/lib/firebase'
 import { addDoc, collection } from 'firebase/firestore'
 
 export const initialValues = {
-  fullName: 'asdf',
-  email: 'asdf@ok.com',
-  phone: '123123123',
-  productCategory: 'iOS App',
-  description: 'asdfasdf',
+  fullName: process.env.NODE_ENV === 'development' ? 'asdf' : '',
+  email: process.env.NODE_ENV === 'development' ? 'asdf@ok.com' : '',
+  phone: process.env.NODE_ENV === 'development' ? '123123123' : '',
+  productCategory: process.env.NODE_ENV === 'development' ? 'iOS App' : '',
+  description: process.env.NODE_ENV === 'development' ? 'asdfasdf' : '',
   plan: 'Monthly',
-  projectName: 'asdfasd',
+  projectName: process.env.NODE_ENV === 'development' ? 'asdfasd' : '',
   errorMessage: '',
   helpMethod: [],
   developers: [{ name: '', email: '', role: '' }],

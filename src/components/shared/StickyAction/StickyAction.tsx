@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 
 interface StickyActionProps {
   scrollThreshold?: number
+  redirectUrl?: string
 }
 
 const StickyAction: React.FC<StickyActionProps> = (props) => {
-  const { scrollThreshold = 600 } = props
+  const { scrollThreshold = 600, redirectUrl } = props
 
   const [scrolled, setScrolled] = useState(0)
 
@@ -78,7 +79,7 @@ const StickyAction: React.FC<StickyActionProps> = (props) => {
         </svg>
 
         <Link
-          href="/begin-hire"
+          href={redirectUrl}
           className="bg-white max-w-[280px] flex items-center justify-center rounded-lg w-full p-4 text-black font-bold text-base"
         >
           Hire Experts Now
