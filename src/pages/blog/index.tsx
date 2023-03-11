@@ -3,6 +3,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IBlog } from '../../@types/generated/contentful'
+import CloseHeader from '../../components/shared/CloseHeader/CloseHeader'
 import Header from '../../components/shared/Header/Header'
 import { cn } from '../../utils/style'
 
@@ -40,23 +41,7 @@ const BlogPage: NextPage<Props> = (props) => {
 
   return (
     <div>
-      <div className="hire-header w-full bg-black p-6">
-        <div className="flex justify-between items-center">
-          <div />
-          <Link href="/">
-            <Image
-              priority
-              src="/logo-full.png"
-              width={200}
-              height={32}
-              alt="logo"
-            />
-          </Link>
-          <Link href="/">
-            <Image src="/close.png" width={24} height={24} alt="close" />
-          </Link>
-        </div>
-      </div>
+      <CloseHeader />
 
       <div className="bg-white px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
         <div className="relative mx-auto max-w-lg divide-y-2 divide-gray-200 lg:max-w-7xl">

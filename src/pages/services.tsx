@@ -11,6 +11,7 @@ import {
 import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '../utils/style'
+import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const features = [
   {
@@ -66,23 +67,7 @@ const monthlyFeatures = [
 const UserDetailPage: NextPage = () => {
   return (
     <div>
-      <div className="hire-header w-full bg-black p-6">
-        <div className="flex justify-between items-center">
-          <div />
-          <Link href="/">
-            <Image
-              priority
-              src="/logo-full.png"
-              width={200}
-              height={32}
-              alt="logo"
-            />
-          </Link>
-          <Link href="/">
-            <Image src="/close.png" width={24} height={24} alt="close" />
-          </Link>
-        </div>
-      </div>
+      <CloseHeader />
 
       <div className="bg-white py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

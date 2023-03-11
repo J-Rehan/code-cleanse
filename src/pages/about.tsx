@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
+import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const stats = [
   { label: 'Clients', value: '500+' },
@@ -23,23 +24,7 @@ const AboutPage: NextPage = () => {
         description="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
         canonical="https://www.codecleanse.com"
       />
-      <div className="hire-header w-full bg-black p-6">
-        <div className="flex justify-between items-center">
-          <div />
-          <Link href="/">
-            <Image
-              priority
-              src="/logo-full.png"
-              width={200}
-              height={32}
-              alt="logo"
-            />
-          </Link>
-          <Link href="/">
-            <Image src="/close.png" width={24} height={24} alt="close" />
-          </Link>
-        </div>
-      </div>
+      <CloseHeader />
 
       <div className="relative bg-white py-16 sm:py-24">
         <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">

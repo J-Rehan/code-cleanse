@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { PropsWithChildren } from 'react'
-import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu'
-import '@szhsin/react-menu/dist/index.css'
+import { Menu, MenuItem } from '@szhsin/react-menu'
 
 interface HeaderProps extends PropsWithChildren {}
 

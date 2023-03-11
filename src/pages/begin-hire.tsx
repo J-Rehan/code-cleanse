@@ -3,27 +3,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { features } from '../core/config/app'
 import Button from '../components/shared/Button/Button'
+import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const BeginHirePage: NextPage = () => {
   return (
     <div>
-      <div className="hire-header w-full bg-black p-6">
-        <div className="flex justify-between items-center">
-          <div />
-          <Link href="/">
-            <Image
-              priority
-              src="/logo-full.png"
-              width={200}
-              height={32}
-              alt="logo"
-            />
-          </Link>
-          <Link href="/">
-            <Image src="/close.png" width={24} height={24} alt="close" />
-          </Link>
-        </div>
-      </div>
+      <CloseHeader />
 
       <div className="px-8 mt-10 py-10 bg-[#f8f8f8]">
         <div className="max-w-[1024px] mx-auto">

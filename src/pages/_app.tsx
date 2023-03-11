@@ -3,6 +3,7 @@ import Script from 'next/script'
 import StepsProvider from '../contexts/StepsContext'
 import NextNProgress from 'nextjs-progressbar'
 import '../core/styles/root.css'
+import '@szhsin/react-menu/dist/index.css'
 import { Toaster } from 'react-hot-toast'
 import { DefaultSeo } from 'next-seo'
 

@@ -6,6 +6,7 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { IBlog, IBlogFields } from '../../@types/generated/contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useRouter } from 'next/router'
+import CloseHeader from '../../components/shared/CloseHeader/CloseHeader'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const client = createClient({
@@ -68,23 +69,7 @@ const BlogDetailPage: NextPage<Props> = (props) => {
 
   return (
     <div>
-      <div className="hire-header w-full bg-black p-6">
-        <div className="flex justify-between items-center">
-          <div />
-          <Link href="/">
-            <Image
-              priority
-              src="/logo-full.png"
-              width={200}
-              height={32}
-              alt="logo"
-            />
-          </Link>
-          <button onClick={router.back}>
-            <Image src="/close.png" width={24} height={24} alt="close" />
-          </button>
-        </div>
-      </div>
+      <CloseHeader />
       <div className="max-w-[1200px] mx-auto px-16">
         <div className="mt-6 flex items-center">
           <div className="flex-shrink-0 w-12 h-12 bg-black rounded-full flex justify-center items-center">

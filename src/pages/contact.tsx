@@ -4,28 +4,13 @@ import Image from 'next/image'
 import { Switch } from '@headlessui/react'
 import { useState } from 'react'
 import { cn } from '../utils/style'
+import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const ContactPage: NextPage = () => {
   const [agreed, setAgreed] = useState(false)
   return (
     <div>
-      <div className="hire-header w-full bg-black p-6">
-        <div className="flex justify-between items-center">
-          <div />
-          <Link href="/">
-            <Image
-              priority
-              src="/logo-full.png"
-              width={200}
-              height={32}
-              alt="logo"
-            />
-          </Link>
-          <Link href="/">
-            <Image src="/close.png" width={24} height={24} alt="close" />
-          </Link>
-        </div>
-      </div>
+      <CloseHeader />
 
       <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
         <div className="relative mx-auto max-w-xl">
