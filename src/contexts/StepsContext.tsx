@@ -1,5 +1,4 @@
 import React, { createContext, PropsWithChildren, useReducer } from 'react'
-import Router from 'next/router'
 
 const initialState = {
   currentStep: 0,
@@ -18,6 +17,11 @@ const initialState = {
       index: 2,
       name: 'Select plan',
       fields: ['plan', 'cardNumber', 'expirationDate', 'cvc'],
+    },
+    {
+      index: 3,
+      name: 'Payment',
+      fields: [],
     },
   ],
 }

@@ -15,6 +15,8 @@ import Head from 'next/head'
 import useStripeClientSecret from '../hooks/useStripeClientSecret'
 import { toast } from 'react-hot-toast'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
+import { firestore } from '../core/lib/firebase'
+import { addDoc, collection } from 'firebase/firestore'
 
 export const initialValues = {
   fullName: 'asdf',
@@ -31,7 +33,7 @@ export const initialValues = {
 
 const HirePage: NextPage = () => {
   const router = useRouter()
-  const { state } = useSteps()
+  const { state, dispatch } = useSteps()
   const stripe = useStripe()
   const elements = useElements()
   const { fetchClientSecret } = useStripeClientSecret()
@@ -41,13 +43,22 @@ const HirePage: NextPage = () => {
     validateOnMount: true,
     validationSchema: hireValidationSchema,
     async onSubmit(values, formik) {
-      console.log(values)
       formik.setSubmitting(true)
       formik.setFieldValue('errorMessage', '')
+      await addDoc(collection(firestore, 'users'), {
+        name: values.fullName,
+        email: values.email,
+        phone: values.phone,
+        projectName: values.projectName,
+        helpMethods: values.helpMethod,
+        productCategory: values.productCategory.split(','),
+        description: values.description,
+        developers: values.developers,
+        plan: values.plan,
+      })
       const { error } = await stripe!.confirmPayment({
         elements: elements!,
         confirmParams: {
-          // Make sure to change this to your payment completion page
           return_url: `${window.location.origin}/hire-success`,
         },
         redirect: 'if_required',
@@ -62,7 +73,7 @@ const HirePage: NextPage = () => {
         toast.error('Payment failed!')
       } else {
         toast.success('Payment successful!')
-        fetch('/api/send-email', {
+        const res = await fetch('/api/send-email', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -71,21 +82,16 @@ const HirePage: NextPage = () => {
           body: JSON.stringify({
             email: values.email,
           }),
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            console.log(res)
-            if (res.success) {
-              router.push('/hire-success')
-              formik.setSubmitting(false)
-              // dispatch({ type: 'SET_STEP', payload: 0 })
-            } else {
-              console.log(res)
-            }
-          })
-          .catch((error) => {
-            console.log('error', error)
-          })
+        }).then((res) => res.json())
+
+        if (res.success) {
+          router.push('/hire-success')
+          formik.resetForm()
+          formik.setSubmitting(false)
+          dispatch({ type: 'SET_STEP', payload: 0 })
+        } else {
+          console.log(res)
+        }
       }
     },
   })

@@ -5,7 +5,6 @@ import useSteps from '../../../hooks/useSteps'
 const Steps: React.FC = () => {
   const { state, dispatch } = useSteps()
   const formik = useFormikContext()
-  const router = useRouter()
 
   const goBack = () => {
     dispatch({ type: 'SET_STEP', payload: 2 })
@@ -53,9 +52,6 @@ const Steps: React.FC = () => {
           return (
             <div
               key={step.name}
-              onClick={() =>
-                dispatch({ type: 'SET_STEP', payload: step.index })
-              }
               className={`flex md:max-w-[130px] flex-col items-center border-b-[3px] w-full py-4 border-transparent hover:border-[#33333380] transition-all duration-300 cursor-pointer ${
                 state.currentStep === step.index ? 'border-[#333333]' : ''
               }`}
