@@ -37,7 +37,7 @@ export const hireValidationSchema = Yup.object()
       .max(5000, 'Too long description')
       .required('Project description is required!'),
     plan: Yup.mixed()
-      .oneOf(['OneTime', 'Monthly', 'Yearly'])
+      .oneOf(['OneTime', 'Monthly', 'Annual'])
       .required('Please select a plan!'),
   })
   .required('All the fields are required')

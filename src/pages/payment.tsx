@@ -120,11 +120,7 @@ const HireRoot: React.FC = () => {
   const { clientSecret } = useStripeClientSecret()
 
   useEffect(() => {
-    setStripePromise(
-      loadStripe(
-        'pk_test_51MT6H0Ew4G60H813u3itsxedG5YDQ4GlIqiOPk41BhwbWV2GcZ7kWMHMWVOSs12y7ePXlTvRvIvWNVE3b8IVqBZV00sJ0iRZ18',
-      ),
-    )
+    setStripePromise(loadStripe(process.env.STRIPE_PUBLISH_KEY))
   }, [])
 
   if (!stripePromise || !clientSecret) {

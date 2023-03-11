@@ -24,8 +24,19 @@ const plans = [
       "Optimize your code's quality with our comprehensive one-time review. Quickly identify and address any issues to ensure success.",
   },
   {
-    id: '2',
+    id: '3',
     value: 'Monthly',
+    title: 'Monthly Plan',
+    cost: 1999,
+    isOneTime: false,
+    costFrequency: 'After 1st payment of $2,999',
+    callout: 'Most Flexible',
+    description:
+      'Stay ahead of the competition with our monthly review service. Our experts provide insightful feedback to keep your code in top shape.',
+  },
+  {
+    id: '2',
+    value: 'Annual',
     title: 'Annual Plan',
     cost: 999,
     isOneTime: false,
@@ -34,17 +45,6 @@ const plans = [
     callout: 'Most Economic',
     description:
       'Save big with our annual plan. Monthly code reviews keep your code optimized for success year-round, without breaking the bank.',
-  },
-  {
-    id: '3',
-    value: 'Yearly',
-    title: 'Monthly Plan',
-    cost: 1999,
-    isOneTime: false,
-    costFrequency: 'Paid monthly',
-    callout: 'Most Flexible',
-    description:
-      'Stay ahead of the competition with our monthly review service. Our experts provide insightful feedback to keep your code in top shape.',
   },
 ]
 
@@ -55,7 +55,7 @@ const HirePlanStep: React.FC = () => {
   const [recommended, setRecommended] = useState<number | null>(null)
 
   useEffect(() => {
-    if (formik.values.helpMethod.includes('on-going')) {
+    if (formik.values.helpMethod.join('').includes('on-going')) {
       setRecommended(1)
       setCurrentStep(1)
 

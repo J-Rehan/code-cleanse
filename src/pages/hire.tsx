@@ -26,7 +26,7 @@ export const initialValues = {
   plan: 'Monthly',
   projectName: '',
   errorMessage: '',
-  helpMethod: '',
+  helpMethod: [],
   developers: [{ name: '', email: '', role: '' }],
 }
 
@@ -77,7 +77,8 @@ const HirePage: NextPage = () => {
             console.log(res)
             if (res.success) {
               router.push('/hire-success')
-              dispatch({ type: 'SET_STEP', payload: 0 })
+              formik.setSubmitting(false)
+              // dispatch({ type: 'SET_STEP', payload: 0 })
             } else {
               console.log(res)
             }
@@ -86,22 +87,18 @@ const HirePage: NextPage = () => {
             console.log('error', error)
           })
       }
-      formik.setSubmitting(false)
     },
   })
 
   useEffect(() => {
     fetchClientSecret(
-      formik.values.plan === 'Monthly' ? monthlyCost : yearlyCost,
+      formik.values.plan === 'OneTime'
+        ? 2999
+        : formik.values.plan === 'Annual'
+        ? 999 * 12
+        : 2999,
     )
   }, [])
-
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   const url = new URL(window.location)
-  //   const step = url.searchParams.get('step')
-  //   if (step) dispatch({ type: 'SET_STEP', payload: Number(step) })
-  // }, [dispatch, window.location])
 
   return (
     <FormikProvider value={formik}>

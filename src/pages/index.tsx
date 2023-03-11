@@ -200,8 +200,8 @@ const HomePage: NextPage = () => {
                   <p className="min-w-[164px] text-dark mt-4 text-center font-semibold text-base">
                     1000+
                   </p>
-                  <p className="text-sm text-dark">All you need</p>
-                  <p className="mt-3 text-sm text-dark2">Coming from</p>
+                  <p className="text-sm text-dark">Top Engineers</p>
+                  <p className="mt-3 text-sm text-dark2">Coming from...</p>
                   <div className="flex space-x-2">
                     <img
                       className="object-contain mt-1.5 w-[120px] h-[24px]"

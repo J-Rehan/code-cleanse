@@ -17,6 +17,8 @@ const PaymentStep: React.FC<PaymentStepProps> = (props) => {
 
   const formik = useFormikContext<typeof initialValues>()
 
+  console.log(formik.errors, formik.values)
+
   return (
     <div className="md:relative md:w-[520px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
       <div className="py-8 px-6 flex flex-col h-full">
@@ -43,7 +45,11 @@ const PaymentStep: React.FC<PaymentStepProps> = (props) => {
                 paying today:{' '}
                 <strong className="text-green font-semibold">
                   {formatter.format(
-                    formik.values.plan === 'Yearly' ? 850 * 12 : 1000,
+                    formik.values.plan === 'OneTime'
+                      ? 2999
+                      : formik.values.plan === 'Annual'
+                      ? 999 * 12
+                      : 2999,
                   )}
                 </strong>
               </span>

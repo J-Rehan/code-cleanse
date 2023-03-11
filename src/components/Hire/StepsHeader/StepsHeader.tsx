@@ -14,7 +14,7 @@ const Steps: React.FC = () => {
   return (
     <div className="bg-white steps-container flex justify-center">
       {state.currentStep === 3 ? (
-        <div className="flex items-center my-6 min-w-[520px] justify-between">
+        <div className="flex items-center my-6 max-w-[520px] justify-between w-full px-6">
           <svg
             onClick={goBack}
             className="cursor-pointer"

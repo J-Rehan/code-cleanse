@@ -1,11 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-const stripe = require('stripe')(
-  'sk_test_51MT6H0Ew4G60H813csy8QFwjwaF82ZT69xWvNdwt19s3mTCWvTmO40bsrdiclleRA5mUKN97dT2kvK0HIla0JAWh00ctIxOhMz',
-  {
-    apiVersion: '2022-08-01',
-  },
-)
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2022-08-01',
+})
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
