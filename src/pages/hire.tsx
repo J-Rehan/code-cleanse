@@ -81,6 +81,8 @@ const HirePage: NextPage = () => {
           },
           body: JSON.stringify({
             email: values.email,
+            firstName: values.fullName.split(' ')[0],
+            projectName: values.projectName,
           }),
         }).then((res) => res.json())
 
