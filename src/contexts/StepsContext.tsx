@@ -18,11 +18,6 @@ const initialState = {
       name: 'Select plan',
       fields: ['plan', 'cardNumber', 'expirationDate', 'cvc'],
     },
-    {
-      index: 3,
-      name: 'Payment',
-      fields: [],
-    },
   ],
 }
 
