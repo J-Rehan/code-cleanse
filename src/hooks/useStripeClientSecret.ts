@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { yearlyCost } from '../core/config/app'
 
 const useStripeClientSecret = () => {
   const [clientSecret, setClientSecret] = useState('')
@@ -13,12 +12,11 @@ const useStripeClientSecret = () => {
       body: JSON.stringify({ amount }),
     })
     const { clientSecret } = await response.json()
-    console.log(clientSecret)
     setClientSecret(clientSecret)
   }
 
   useEffect(() => {
-    fetchClientSecret(yearlyCost)
+    fetchClientSecret(2999)
   }, [])
 
   return {

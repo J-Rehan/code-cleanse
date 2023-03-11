@@ -17,7 +17,8 @@ const PaymentStep: React.FC<PaymentStepProps> = (props) => {
 
   const formik = useFormikContext<typeof initialValues>()
 
-  console.log(formik.errors, formik.values)
+  console.log('errors', formik.errors)
+  console.log('values', formik.values)
 
   return (
     <div className="md:relative md:w-[520px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">

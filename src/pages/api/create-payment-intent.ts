@@ -10,6 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
   try {
     const { amount } = req.body
+    console.log(amount)
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount * 100,

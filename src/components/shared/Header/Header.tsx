@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               <span>Blog</span>
             </MenuItem>
             <MenuItem href="/services">
-              <span>Contact</span>
+              <span>Services</span>
             </MenuItem>
           </Menu>
         </div>

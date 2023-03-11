@@ -37,19 +37,11 @@ const stepsReducer = (
   state: InitialState,
   action: { type: ActionTypes; payload?: any },
 ) => {
-  // @ts-ignore
-  const url = new URL(window.location)
   const { type } = action
   switch (type) {
     case 'NEXT_STEP':
-      url.searchParams.set('step', String(state.currentStep + 1))
-      window.history.pushState(null, '', url.toString())
-
       return { ...state, currentStep: state.currentStep + 1 }
     case 'SET_STEP':
-      url.searchParams.set('step', String(action.payload))
-      window.history.pushState(null, '', url.toString())
-
       return { ...state, currentStep: action.payload }
     default:
       return state

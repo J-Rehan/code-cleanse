@@ -13,18 +13,17 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import useStripeClientSecret from '../hooks/useStripeClientSecret'
-import { monthlyCost, yearlyCost } from '../core/config/app'
 import { toast } from 'react-hot-toast'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 export const initialValues = {
-  fullName: '',
-  email: '',
-  phone: '',
-  productCategory: '',
-  description: '',
+  fullName: 'asdf',
+  email: 'asdf@ok.com',
+  phone: '123123123',
+  productCategory: 'iOS App',
+  description: 'asdfasdf',
   plan: 'Monthly',
-  projectName: '',
+  projectName: 'asdfasd',
   errorMessage: '',
   helpMethod: [],
   developers: [{ name: '', email: '', role: '' }],
@@ -32,7 +31,7 @@ export const initialValues = {
 
 const HirePage: NextPage = () => {
   const router = useRouter()
-  const { state, dispatch } = useSteps()
+  const { state } = useSteps()
   const stripe = useStripe()
   const elements = useElements()
   const { fetchClientSecret } = useStripeClientSecret()
@@ -42,6 +41,7 @@ const HirePage: NextPage = () => {
     validateOnMount: true,
     validationSchema: hireValidationSchema,
     async onSubmit(values, formik) {
+      console.log(values)
       formik.setSubmitting(true)
       formik.setFieldValue('errorMessage', '')
       const { error } = await stripe!.confirmPayment({
@@ -90,15 +90,22 @@ const HirePage: NextPage = () => {
     },
   })
 
+  const { plan } = formik.values
+
   useEffect(() => {
-    fetchClientSecret(
-      formik.values.plan === 'OneTime'
-        ? 2999
-        : formik.values.plan === 'Annual'
-        ? 999 * 12
-        : 2999,
-    )
-  }, [])
+    let amount = 0
+    if (plan) {
+      if (plan === 'OneTime') {
+        amount = 2999
+      } else if (plan === 'Annual') {
+        amount = 999 * 12
+      } else if (plan === 'Monthly') {
+        amount = 2999
+      }
+      console.log(amount)
+      fetchClientSecret(amount)
+    }
+  }, [plan])
 
   return (
     <FormikProvider value={formik}>
@@ -139,7 +146,7 @@ const HireRoot: React.FC = () => {
   const { clientSecret } = useStripeClientSecret()
 
   useEffect(() => {
-    setStripePromise(loadStripe(process.env.STRIPE_PUBLISH_KEY))
+    setStripePromise(loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY))
   }, [])
 
   if (!stripePromise || !clientSecret) {
@@ -160,7 +167,11 @@ const HireRoot: React.FC = () => {
   }
 
   return (
-    <Elements stripe={stripePromise} options={{ clientSecret }}>
+    <Elements
+      key={clientSecret}
+      stripe={stripePromise}
+      options={{ clientSecret }}
+    >
       <HirePage />
     </Elements>
   )
