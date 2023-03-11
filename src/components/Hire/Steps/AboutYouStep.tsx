@@ -37,7 +37,7 @@ const AboutYouStep: React.FC = () => {
     <div className="md:relative md:w-[520px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
       <div className="py-8 px-6 flex flex-col h-full">
         <h2 className="text-dark text-2xl font-normal text-center">
-          Create your account
+          Let&apos;s get started
         </h2>
 
         <div className="mt-11 mb-auto">
