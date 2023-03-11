@@ -15,13 +15,6 @@ export const hireValidationSchema = Yup.object()
       .min(5, 'Too short phone')
       .max(20, 'Too long phone')
       .required('Your phone number is required!'),
-    password: Yup.string()
-      .min(6, 'Too short password')
-      .max(100, 'Too long password')
-      .required('Password is required'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Confirm password is required!'),
     projectName: Yup.string()
       .min(2, 'Too short name!')
       .max(100, 'Too Long Name!')

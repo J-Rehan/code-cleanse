@@ -7,7 +7,7 @@ const initialState = {
     {
       index: 0,
       name: 'Sign Up',
-      fields: ['fullName', 'email', 'phone', 'password', 'confirmPassword'],
+      fields: ['fullName', 'email', 'phone'],
     },
     {
       index: 1,
@@ -16,7 +16,7 @@ const initialState = {
     },
     {
       index: 2,
-      name: 'Hire plan',
+      name: 'Select plan',
       fields: ['plan', 'cardNumber', 'expirationDate', 'cvc'],
     },
   ],

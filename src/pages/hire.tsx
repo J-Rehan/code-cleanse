@@ -24,7 +24,9 @@ export const initialValues = {
   productCategory: '',
   description: '',
   plan: 'Monthly',
+  projectName: '',
   errorMessage: '',
+  helpMethod: '',
   developers: [{ name: '', email: '', role: '' }],
 }
 

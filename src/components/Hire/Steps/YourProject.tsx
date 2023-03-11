@@ -11,16 +11,24 @@ import FormikTextInput from '../../shared/Formik/FormikTextInput/FormikTextInput
 
 const helpOptions = [
   {
-    value: 'One time code review and analysis ',
-    label: 'One time code review and analysis',
+    value:
+      'I need experts to provide on-going oversight & guidance to my development team(on-going)',
+    label:
+      'I need experts to provide on-going oversight & guidance to my development team',
   },
   {
-    value: 'Monthly development oversight',
-    label: 'Monthly development oversight',
+    value:
+      'I would like transparency, and want to ensure that development is heading in the right direction(on-going)',
+    label:
+      'I would like transparency, and want to ensure that development is heading in the right direction',
   },
   {
-    value: 'Code Review and Monthly Development Oversight',
-    label: 'Code Review and Monthly Development Oversight',
+    value: 'I need help identifying and fixing problems in my app(code-review)',
+    label: 'I need help identifying and fixing problems in my app',
+  },
+  {
+    value: 'I want to check the code quality of my app(code-review)',
+    label: 'I want to check the code quality of my app',
   },
 ]
 
@@ -114,16 +122,30 @@ const YourProject: React.FC = () => {
                 How can we help you?
               </label>
               <Select
+                isMulti
                 classNames={{ control: () => 'p-2' }}
                 styles={{ control: (base) => ({ ...base, borderRadius: 8 }) }}
                 value={helpOptions.find(
                   (option) => option.value === formik.values.helpMethod,
                 )}
                 options={helpOptions}
-                onChange={(value) =>
-                  formik.setFieldValue('helpMethod', value?.value)
-                }
+                onChange={(value) => {
+                  formik.setFieldValue(
+                    'helpMethod',
+                    value.map((val) => val.value).join('__'),
+                  )
+                }}
               />
+              <ul className="mt-4" style={{ listStyle: 'disc' }}>
+                {formik.values.helpMethod
+                  .split('__')
+                  .filter((item) => !!item)
+                  .map((method) => (
+                    <li className="ml-8 mt-2 font-semibold" key={method}>
+                      {method}
+                    </li>
+                  ))}
+              </ul>
               {formik.errors.helpMethod && formik.touched.helpMethod && (
                 <p className="text-red-500 text-sm font-normal mt-1">
                   {formik.errors.helpMethod as any}
@@ -241,7 +263,7 @@ const YourProject: React.FC = () => {
         <div className="px-6 pb-8">
           <Button disabled={disabled} onClick={nextStep} className="mt-4">
             <span>
-              <strong>Next:</strong> Hire Plan
+              <strong>Next:</strong> Select Plan
             </span>
           </Button>
         </div>

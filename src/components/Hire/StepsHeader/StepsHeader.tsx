@@ -48,7 +48,7 @@ const Steps: React.FC = () => {
             }
           }
 
-          if (step.name === 'Hire plan') color = 'bg-dark2'
+          if (step.name === 'Select plan') color = 'bg-dark2'
 
           return (
             <div
@@ -63,7 +63,7 @@ const Steps: React.FC = () => {
               <div
                 className={`text-white text-sm text-center flex items-center justify-center w-5 h-5 rounded-full ${color}`}
               >
-                {isInvalid || step.name === 'Hire plan' ? (
+                {isInvalid || step.name === 'Select plan' ? (
                   index + 1
                 ) : (
                   <svg

@@ -7,7 +7,7 @@ import useSteps from '../../../hooks/useSteps'
 import { initialValues } from '../../../pages/hire'
 import Button from '../../shared/Button/Button'
 import FormikRadioGroup from '../../shared/Formik/FormikRadioGroup/FormikRadioGroup'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cn } from '../../../utils/style'
 import PricingCard from '../PricingCard/PricingCard'
 
@@ -16,7 +16,7 @@ const plans = [
     id: '1',
     value: 'OneTime',
     title: 'One Time Review',
-    cost: 1499,
+    cost: 2999,
     isOneTime: true,
     costFrequency: 'One off payment',
     callout: '',
@@ -27,8 +27,9 @@ const plans = [
     id: '2',
     value: 'Monthly',
     title: 'Annual Plan',
-    cost: 850,
+    cost: 999,
     isOneTime: false,
+    discountPercent: 50,
     costFrequency: 'Paid yearly',
     callout: 'Most Economic',
     description:
@@ -38,7 +39,7 @@ const plans = [
     id: '3',
     value: 'Yearly',
     title: 'Monthly Plan',
-    cost: 900,
+    cost: 1999,
     isOneTime: false,
     costFrequency: 'Paid monthly',
     callout: 'Most Flexible',
@@ -51,8 +52,20 @@ const HirePlanStep: React.FC = () => {
   const formik = useFormikContext<typeof initialValues>()
   const { state, dispatch } = useSteps()
   const [currentStep, setCurrentStep] = useState(1)
+  const [recommended, setRecommended] = useState<number | null>(null)
 
-  // const step = state.steps.find((step) => step.name === 'Hire plan')
+  useEffect(() => {
+    if (formik.values.helpMethod.includes('on-going')) {
+      setRecommended(1)
+      setCurrentStep(1)
+
+      formik.setFieldValue('plan', plans[1].value)
+    } else {
+      setRecommended(0)
+      setCurrentStep(0)
+      formik.setFieldValue('plan', plans[0].value)
+    }
+  }, [])
 
   const handleSelect = () => {
     formik.setFieldValue('plan', plans[currentStep].value)
@@ -65,9 +78,16 @@ const HirePlanStep: React.FC = () => {
         Let us manage your technical team
       </h2>
 
-      <h4 className="text-black text-2xl font-normal mb-20 text-center">
+      <h4 className="text-black text-2xl font-normal mb-4 text-center">
         white you focus on growing your business.
       </h4>
+
+      <div className="bg-[#ddd] w-full h-[1px] max-w-[852px] mx-auto mb-6" />
+
+      <p className="text-center mb-8">
+        Our Team Recommends the <strong>Annual Plan</strong> for{' '}
+        <strong>{formik.values.projectName}</strong>
+      </p>
 
       <div>
         <div className="hidden md:flex items-start justify-center">
@@ -78,6 +98,7 @@ const HirePlanStep: React.FC = () => {
 
             return (
               <PricingCard
+                isRecommended={recommended === index}
                 {...plan}
                 key={plan.id}
                 className="max-w-[268px]"
@@ -115,6 +136,7 @@ const HirePlanStep: React.FC = () => {
               return (
                 <PricingCard
                   {...plan}
+                  isRecommended={recommended === currentStep}
                   key={plan.id}
                   selected={index === currentStep}
                   onSelect={handleSelect}

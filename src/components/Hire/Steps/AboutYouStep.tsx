@@ -69,22 +69,6 @@ const AboutYouStep: React.FC = () => {
               return normalizeInput(value)
             }}
           />
-          <FormikTextInput
-            required
-            type="password"
-            label="Password"
-            name="password"
-            placeholder="Enter password"
-            className="mt-6"
-          />
-          <FormikTextInput
-            required
-            type="password"
-            label="Confirm Password"
-            name="confirmPassword"
-            placeholder="Enter password"
-            className="mt-6"
-          />
         </div>
 
         <Button

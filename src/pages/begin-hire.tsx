@@ -58,8 +58,11 @@ const BeginHirePage: NextPage = () => {
         </Link>
       </div>
 
-      <div className="pt-14 flex items-center justify-center">
-        <Image src="/preview.png" width={852} height={600} alt="Preview" />
+      <div className="pt-8 flex flex-col items-center justify-center">
+        <h3 className="text-2xl mb-8 font-semibold">
+          Here&apos;s a sample Report
+        </h3>
+        <Image src="/preview.jpg" width={852} height={600} alt="Preview" />
       </div>
     </div>
   )
