@@ -57,6 +57,7 @@ const HirePlanStep: React.FC = () => {
   const formik = useFormikContext<typeof initialValues>()
   const { dispatch } = useSteps()
   const { setClientSecret } = useStripeContext()
+  const [loading, setLoading] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [recommended, setRecommended] = useState<number | null>(null)
 
@@ -72,17 +73,22 @@ const HirePlanStep: React.FC = () => {
       setRecommended(step)
       setCurrentStep(step)
       formik.setFieldValue('plan', plans[step].value)
-
+      setLoading(true)
       const secret = await API.stripe.fetchClientSecret(plans[step].total)
       setClientSecret(secret)
+      setLoading(false)
     })()
   }, [])
 
   const handleSelect = async () => {
     const selectedPlan = plans[currentStep]
     formik.setFieldValue('plan', selectedPlan.value)
+
+    setLoading(true)
     const secret = await API.stripe.fetchClientSecret(selectedPlan.total)
     setClientSecret(secret)
+
+    setLoading(false)
     dispatch({ type: 'NEXT_STEP' })
   }
 
@@ -108,8 +114,10 @@ const HirePlanStep: React.FC = () => {
           {plans.map((plan, index) => {
             const handleCardSelect = async () => {
               formik.setFieldValue('plan', plan.value)
+              setLoading(true)
               const secret = await API.stripe.fetchClientSecret(plan.total)
               setClientSecret(secret)
+              setLoading(false)
             }
 
             return (
@@ -117,7 +125,7 @@ const HirePlanStep: React.FC = () => {
                 isRecommended={recommended === index}
                 {...plan}
                 key={plan.id}
-                loading={formik.isSubmitting}
+                loading={loading}
                 className="max-w-[268px]"
                 onClick={handleCardSelect}
                 selected={formik.values.plan === plan.value}
@@ -153,7 +161,7 @@ const HirePlanStep: React.FC = () => {
               return (
                 <PricingCard
                   {...plan}
-                  loading={formik.isSubmitting}
+                  loading={loading}
                   isRecommended={recommended === currentStep}
                   key={plan.id}
                   selected={index === currentStep}
