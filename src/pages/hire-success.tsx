@@ -41,9 +41,8 @@ const HireSuccessPage: NextPage = () => {
         )}
 
         <p className="mt-12 mb-6 text-center">
-          Watch our video to know what to expect when you speak with our CEO,
-          Rehan. He&apos;s eager to chat with you and explore how we can help
-          you reach your goals.
+          Watch our video to know what to expect when you speak with our team.
+          We look forward to speaking with you.
         </p>
 
         <video

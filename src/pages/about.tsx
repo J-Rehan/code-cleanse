@@ -14,7 +14,7 @@ const quotes = [
   {
     id: '1',
     description:
-      'CodeClanse helped us streamline our operations and increase efficiency',
+      'Thanks to Code Cleanse, we were able to launch our product bug-free and on time.',
     founder: 'Madelyn Allor',
     role: 'Founder',
     productName: 'Reco App',
@@ -22,7 +22,7 @@ const quotes = [
   {
     id: '2',
     description:
-      'Their solutions exceeded expectations and helped us stay ahead of the curve',
+      'Code Cleanse helped me identify problems with Foodiaz. I changed developers on their recommendation and could not be happier with the product',
     founder: 'Nicholas Nedelisky',
     role: 'Founder',
     productName: 'Foodiaz',
@@ -30,7 +30,7 @@ const quotes = [
   {
     id: '3',
     description:
-      "We couldn't have done it without CodeClanse's expertise and guidance",
+      "I don't know how to code and I don't plan on learning anytime soon. If that's you, I highly recommend Code Cleanse",
     founder: 'Aly Johnson',
     role: 'Founder',
     productName: 'Village App',

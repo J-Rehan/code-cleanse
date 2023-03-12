@@ -8,7 +8,7 @@ export const testimonials = [
       imageUrl: '/testimonials/madelyn-profile.jpeg',
     },
     content:
-      'CodeClanse helped us streamline our operations and increase efficiency',
+      'Thanks to Code Cleanse, we were able to launch our product bug-free and on time.',
     videoThumbnail: '/testimonials/madelyn-thumbnail.jpeg',
     videoUrl: '/testimonials/madelyn-video.mp4',
     iconUrl: '/testimonials/reco-logo.png',
@@ -23,7 +23,7 @@ export const testimonials = [
       imageUrl: '/testimonials/nic-profile.jpeg',
     },
     content:
-      'Their solutions exceeded expectations and helped us stay ahead of the curve',
+      'Code Cleanse helped me identify problems with Foodiaz. I changed developers on their recommendation and could not be happier with the product ',
     videoThumbnail: '/testimonials/nic-thumbnail.jpeg',
     videoUrl: '/testimonials/nic-video.mp4',
     iconUrl: '/testimonials/foodiaz-app.jpeg',
@@ -38,7 +38,7 @@ export const testimonials = [
       imageUrl: '/testimonials/aly-thumbnail.jpeg',
     },
     content:
-      "We couldn't have done it without CodeClanse's expertise and guidance",
+      "I don't know how to code and I don't plan on learning anytime soon. If that's you, I highly recommend Code Cleanse",
     videoThumbnail: '/testimonials/aly-thumbnail.jpeg',
     videoUrl: '/testimonials/aly-video.mp4',
     iconUrl: '/testimonials/village-app.png',
