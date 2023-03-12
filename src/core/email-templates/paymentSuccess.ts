@@ -62,7 +62,6 @@ const template = `
 			}
 
 			.fullMobileWidth,
-			.image_block img.big,
 			.row-content {
 				width: 100% !important;
 			}
@@ -89,35 +88,6 @@ const template = `
 				display: table !important;
 				max-height: none !important;
 			}
-
-			.reverse {
-				display: table;
-				width: 100%;
-			}
-
-			.reverse .column.first {
-				display: table-footer-group !important;
-			}
-
-			.reverse .column.last {
-				display: table-header-group !important;
-			}
-
-			.row-5 td.column.first .border {
-				padding: 20px 30px 30px;
-				border-top: 0;
-				border-right: 0px;
-				border-bottom: 0;
-				border-left: 0;
-			}
-
-			.row-5 td.column.last .border {
-				padding: 25px 30px 30px;
-				border-top: 0;
-				border-right: 0px;
-				border-bottom: 0;
-				border-left: 0;
-			}
 		}
 	</style>
 </head>
@@ -137,8 +107,8 @@ const template = `
 												<td class="column column-1" width="66.66666666666667%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 20px; padding-top: 20px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
 													<table class="image_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
-															<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
-																<div class="alignment" align="center" style="line-height:10px"><img class="fullMobileWidth" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/959098_943632/logo-full.png" style="display: block; height: auto; border: 0; width: 227px; max-width: 100%;" width="227"></div>
+															<td class="pad" style="padding-bottom:10px;padding-left:60px;padding-right:10px;padding-top:10px;width:100%;">
+																<div class="alignment" align="left" style="line-height:10px"><img class="fullMobileWidth" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/959098_943632/logo-full.png" style="display: block; height: auto; border: 0; width: 204px; max-width: 100%;" width="204"></div>
 															</td>
 														</tr>
 													</table>
@@ -163,56 +133,22 @@ const template = `
 						<tbody>
 							<tr>
 								<td>
-									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #0452ee; background-image: url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7071/heasder-bg.png'); background-repeat: no-repeat; background-size: cover; color: #000000; width: 680px;" width="680">
-										<tbody>
-											<tr>
-												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
-													<div class="spacer_block" style="height:70px;line-height:70px;font-size:1px;">&#8202;</div>
-													<table class="heading_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-														<tr>
-															<td class="pad" style="padding-bottom:30px;padding-top:30px;text-align:center;width:100%;">
-																<h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; letter-spacing: normal; line-height: 150%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Welcome, {firstName}!</span></h1>
-															</td>
-														</tr>
-													</table>
-													<div class="spacer_block" style="height:70px;line-height:70px;font-size:1px;">&#8202;</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table class="row row-3" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-						<tbody>
-							<tr>
-								<td>
 									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 680px;" width="680">
 										<tbody>
 											<tr>
 												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 40px; padding-left: 50px; padding-right: 50px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
-													<table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+													<table class="text_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
-															<td class="pad" style="padding-bottom:10px;padding-top:15px;text-align:center;width:100%;">
-																<h3 style="margin: 0; color: #0452ee; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 28px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">We are thrilled to have you as a valued customer and are excited to work with you to help you navigate the complex world of software development.</h3>
-															</td>
-														</tr>
-													</table>
-													<table class="divider_block block-2" width="100%" border="0" cellpadding="20" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-														<tr>
-															<td class="pad">
-																<div class="alignment" align="center">
-																	<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="15%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-																		<tr>
-																			<td class="divider_inner" style="font-size: 1px; line-height: 1px; border-top: 3px solid #0452EE;"><span>&#8202;</span></td>
-																		</tr>
-																	</table>
+															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:35px;">
+																<div style="font-family: sans-serif">
+																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
+																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">We are thrilled to have you as a valued customer and are excited to work with you to help you navigate the complex world of software development.</p>
+																	</div>
 																</div>
 															</td>
 														</tr>
 													</table>
-													<table class="text_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+													<table class="text_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
@@ -223,12 +159,23 @@ const template = `
 															</td>
 														</tr>
 													</table>
+													<table class="text_block block-3" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+														<tr>
+															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
+																<div style="font-family: sans-serif">
+																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
+																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><strong><span style>Thank you for entrusting us with {projectName}.</span></strong></span></p>
+																	</div>
+																</div>
+															</td>
+														</tr>
+													</table>
 													<table class="text_block block-4" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
 																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
-																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><strong><span style="font-size:16px;">Thank you for entrusting us with {projectName}.</span></strong></p>
+																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><strong>Next Steps</strong></span></p>
 																	</div>
 																</div>
 															</td>
@@ -239,7 +186,7 @@ const template = `
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
 																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
-																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>Next Steps</strong></span></p>
+																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">Before we can begin our review process, we wanted to remind you of a few things. We know that sharing your codebase, developer information, and credentials can be sensitive information, and we appreciate your trust in us. Please provide us with these details as soon as possible so we can begin our thorough review.</p>
 																	</div>
 																</div>
 															</td>
@@ -250,7 +197,18 @@ const template = `
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
 																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
-																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">Before we can begin our review process, we wanted to remind you of a few things. We know that sharing your codebase, developer information, and credentials can be sensitive information, and we appreciate your trust in us. Please provide us with these details as soon as possible so we can begin our thorough review.</p>
+																		<p style="margin: 0; mso-line-height-alt: 18px;"></p>
+																		<ul style="line-height: 1.5; mso-line-height-alt: 18px;">
+																			<li data-stringify-indent="0" data-stringify-border="0">Code can be shared with our Github username @codecleanse or <a target="_blank" data-stringify-link="mailto:access@codecleanse.com" delay="150" aria-haspopup="menu" aria-expanded="false" href="mailto:access@codecleanse.com" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">access@codecleanse.com</a></li>
+																			<li data-stringify-indent="0" data-stringify-border="0">Developer's Name & Email</li>
+																			<li data-stringify-indent="0" data-stringify-border="0">Any other credentials or access that are needed (Hosting, Domain, Third Party APIS)<ul style="line-height: 1.5; mso-line-height-alt: 18px;">
+																					<li data-stringify-indent="0" data-stringify-border="0">If you are sharing passwords please use a password manager such as <a target="_blank" data-stringify-link="http://lastpass.com" delay="150" href="http://lastpass.com/" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">LastPass</a></li>
+																					<li data-stringify-indent="0" data-stringify-border="0">These passwords can be shared with&nbsp;<a target="_blank" data-stringify-link="mailto:access@codecleanse.com" delay="150" aria-haspopup="menu" aria-expanded="false" href="mailto:access@codecleanse.com" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">access@codecleanse.com</a></li>
+																					<li data-stringify-indent="0" data-stringify-border="0">If you would rather share guest access - Please add&nbsp;<a target="_blank" data-stringify-link="mailto:access@codecleanse.com" delay="150" aria-haspopup="menu" aria-expanded="false" href="mailto:access@codecleanse.com" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">access@codecleanse.com</a><span style="background-color:transparent;">&nbsp;with all necessary admin permissions</span></li>
+																				</ul>
+																			</li>
+																		</ul>
+																		<p style="margin: 0; mso-line-height-alt: 18px;"></p>
 																	</div>
 																</div>
 															</td>
@@ -261,17 +219,7 @@ const template = `
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
 																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
-																		<ul style="line-height: 1.5; mso-line-height-alt: 18px;">
-																			<li data-stringify-indent="0" data-stringify-border="0">Code can be shared with our Github username @codecleanse or <a target="_blank" data-stringify-link="mailto:access@codecleanse.com" delay="150" aria-haspopup="menu" aria-expanded="false" href="mailto:access@codecleanse.com" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">access@codecleanse.com</a></li>
-																			<li data-stringify-indent="0" data-stringify-border="0">Developer's Name & Email</li>
-																			<li data-stringify-indent="0" data-stringify-border="0">Any other credentials or access that are needed (Hosting, Domain, Third Party APIS)
-																				<ul style="line-height: 1.5; mso-line-height-alt: 18px;">
-																					<li data-stringify-indent="0" data-stringify-border="0">If you are sharing passwords please use a password manager such as <a target="_blank" data-stringify-link="http://lastpass.com" delay="150" href="http://lastpass.com/" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">LastPass</a></li>
-																					<li data-stringify-indent="0" data-stringify-border="0">These passwords can be shared with&nbsp;<a target="_blank" data-stringify-link="mailto:access@codecleanse.com" delay="150" aria-haspopup="menu" aria-expanded="false" href="mailto:access@codecleanse.com" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">access@codecleanse.com</a></li>
-																					<li data-stringify-indent="0" data-stringify-border="0">If you would rather share guest access - Please add&nbsp;<a target="_blank" data-stringify-link="mailto:access@codecleanse.com" delay="150" aria-haspopup="menu" aria-expanded="false" href="mailto:access@codecleanse.com" rel="noopener noreferrer" style="text-decoration: underline; color: #0452ee;">access@codecleanse.com</a><span style="background-color:transparent;">&nbsp;with all necessary admin permissions</span></li>
-																				</ul>
-																			</li>
-																		</ul>
+																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><em data-stringify-type="italic">We understand that you may have already shared this information with us. If you have, please feel free to disregard this message.</em></p>
 																	</div>
 																</div>
 															</td>
@@ -282,7 +230,7 @@ const template = `
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
 																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
-																		<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><em data-stringify-type="italic">We understand that you may have already shared this information with us. If you have, please feel free to disregard this message.</em></p>
+																		<p style="margin: 0; font-size: 12px; mso-line-height-alt: 21px;"><span style="font-size:14px;">We understand the importance of good communication, and our team is always available to answer any questions or concerns you may have. We want to ensure that our review is as comprehensive and accurate as possible, so please do not hesitate to reach out to us.</span></p>
 																	</div>
 																</div>
 															</td>
@@ -292,8 +240,8 @@ const template = `
 														<tr>
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
-																	<div class style="font-size: 12px; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5; font-family: Poppins, Arial, Helvetica, sans-serif;">
-																		<p style="margin: 0; font-size: 12px; mso-line-height-alt: 21px;"><span style="font-size:14px;">We understand the importance of good communication, and our team is always available to answer any questions or concerns you may have. We want to ensure that our review is as comprehensive and accurate as possible, so please do not hesitate to reach out to us.</span></p>
+																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
+																		<p style="margin: 0; font-size: 12px; mso-line-height-alt: 21px;"><span style="font-size:14px;">Thank you again for choosing Code Cleanse. We look forward to working with you to help you achieve your goals and bring your vision to life.</span></p>
 																	</div>
 																</div>
 															</td>
@@ -303,18 +251,7 @@ const template = `
 														<tr>
 															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
 																<div style="font-family: sans-serif">
-																	<div class style="font-size: 12px; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5; font-family: Poppins, Arial, Helvetica, sans-serif;">
-																		<p style="margin: 0; font-size: 12px; mso-line-height-alt: 21px;"><span style="font-size:14px;">Thank you again for choosing Code Cleanse. We look forward to working with you to help you achieve your goals and bring your vision to life.</span></p>
-																	</div>
-																</div>
-															</td>
-														</tr>
-													</table>
-													<table class="text_block block-11" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
-														<tr>
-															<td class="pad" style="padding-bottom:15px;padding-left:15px;padding-right:15px;padding-top:10px;">
-																<div style="font-family: sans-serif">
-																	<div class style="font-size: 12px; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5; font-family: Poppins, Arial, Helvetica, sans-serif;">
+																	<div class style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #020b22; line-height: 1.5;">
 																		<p style="margin: 0; font-size: 12px; mso-line-height-alt: 21px;"><span style="font-size:14px;">Best regards,</span></p>
 																		<p style="margin: 0; font-size: 12px; mso-line-height-alt: 21px;"><span style="font-size:14px;">The Code Cleanse Team</span></p>
 																	</div>
@@ -330,7 +267,7 @@ const template = `
 							</tr>
 						</tbody>
 					</table>
-					<table class="row row-4" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+					<table class="row row-3" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
 								<td>
@@ -339,13 +276,6 @@ const template = `
 											<tr>
 												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
 													<div class="spacer_block" style="height:20px;line-height:20px;font-size:1px;">&#8202;</div>
-													<table class="image_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-														<tr>
-															<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
-																<div class="alignment" align="center" style="line-height:10px"><img class="big" src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/7071/footer-bg.png" style="display: block; height: auto; border: 0; width: 680px; max-width: 100%;" width="680"></div>
-															</td>
-														</tr>
-													</table>
 												</td>
 											</tr>
 										</tbody>
@@ -354,51 +284,11 @@ const template = `
 							</tr>
 						</tbody>
 					</table>
-					<table class="row row-5" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+					<table class="row row-4" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
 								<td>
-									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #fafafa; color: #000000; width: 680px;" width="680">
-										<tbody>
-											<tr class="reverse">
-												<td class="column column-1 first" width="50%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 30px; padding-left: 30px; padding-right: 30px; padding-top: 20px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
-													<div class="border">
-														<table class="heading_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-															<tr>
-																<td class="pad" style="padding-bottom:10px;padding-top:15px;text-align:center;width:100%;">
-																	<h3 style="margin: 0; color: #0452ee; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><strong><span class="tinyMce-placeholder">Any question?</span></strong></h3>
-																</td>
-															</tr>
-														</table>
-													</div>
-												</td>
-												<td class="column column-2 last" width="50%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 30px; padding-left: 30px; padding-right: 30px; padding-top: 25px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
-													<div class="border">
-														<table class="button_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-															<tr>
-																<td class="pad" style="text-align:center;">
-																	<div class="alignment" align="center">
-																		<!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.codecleanse.com/contact" style="height:42px;width:168px;v-text-anchor:middle;" arcsize="72%" strokeweight="1.5pt" strokecolor="#0452EE" fill="false"><w:anchorlock/><v:textbox inset="0px,0px,0px,0px"><center style="color:#2d2d2d; font-family:Arial, sans-serif; font-size:14px"><![endif]--><a href="https://www.codecleanse.com/contact" target="_blank" style="text-decoration:none;display:inline-block;color:#2d2d2d;background-color:transparent;border-radius:30px;width:auto;border-top:2px solid #0452EE;font-weight:400;border-right:2px solid #0452EE;border-bottom:2px solid #0452EE;border-left:2px solid #0452EE;padding-top:5px;padding-bottom:5px;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:30px;padding-right:30px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="word-break:break-word;"><span class="tinyMce-placeholder" style="line-height: 28px;" data-mce-style>Send an email</span></span></span></a>
-																		<!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
-																	</div>
-																</td>
-															</tr>
-														</table>
-														<div class="spacer_block" style="height:20px;line-height:20px;font-size:1px;">&#8202;</div>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table class="row row-6" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
-						<tbody>
-							<tr>
-								<td>
-									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #5c7bb9; color: #000000; width: 680px;" width="680">
+									<table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #000000; color: #000000; width: 680px;" width="680">
 										<tbody>
 											<tr>
 												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 25px; padding-top: 25px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
@@ -444,7 +334,7 @@ const template = `
 							</tr>
 						</tbody>
 					</table>
-					<table class="row row-7" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+					<table class="row row-5" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
 								<td>
@@ -454,15 +344,14 @@ const template = `
 												<td class="column column-1" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;">
 													<table class="icons_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
-															<td class="pad" style="vertical-align: middle; color: #9d9d9d; font-family: inherit; font-size: 15px; padding-bottom: 5px; padding-top: 5px; text-align: center;">
+															<td class="pad" style="vertical-align: middle; padding-bottom: 5px; padding-top: 5px; text-align: center; color: #9d9d9d; font-family: inherit; font-size: 15px;">
 																<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 																	<tr>
 																		<td class="alignment" style="vertical-align: middle; text-align: center;">
 																			<!--[if vml]><table align="left" cellpadding="0" cellspacing="0" role="presentation" style="display:inline-block;padding-left:0px;padding-right:0px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;"><![endif]-->
 																			<!--[if !vml]><!-->
 																			<table class="icons-inner" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;" cellpadding="0" cellspacing="0" role="presentation">
-																				<!--<![endif]-->
-																				
+																				<!--<![endif]-->	
 																			</table>
 																		</td>
 																	</tr>
