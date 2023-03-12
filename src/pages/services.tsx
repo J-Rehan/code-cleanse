@@ -97,16 +97,6 @@ const UserDetailPage: NextPage = () => {
                     index % 2 == 1 && 'md:flex-row-reverse',
                   )}
                 >
-                  <Image
-                    src={feature.image}
-                    width={1000}
-                    height={200}
-                    className={cn(
-                      'w-[1000px] h-[200px] object-cover rounded-lg',
-                      index % 2 == 0 ? 'md:mr-8' : 'md:ml-8',
-                    )}
-                    alt={feature.name}
-                  />
                   <div className="relative mt-4 md:mt-0">
                     <p className="text-lg font-medium leading-6 text-gray-900">
                       {feature.name}
