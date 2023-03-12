@@ -10,6 +10,7 @@ import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 import { firestore } from '../core/lib/firebase'
 import { addDoc, collection } from 'firebase/firestore'
 import StripeContextProvider from '../contexts/StripeContext'
+import { useEffect } from 'react'
 
 export const initialValues = {
   fullName: process.env.NODE_ENV === 'development' ? 'John Doe' : '',
@@ -73,6 +74,11 @@ const HirePage: NextPage = () => {
       }
     },
   })
+
+  useEffect(() => {
+    dispatch({ type: 'SET_STEP', payload: 0 })
+    formik.resetForm()
+  }, [])
 
   return (
     <StripeContextProvider>

@@ -61,29 +61,28 @@ const HirePlanStep: React.FC = () => {
   const [recommended, setRecommended] = useState<number | null>(null)
 
   useEffect(() => {
-    if (formik.values.helpMethod.join('').includes('on-going')) {
-      setRecommended(1)
-      setCurrentStep(1)
+    ;(async () => {
+      let step = 0
+      if (formik.values.helpMethod.join('').includes('on-going')) {
+        step = 1
+      } else {
+        step = 0
+      }
 
-      formik.setFieldValue('plan', plans[1].value)
-    } else {
-      setRecommended(0)
-      setCurrentStep(0)
-      formik.setFieldValue('plan', plans[0].value)
-    }
+      setRecommended(step)
+      setCurrentStep(step)
+      formik.setFieldValue('plan', plans[step].value)
+
+      const secret = await API.stripe.fetchClientSecret(plans[step].total)
+      setClientSecret(secret)
+    })()
   }, [])
 
   const handleSelect = async () => {
     const selectedPlan = plans[currentStep]
     formik.setFieldValue('plan', selectedPlan.value)
-    API.stripe
-      .fetchClientSecret(selectedPlan.total)
-      .then((clientSecret) => {
-        setClientSecret(clientSecret)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    const secret = await API.stripe.fetchClientSecret(selectedPlan.total)
+    setClientSecret(secret)
     dispatch({ type: 'NEXT_STEP' })
   }
 
@@ -107,17 +106,10 @@ const HirePlanStep: React.FC = () => {
       <div>
         <div className="hidden md:flex items-start justify-center">
           {plans.map((plan, index) => {
-            const handleCardSelect = () => {
+            const handleCardSelect = async () => {
               formik.setFieldValue('plan', plan.value)
-
-              API.stripe
-                .fetchClientSecret(plan.total)
-                .then((clientSecret) => {
-                  setClientSecret(clientSecret)
-                })
-                .catch((error) => {
-                  console.log(error)
-                })
+              const secret = await API.stripe.fetchClientSecret(plan.total)
+              setClientSecret(secret)
             }
 
             return (
@@ -125,6 +117,7 @@ const HirePlanStep: React.FC = () => {
                 isRecommended={recommended === index}
                 {...plan}
                 key={plan.id}
+                loading={formik.isSubmitting}
                 className="max-w-[268px]"
                 onClick={handleCardSelect}
                 selected={formik.values.plan === plan.value}
@@ -160,6 +153,7 @@ const HirePlanStep: React.FC = () => {
               return (
                 <PricingCard
                   {...plan}
+                  loading={formik.isSubmitting}
                   isRecommended={recommended === currentStep}
                   key={plan.id}
                   selected={index === currentStep}

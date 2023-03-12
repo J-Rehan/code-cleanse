@@ -12,6 +12,7 @@ interface PricingCardProps {
   className?: string
   discountPercent?: number
   isRecommended?: boolean
+  loading?: boolean
   onClick?: () => void
   onSelect?: () => void
 }
@@ -26,6 +27,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
   const {
     title,
     cost,
+    loading,
     isOneTime,
     costFrequency,
     description,
@@ -81,9 +83,10 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
               event.stopPropagation()
               onSelect()
             }}
+            type="button"
             className="py-3 mt-10"
           >
-            Select Plan
+            {loading ? 'Selecting...' : 'Select Plan'}
           </Button>
         )}
       </div>
