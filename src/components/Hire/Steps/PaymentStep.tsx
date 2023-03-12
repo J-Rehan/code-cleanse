@@ -1,66 +1,49 @@
-import React from 'react'
-import { PaymentElement } from '@stripe/react-stripe-js'
+import React, { useEffect, useState } from 'react'
+import { Elements, PaymentElement } from '@stripe/react-stripe-js'
 import { useFormikContext } from 'formik'
-import Image from 'next/image'
 import { initialValues } from '../../../pages/hire'
-import Button from '../../shared/Button/Button'
+import PaymentForm from './PaymentForm'
+import useStripeContext from '../../../hooks/useStripeContext'
+import { loadStripe } from '@stripe/stripe-js'
 
 interface PaymentStepProps {}
 
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-})
-
 const PaymentStep: React.FC<PaymentStepProps> = (props) => {
-  const formik = useFormikContext<typeof initialValues>()
+  const [stripePromise, setStripePromise] = useState<any>(null)
+  const { clientSecret, setClientSecret } = useStripeContext()
 
-  return (
-    <div className="md:relative md:w-[520px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
-      <div className="py-8 px-6 flex flex-col h-full">
-        <div className="flex items-center mb-8 justify-between">
-          <h2 className="text-dark text-2xl font-normal">Payment</h2>
-          <Image
-            width={140}
-            height={28}
-            alt="powered-by-stripe"
-            src="/powered-by-stripe.png"
-          />
-        </div>
+  useEffect(() => {
+    setStripePromise(loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY))
+  }, [])
 
-        <h4 className="uppercase text-xs font-semibold">
-          Enter you credit card details
-        </h4>
+  let content = <></>
 
-        <PaymentElement id="payment-element" className="h-full" />
-
-        <div className="pt-2 border-t border-t-[#e7e7e7]">
-          {formik.values.plan && (
-            <p className="text-center my-4">
-              <span>
-                paying today:{' '}
-                <strong className="text-green font-semibold">
-                  {formatter.format(
-                    formik.values.plan === 'OneTime'
-                      ? 2999
-                      : formik.values.plan === 'Annual'
-                      ? 999 * 12
-                      : 2999,
-                  )}
-                </strong>
-              </span>
-            </p>
-          )}
-
-          <div className="pt-2 border-t border-t-[#e7e7e7]">
-            <Button type="submit" className="mt-4">
-              <strong>{formik.isSubmitting ? 'Processing...' : 'Pay'}</strong>
-            </Button>
+  if (!stripePromise || !clientSecret) {
+    content = (
+      <div>
+        <div className="flex w-full h-[90vh] justify-center items-center">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    content = (
+      <Elements
+        key={clientSecret}
+        stripe={stripePromise}
+        options={{ clientSecret }}
+      >
+        <PaymentForm />
+      </Elements>
+    )
+  }
+
+  return content
 }
 
 export default PaymentStep

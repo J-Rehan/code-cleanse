@@ -10,6 +10,8 @@ import FormikRadioGroup from '../../shared/Formik/FormikRadioGroup/FormikRadioGr
 import { useEffect, useState } from 'react'
 import { cn } from '../../../utils/style'
 import PricingCard from '../PricingCard/PricingCard'
+import useStripeContext from '../../../hooks/useStripeContext'
+import API from '../../../core/services'
 
 const plans = [
   {
@@ -17,6 +19,7 @@ const plans = [
     value: 'OneTime',
     title: 'One Time Review',
     cost: 2999,
+    total: 2999,
     isOneTime: true,
     costFrequency: 'One off payment',
     callout: '',
@@ -28,6 +31,7 @@ const plans = [
     value: 'Monthly',
     title: 'Monthly Plan',
     cost: 1999,
+    total: 2999,
     isOneTime: false,
     costFrequency: 'After 1st payment of $2,999',
     callout: 'Most Flexible',
@@ -39,6 +43,7 @@ const plans = [
     value: 'Annual',
     title: 'Annual Plan',
     cost: 999,
+    total: 12 * 999,
     isOneTime: false,
     discountPercent: 50,
     costFrequency: 'Paid yearly',
@@ -50,7 +55,8 @@ const plans = [
 
 const HirePlanStep: React.FC = () => {
   const formik = useFormikContext<typeof initialValues>()
-  const { state, dispatch } = useSteps()
+  const { dispatch } = useSteps()
+  const { setClientSecret } = useStripeContext()
   const [currentStep, setCurrentStep] = useState(1)
   const [recommended, setRecommended] = useState<number | null>(null)
 
@@ -67,8 +73,17 @@ const HirePlanStep: React.FC = () => {
     }
   }, [])
 
-  const handleSelect = () => {
-    formik.setFieldValue('plan', plans[currentStep].value)
+  const handleSelect = async () => {
+    const selectedPlan = plans[currentStep]
+    formik.setFieldValue('plan', selectedPlan.value)
+    API.stripe
+      .fetchClientSecret(selectedPlan.total)
+      .then((clientSecret) => {
+        setClientSecret(clientSecret)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     dispatch({ type: 'NEXT_STEP' })
   }
 
@@ -94,6 +109,15 @@ const HirePlanStep: React.FC = () => {
           {plans.map((plan, index) => {
             const handleCardSelect = () => {
               formik.setFieldValue('plan', plan.value)
+
+              API.stripe
+                .fetchClientSecret(plan.total)
+                .then((clientSecret) => {
+                  setClientSecret(clientSecret)
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
             }
 
             return (
@@ -145,14 +169,6 @@ const HirePlanStep: React.FC = () => {
             })}
           </Carousel>
         </div>
-      </div>
-
-      <div className="mt-10 flex-1">
-        {formik.values.errorMessage && (
-          <span className="text-red-500 font-bold uppercase">
-            {formik.values.errorMessage}
-          </span>
-        )}
       </div>
     </div>
   )
