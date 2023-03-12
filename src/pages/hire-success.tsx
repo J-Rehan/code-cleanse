@@ -8,9 +8,8 @@ import Button from '../components/shared/Button/Button'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const HireSuccessPage: NextPage = () => {
-  const haveDeveloper = 'NO'
   const [loaded, setLoaded] = useState(false)
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  const [rootEl, setRootEl] = useState({})
 
   useEffect(() => {
     setLoaded(true)
@@ -19,32 +18,30 @@ const HireSuccessPage: NextPage = () => {
   return (
     <div>
       <CloseHeader />
+
       <div className="max-w-[680px] mx-auto py-10 text-dark">
         <h2 className="text-4xl font-semibold text-center">Thank you.</h2>
         <p className="text-3xl text-center mt-4">Now let&apos;s chat.</p>
         <p className="text-3xl text-center mt-1 mb-6">
           Schedule a call to prepare your first report
         </p>
-
         <div id="calendly-widget"></div>
-
-        {loaded && (
-          <div className="max-w-[384px] mx-auto">
-            <Button>
-              <PopupButton
-                url="https://calendly.com/codecleanse"
-                rootElement={document.getElementById('calendly-widget')}
-                text="Click here to schedule!"
-              />
-            </Button>
-          </div>
-        )}
-
+        <div className="max-w-[384px] mx-auto">
+          <PopupButton
+            className="bg-black flex items-center justify-center rounded-lg w-full p-4 text-white"
+            url="https://calendly.com/codecleanse"
+            rootElement={
+              typeof window !== 'undefined'
+                ? document.getElementById('__next')
+                : null
+            }
+            text="Click here to schedule!"
+          />
+        </div>
         <p className="mt-12 mb-6 text-center">
           Watch our video to know what to expect when you speak with our team.
           We look forward to speaking with you.
         </p>
-
         <video
           height="100%"
           className="h-[603px] w-[340px] mx-auto rounded-2xl border border-blue"

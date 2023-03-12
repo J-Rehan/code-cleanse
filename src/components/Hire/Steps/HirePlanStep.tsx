@@ -95,11 +95,11 @@ const HirePlanStep: React.FC = () => {
   return (
     <div className="py-8 px-6 flex flex-col h-full">
       <h2 className="text-black text-2xl font-semibold text-center">
-        Let us manage your technical team
+        You focus on your business,
       </h2>
 
       <h4 className="text-black text-2xl font-normal mb-4 text-center">
-        white you focus on growing your business.
+        we&apos;ll focus on your software & technical team
       </h4>
 
       <div className="bg-[#ddd] w-full h-[1px] max-w-[852px] mx-auto mb-6" />
