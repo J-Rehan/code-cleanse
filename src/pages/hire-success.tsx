@@ -33,10 +33,6 @@ const HireSuccessPage: NextPage = () => {
             <Button>
               <PopupButton
                 url="https://calendly.com/codecleanse"
-                /*
-                 * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
-                 * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
-                 */
                 rootElement={document.getElementById('calendly-widget')}
                 text="Click here to schedule!"
               />
@@ -49,37 +45,19 @@ const HireSuccessPage: NextPage = () => {
           Rehan. He&apos;s eager to chat with you and explore how we can help
           you reach your goals.
         </p>
-        {/* <div className="text-dark">
-            <p className="text-base">{testimonial.client.name}</p>
-            <p className="text-sm">
-              {testimonial.client.role} of {testimonial.client.company}
-            </p>
-          </div> */}
 
-        <div
-          className="hidden md:block col-span-7 relative cursor-pointer"
-          onClick={() => setIsVideoModalOpen(true)}
+        <video
+          height="100%"
+          className="h-[603px] w-[340px] mx-auto rounded-2xl border border-blue"
+          poster="/jawahar-thumbnail.png"
+          controls
         >
-          <img
-            className="w-full h-full object-cover object-top rounded-[16px]"
-            src="/rehan.png"
-            alt="Rehan speaking about Code Cleanse"
+          <source
+            src="https://firebasestorage.googleapis.com/v0/b/codecleanse-44375.appspot.com/o/Jawaher%20final.mp4?alt=media&token=9d82a4f6-5b78-4b7b-8cb4-9210ed39103c"
+            type="video/mp4"
           />
-          <div className="w-[125px] h-[125px] bg-white absolute top-1/2 left-1/2 z-10 rounded-full flex justify-center items-center transform -translate-x-1/2 -translate-y-1/2 hover:shadow-lg">
-            <svg
-              width="30"
-              height="34"
-              viewBox="0 0 30 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.250061 4.00596C0.250061 0.92676 3.58339 -0.997734 6.25006 0.541867L28.0001 13.0992C30.6667 14.6388 30.6667 18.4878 28.0001 20.0274L6.25006 32.5848C3.58339 34.1244 0.250062 32.1999 0.250062 29.1207L0.250061 4.00596Z"
-                fill="#D9D9D9"
-              />
-            </svg>
-          </div>
-        </div>
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div className="pt-8 border-t border-t-gray flex flex-col items-center">
