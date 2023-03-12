@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
-import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
@@ -10,7 +8,33 @@ const stats = [
   { label: 'Clients', value: '500+' },
   { label: 'Projects', value: '1000+' },
   { label: 'Bugs Fixed', value: '10K+' },
-  { label: 'Domains', value: '20+' },
+]
+
+const quotes = [
+  {
+    id: '1',
+    description:
+      'CodeClanse helped us streamline our operations and increase efficiency',
+    founder: 'Madelyn Allor',
+    role: 'Founder',
+    productName: 'Reco App',
+  },
+  {
+    id: '2',
+    description:
+      'Their solutions exceeded expectations and helped us stay ahead of the curve',
+    founder: 'Nicholas Nedelisky',
+    role: 'Founder',
+    productName: 'Foodiaz',
+  },
+  {
+    id: '3',
+    description:
+      "We couldn't have done it without CodeClanse's expertise and guidance",
+    founder: 'Aly Johnson',
+    role: 'Founder',
+    productName: 'Village App',
+  },
 ]
 
 const AboutPage: NextPage = () => {
@@ -68,51 +92,31 @@ const AboutPage: NextPage = () => {
               </svg>
             </div>
             <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
-              {/* Testimonial card*/}
-              <div className="relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl">
-                <img
-                  className="absolute inset-0 h-full w-full object-cover object-[20%]"
-                  src="/testimonials/aly-thumbnail.png"
-                  alt=""
-                />
+              <div className="relative overflow-hidden rounded-2xl py-10  shadow-xl">
                 <div className="absolute inset-0 bg-indigo-500 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-600 via-indigo-600 opacity-90" />
                 <div className="relative px-8">
-                  <div>
-                    {/* <img
-                      className="h-12"
-                      src="https://tailwindui.com/img/logos/workcation.svg?color=white"
-                      alt="Workcation"
-                    /> */}
+                  {quotes.map((quote) => (
+                    <blockquote className="mt-8" key={quote.id}>
+                      <div className="relative text-lg font-medium text-white md:flex-grow">
+                        <svg
+                          className="absolute top-0 left-0 h-8 w-8 -translate-x-3 -translate-y-2 transform text-indigo-400"
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                        >
+                          <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                        </svg>
+                        <p className="relative">{quote.description}</p>
+                      </div>
 
-                    <img
-                      className="h-12 filter invert"
-                      src="testimonials/village-app.png"
-                      alt="Workcation"
-                    />
-                  </div>
-                  <blockquote className="mt-8">
-                    <div className="relative text-lg font-medium text-white md:flex-grow">
-                      <svg
-                        className="absolute top-0 left-0 h-8 w-8 -translate-x-3 -translate-y-2 transform text-indigo-400"
-                        fill="currentColor"
-                        viewBox="0 0 32 32"
-                        aria-hidden="true"
-                      >
-                        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                      </svg>
-                      <p className="relative">
-                        We couldn&apos;t have done it without CodeClanse&apos;s
-                        expertise and guidance
-                      </p>
-                    </div>
-
-                    <footer className="mt-4">
-                      <p className="text-base font-semibold text-indigo-200">
-                        Aly Johnson, Founder at Village App
-                      </p>
-                    </footer>
-                  </blockquote>
+                      <footer className="mt-4">
+                        <p className="text-base font-semibold text-indigo-200">
+                          {quote.founder}, {quote.role} at {quote.productName}
+                        </p>
+                      </footer>
+                    </blockquote>
+                  ))}
                 </div>
               </div>
             </div>
