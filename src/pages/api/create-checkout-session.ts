@@ -71,16 +71,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       })
     }
 
-    const testClock = await stripe.testHelpers.testClocks.create({
-      frozen_time: Number((new Date().getTime() / 1000).toFixed(0)),
-    })
+    // const testClock = await stripe.testHelpers.testClocks.create({
+    //   frozen_time: Number((new Date().getTime() / 1000).toFixed(0)),
+    // })
 
     const customer = await stripe.customers.create({
       name,
       email,
-      ...(process.env.NODE_ENV !== 'production' && {
-        test_clock: testClock.id,
-      }),
+      // test_clock:
+      //   process.env.NODE_ENV === 'production' ? undefined : testClock.id,
     })
 
     const session = await stripe.checkout.sessions.create({
