@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
@@ -15,22 +16,18 @@ const HireSuccessPage: NextPage = () => {
     setLoaded(true)
   }, [])
 
-  console.log(router.query)
-
   return (
     <div>
-      {router.query?.session_id && (
-        <Script id="conversion">
-          {`gtag('event', 'conversion', {
+      <Script id="conversion">
+        {`
+            var urlParams = new URLSearchParams(window.location.search);
+            gtag('event', 'conversion', {
           'send_to': 'AW-11096552971/CxWlCO3m4IwYEIvsn6sp',
-          'value': ${Number(router.query.amount) / 100},
+          'value': parseInt(urlParams.get('price')) / 100,
           'currency': 'USD',
-          'transaction_id': '${router.query.session_id}',
-          'subscription_type': '${router.query.subscriptionType}'
+          'transaction_id': urlParams.get('session_id')
         })`}
-        </Script>
-      )}
-
+      </Script>
       <CloseHeader />
 
       <div className="max-w-[680px] mx-auto py-10 text-dark">
