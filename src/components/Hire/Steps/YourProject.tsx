@@ -11,6 +11,11 @@ import FormikTextInput from '../../shared/Formik/FormikTextInput/FormikTextInput
 
 const helpOptions = [
   {
+    label: "Verify that the developer's work is consistent with billing",
+    value:
+      "Verify that the developer's work is consistent with billing(on-going)",
+  },
+  {
     value: 'Guide and oversee development team(on-going)',
     label: 'Guide and oversee development team',
   },
@@ -180,7 +185,8 @@ const YourProject: React.FC = () => {
             <FormikTextArea
               name="description"
               className="mt-6"
-              label="Brief description of the project"
+              rows={10}
+              label="Brief description of the project & concerns"
               placeholder="Describe the project"
             />
 
