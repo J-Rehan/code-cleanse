@@ -12,11 +12,12 @@ import { cn } from '../../../utils/style'
 import PricingCard from '../PricingCard/PricingCard'
 import useStripeContext from '../../../hooks/useStripeContext'
 import API from '../../../core/services'
+import { SubscriptionType } from '../../../@types/common'
 
 const plans = [
   {
     id: '1',
-    value: 'OneTime',
+    value: 'OneTime' as SubscriptionType,
     title: 'One Time Review',
     cost: 2999,
     total: 2999,
@@ -28,7 +29,7 @@ const plans = [
   },
   {
     id: '3',
-    value: 'Monthly',
+    value: 'Monthly' as SubscriptionType,
     title: 'Monthly Plan',
     cost: 1999,
     total: 2999,
@@ -40,7 +41,7 @@ const plans = [
   },
   {
     id: '2',
-    value: 'Annual',
+    value: 'Annual' as SubscriptionType,
     title: 'Annual Plan',
     cost: 999,
     total: 12 * 999,
@@ -74,7 +75,12 @@ const HirePlanStep: React.FC = () => {
       setCurrentStep(step)
       formik.setFieldValue('plan', plans[step].value)
       setLoading(true)
-      const secret = await API.stripe.fetchClientSecret(plans[step].total)
+      const secret = await API.stripe.fetchClientSecret({
+        name: formik.values.fullName,
+        email: formik.values.email,
+        amount: plans[step].total,
+        subscriptionType: plans[step].value,
+      })
       setClientSecret(secret)
       setLoading(false)
     })()
@@ -84,8 +90,14 @@ const HirePlanStep: React.FC = () => {
     const selectedPlan = plans[currentStep]
     formik.setFieldValue('plan', selectedPlan.value)
 
+    // TODO: Refactor this code
     setLoading(true)
-    const secret = await API.stripe.fetchClientSecret(selectedPlan.total)
+    const secret = await API.stripe.fetchClientSecret({
+      name: formik.values.fullName,
+      email: formik.values.email,
+      amount: selectedPlan.total,
+      subscriptionType: selectedPlan.value,
+    })
     setClientSecret(secret)
 
     setLoading(false)
@@ -114,10 +126,6 @@ const HirePlanStep: React.FC = () => {
           {plans.map((plan, index) => {
             const handleCardSelect = async () => {
               formik.setFieldValue('plan', plan.value)
-              setLoading(true)
-              const secret = await API.stripe.fetchClientSecret(plan.total)
-              setClientSecret(secret)
-              setLoading(false)
             }
 
             return (
@@ -125,7 +133,6 @@ const HirePlanStep: React.FC = () => {
                 isRecommended={recommended === index}
                 {...plan}
                 key={plan.id}
-                loading={loading}
                 className="max-w-[268px]"
                 onClick={handleCardSelect}
                 selected={formik.values.plan === plan.value}
@@ -140,7 +147,10 @@ const HirePlanStep: React.FC = () => {
             centerMode
             centerSlidePercentage={80}
             showThumbs={false}
-            onChange={setCurrentStep}
+            onChange={(index) => {
+              formik.setFieldValue('plan', plans[index].value)
+              setCurrentStep(index)
+            }}
             renderIndicator={(goTo, selected) => {
               return (
                 <div
@@ -154,14 +164,16 @@ const HirePlanStep: React.FC = () => {
             }}
             showArrows={false}
             showStatus={false}
-            onClickItem={setCurrentStep}
+            onClickItem={(index) => {
+              formik.setFieldValue('plan', plans[index].value)
+              setCurrentStep(index)
+            }}
             selectedItem={currentStep}
           >
             {plans.map((plan, index) => {
               return (
                 <PricingCard
                   {...plan}
-                  loading={loading}
                   isRecommended={recommended === currentStep}
                   key={plan.id}
                   selected={index === currentStep}

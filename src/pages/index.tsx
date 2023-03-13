@@ -84,38 +84,38 @@ const HomePage: NextPage = () => {
                   <path
                     d="M12 16.875C14.0711 16.875 15.75 15.1961 15.75 13.125C15.75 11.0539 14.0711 9.375 12 9.375C9.92893 9.375 8.25 11.0539 8.25 13.125C8.25 15.1961 9.92893 16.875 12 16.875Z"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M18.375 10.875C19.2485 10.8735 20.1103 11.0762 20.8916 11.4669C21.6729 11.8575 22.3521 12.4253 22.875 13.125"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M1.125 13.125C1.64794 12.4253 2.32714 11.8575 3.10843 11.4669C3.88972 11.0762 4.75149 10.8735 5.625 10.875"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M6.59998 20.25C7.09387 19.2386 7.86193 18.3861 8.81664 17.7899C9.77136 17.1936 10.8744 16.8774 12 16.8774C13.1256 16.8774 14.2286 17.1936 15.1833 17.7899C16.138 18.3861 16.9061 19.2386 17.4 20.25"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M5.62499 10.875C5.0556 10.8756 4.49779 10.7141 4.01676 10.4094C3.53572 10.1048 3.15133 9.6695 2.90848 9.15449C2.66563 8.63947 2.57437 8.06598 2.64535 7.50102C2.71633 6.93607 2.94663 6.40298 3.30932 5.96404C3.67202 5.52511 4.15215 5.19845 4.6936 5.02225C5.23505 4.84605 5.81546 4.82758 6.36702 4.96899C6.91858 5.11041 7.4185 5.40587 7.80838 5.82085C8.19825 6.23583 8.46198 6.7532 8.56874 7.3125"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M15.4313 7.3125C15.538 6.7532 15.8018 6.23583 16.1916 5.82085C16.5815 5.40587 17.0814 5.11041 17.633 4.96899C18.1846 4.82758 18.765 4.84605 19.3064 5.02225C19.8479 5.19845 20.328 5.52511 20.6907 5.96404C21.0534 6.40298 21.2837 6.93607 21.3547 7.50102C21.4256 8.06598 21.3344 8.63947 21.0915 9.15449C20.8487 9.6695 20.4643 10.1048 19.9833 10.4094C19.5022 10.7141 18.9444 10.8756 18.375 10.875"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
 
@@ -133,32 +133,32 @@ const HomePage: NextPage = () => {
                   <path
                     d="M6.375 20.25C7.82475 20.25 9 19.0747 9 17.625C9 16.1753 7.82475 15 6.375 15C4.92525 15 3.75 16.1753 3.75 17.625C3.75 19.0747 4.92525 20.25 6.375 20.25Z"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M17.625 9C19.0747 9 20.25 7.82475 20.25 6.375C20.25 4.92525 19.0747 3.75 17.625 3.75C16.1753 3.75 15 4.92525 15 6.375C15 7.82475 16.1753 9 17.625 9Z"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M6.375 9C7.82475 9 9 7.82475 9 6.375C9 4.92525 7.82475 3.75 6.375 3.75C4.92525 3.75 3.75 4.92525 3.75 6.375C3.75 7.82475 4.92525 9 6.375 9Z"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M6.37502 15V14.25C6.37378 13.9542 6.43113 13.661 6.54376 13.3875C6.6564 13.114 6.82208 12.8654 7.03126 12.6562C7.24044 12.4471 7.48897 12.2814 7.76252 12.1687C8.03606 12.0561 8.3292 11.9988 8.62502 12H15.375C15.6708 12.0012 15.964 11.9439 16.2375 11.8313C16.5111 11.7186 16.7596 11.5529 16.9688 11.3438C17.178 11.1346 17.3436 10.886 17.4563 10.6125C17.5689 10.339 17.6263 10.0458 17.625 9.75V9"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M6.375 9V15"
                     stroke="#333333"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
 

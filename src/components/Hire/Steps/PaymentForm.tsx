@@ -19,6 +19,7 @@ const PaymentForm: React.FC<PaymentFormProps> = (props) => {
   const elements = useElements()
 
   const handleProceed = async () => {
+    formik.setSubmitting(true)
     const { error } = await stripe!.confirmPayment({
       elements: elements!,
       confirmParams: {

@@ -1,18 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
 
+const domainUrl = process.env.DOMAIN_URL || 'https://www.codecleanse.com'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2022-11-15',
 })
-
-const OneTimeProductId =
-  process.env.NODE_ENV !== 'production' ? 'prod_NW8ACGCE35d51z' : ''
-
-const MonthlyProductId =
-  process.env.NODE_ENV !== 'production' ? 'prod_NW8CrZoLz3zICt' : ''
-
-const AnnualProductId =
-  process.env.NODE_ENV !== 'production' ? 'prod_NW8DFKk43figos' : ''
 
 const subscriptions = {
   OneTime: {
@@ -56,22 +48,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).end()
   }
   try {
-    const { name, email, amount, subscriptionType } = req.body as {
+    const { name, email, subscriptionType } = req.body as {
       name: string
       email: string
-      amount: number
       subscriptionType: keyof typeof subscriptions
     }
-    console.log(req.body)
 
-    if (!['Monthly', 'OneTime', 'Annual'].includes(subscriptionType)) {
-      return res.status(400).send({
-        success: false,
-        message: 'Insufficient Parameters',
-      })
-    }
-
-    if (subscriptionType === 'Monthly' && (!name || !email)) {
+    if (
+      !['Monthly', 'OneTime', 'Annual'].includes(subscriptionType) ||
+      !name ||
+      !email
+    ) {
       return res.status(400).send({
         success: false,
         message: 'Insufficient Parameters',
@@ -79,47 +66,34 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const customer = await stripe.customers.create({
-      email,
       name,
+      email,
     })
 
-    let phases: Stripe.SubscriptionScheduleCreateParams.Phase[] = []
-
-    if (subscriptionType === 'Monthly') {
-      // first one time of 2999
-      phases.push({
-        iterations: 1,
-        items: [
-          {
-            price: subscriptions.Monthly.prices.oneTime,
-          },
-        ],
-      })
-    }
-
-    let schedule = await stripe.subscriptionSchedules.create({
+    const session = await stripe.checkout.sessions.create({
       customer: customer.id,
-      start_date: 'now',
-      phases: [
-        ...phases,
+      mode: 'subscription',
+      metadata: {
+        name,
+        email,
+      },
+      line_items: [
         {
-          iterations: subscriptionType === 'Monthly' ? 11 : 1,
-          items: [{ price: subscriptions[subscriptionType].prices.default }],
+          price: subscriptions[subscriptionType].prices.default,
+          quantity: 1,
         },
       ],
-      expand: ['subscription'],
+      success_url: `${domainUrl}/hire-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${domainUrl}/hire-cancel`,
     })
 
-    console.log(schedule)
-
-    res.status(200).json({
-      clientSecret: (schedule as any).latest_invoice.payment_intent
-        .client_secret,
-    })
+    return res.redirect(303, session.url)
   } catch (e) {
-    return res.status(400).send({
-      success: false,
-      message: (e as any).message,
+    res.status(400)
+    return res.send({
+      error: {
+        message: e.message,
+      },
     })
   }
 }

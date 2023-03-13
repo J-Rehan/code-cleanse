@@ -1,4 +1,6 @@
-import React from 'react'
+import { useFormikContext } from 'formik'
+import React, { memo, useRef } from 'react'
+import { initialValues } from '../../../pages/hire'
 import { cn } from '../../../utils/style'
 import Button from '../../shared/Button/Button'
 
@@ -24,6 +26,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 })
 
 const PricingCard: React.FC<PricingCardProps> = (props) => {
+  const formik = useFormikContext<typeof initialValues>()
   const {
     title,
     cost,
@@ -38,6 +41,9 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
     onSelect,
     onClick,
   } = props
+  const ref = useRef<HTMLFormElement>()
+
+  console.log(formik.values.plan)
 
   return (
     <div
@@ -77,21 +83,37 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
       </div>
       <div className={cn('p-6', selected ? 'pb-4' : 'pb-8')}>
         <p className="text-sm text-center">{description}</p>
-        {selected && (
-          <Button
-            onClick={(event) => {
-              event.stopPropagation()
-              onSelect()
-            }}
-            type="button"
-            className="py-3 mt-10"
-          >
-            {loading ? 'Selecting...' : 'Select Plan'}
-          </Button>
-        )}
+
+        <form ref={ref} action="/api/create-checkout-session" method="POST">
+          <input
+            className="hidden"
+            name="name"
+            value={formik.values.fullName}
+          />
+          <input className="hidden" name="email" value={formik.values.email} />
+          <input
+            className="hidden"
+            name="subscriptionType"
+            value={formik.values.plan}
+          />
+          {selected && (
+            <Button
+              onClick={(event) => {
+                event.stopPropagation()
+                // onSelect()
+                formik.submitForm()
+                ref.current.submit()
+              }}
+              type="button"
+              className="py-3 mt-10"
+            >
+              {loading ? 'Selecting...' : 'Select Plan'}
+            </Button>
+          )}
+        </form>
       </div>
     </div>
   )
 }
 
-export default PricingCard
+export default memo(PricingCard)

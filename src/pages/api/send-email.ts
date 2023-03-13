@@ -7,9 +7,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const { email, firstName, projectName } = req.body
     if (!email || !firstName || !projectName) {
-      return res.status(500).json({
-        success: true,
-        message: 'Unexpected error occurred, please try again',
+      return res.status(400).json({
+        success: false,
+        message: 'Insufficient parameters',
       })
     }
     try {
