@@ -11,40 +11,40 @@ const subscriptions = {
     productId:
       process.env.NODE_ENV !== 'production'
         ? 'prod_NW8ACGCE35d51z'
-        : 'prod_NW8ACGCE35d51z',
+        : 'prod_NWHAQnE0dJ7GOo',
     prices: {
       default:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5tnEw4G60H813WVWpTSVn'
-          : 'price_1Ml5tnEw4G60H813WVWpTSVn',
+          : 'price_1MlEcQEw4G60H813ahiSjg36',
     },
   },
   Monthly: {
     productId:
       process.env.NODE_ENV !== 'production'
         ? 'prod_NW8CrZoLz3zICt'
-        : 'prod_NW8CrZoLz3zICt',
+        : 'prod_NWHAwLdyxLauCO',
     prices: {
       recurring:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5vrEw4G60H813GUXe9ZTm'
-          : 'price_1Ml5vrEw4G60H813GUXe9ZTm',
+          : 'price_1MlEcKEw4G60H813M8uRrhQW',
       default:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5vrEw4G60H813wwiHfvmQ'
-          : 'price_1Ml5vrEw4G60H813wwiHfvmQ',
+          : 'price_1MlEcKEw4G60H813ArS0vIxA',
     },
   },
   Annual: {
     productId:
       process.env.NODE_ENV !== 'production'
         ? 'prod_NW8DFKk43figos'
-        : 'prod_NW8DFKk43figos',
+        : 'prod_NWHAlaU2I86EaT',
     prices: {
       default:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5wwEw4G60H8132gL1ExuY'
-          : 'price_1Ml5wwEw4G60H8132gL1ExuY',
+          : 'price_1MlEc0Ew4G60H813ZXaqJqF0',
     },
   },
 }
