@@ -9,23 +9,27 @@ import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const HireSuccessPage: NextPage = () => {
   const [loaded, setLoaded] = useState(false)
-  const [rootEl, setRootEl] = useState({})
   const router = useRouter()
 
   useEffect(() => {
     setLoaded(true)
   }, [])
 
+  console.log(router.query)
+
   return (
     <div>
-      <Script id="conversion">
-        {`gtag('event', 'conversion', {
-            'send_to': 'AW-11096552971/CxWlCO3m4IwYEIvsn6sp',
-            'value': ${Number(router.query.amount) / 100},
-            'currency': 'USD',
-            'transaction_id': '${router.query.session_id}'
+      {router.query?.session_id && (
+        <Script id="conversion">
+          {`gtag('event', 'conversion', {
+          'send_to': 'AW-11096552971/CxWlCO3m4IwYEIvsn6sp',
+          'value': ${Number(router.query.amount) / 100},
+          'currency': 'USD',
+          'transaction_id': '${router.query.session_id}',
+          'subscription_type': '${router.query.subscriptionType}'
         })`}
-      </Script>
+        </Script>
+      )}
 
       <CloseHeader />
 
