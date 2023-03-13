@@ -97,7 +97,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       discounts: [
         {
           coupon:
-            process.env.NODE_ENV === 'production' ? 'AxPxrp0t' : 'sIlIzePy',
+            process.env.NODE_ENV === 'production' ? 'pNyOvKio' : 'sIlIzePy',
         },
       ],
       line_items: [
