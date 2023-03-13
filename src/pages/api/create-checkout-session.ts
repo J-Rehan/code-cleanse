@@ -82,6 +82,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       //   process.env.NODE_ENV === 'production' ? undefined : testClock.id,
     })
 
+    const price = await stripe.prices.retrieve(
+      subscriptions[subscriptionType].prices.default,
+    )
+
     const session = await stripe.checkout.sessions.create({
       customer: customer.id,
       mode: 'subscription',
@@ -96,7 +100,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           quantity: 1,
         },
       ],
-      success_url: `${domainUrl}/hire-success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${domainUrl}/hire-success?session_id={CHECKOUT_SESSION_ID}&name=${encodeURIComponent(
+        name,
+      )}&email=${encodeURIComponent(
+        email,
+      )}&subscriptionType=${subscriptionType}&price=${price.unit_amount}`,
       cancel_url: `${domainUrl}/hire-cancel`,
     })
 

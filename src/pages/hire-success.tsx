@@ -1,15 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { PopupButton } from 'react-calendly'
-import Button from '../components/shared/Button/Button'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const HireSuccessPage: NextPage = () => {
   const [loaded, setLoaded] = useState(false)
   const [rootEl, setRootEl] = useState({})
+  const router = useRouter()
 
   useEffect(() => {
     setLoaded(true)
@@ -17,6 +18,15 @@ const HireSuccessPage: NextPage = () => {
 
   return (
     <div>
+      <Script id="conversion">
+        {`gtag('event', 'conversion', {
+            'send_to': 'AW-11096552971/CxWlCO3m4IwYEIvsn6sp',
+            'value': ${Number(router.query.amount) / 100},
+            'currency': 'USD',
+            'transaction_id': '${router.query.session_id}'
+        })`}
+      </Script>
+
       <CloseHeader />
 
       <div className="max-w-[680px] mx-auto py-10 text-dark">
