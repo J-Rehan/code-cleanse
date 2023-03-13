@@ -62,7 +62,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       amount: number
       subscriptionType: keyof typeof subscriptions
     }
-    console.log(req.body)
 
     if (!['Monthly', 'OneTime', 'Annual'].includes(subscriptionType)) {
       return res.status(400).send({
@@ -109,8 +108,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       ],
       expand: ['subscription'],
     })
-
-    console.log(schedule)
 
     res.status(200).json({
       clientSecret: (schedule as any).latest_invoice.payment_intent

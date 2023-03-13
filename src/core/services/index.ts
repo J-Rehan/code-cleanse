@@ -1,7 +1,3 @@
-import * as stripeServices from './stripe'
-
-const API = {
-  stripe: stripeServices,
-}
+const API = {}
 
 export default API

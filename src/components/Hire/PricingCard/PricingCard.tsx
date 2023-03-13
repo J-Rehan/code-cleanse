@@ -43,8 +43,6 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
   } = props
   const ref = useRef<HTMLFormElement>()
 
-  console.log(formik.values.plan)
-
   return (
     <div
       className={cn(

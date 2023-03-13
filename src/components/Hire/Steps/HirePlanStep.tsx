@@ -74,15 +74,6 @@ const HirePlanStep: React.FC = () => {
       setRecommended(step)
       setCurrentStep(step)
       formik.setFieldValue('plan', plans[step].value)
-      setLoading(true)
-      const secret = await API.stripe.fetchClientSecret({
-        name: formik.values.fullName,
-        email: formik.values.email,
-        amount: plans[step].total,
-        subscriptionType: plans[step].value,
-      })
-      setClientSecret(secret)
-      setLoading(false)
     })()
   }, [])
 
@@ -90,17 +81,6 @@ const HirePlanStep: React.FC = () => {
     const selectedPlan = plans[currentStep]
     formik.setFieldValue('plan', selectedPlan.value)
 
-    // TODO: Refactor this code
-    setLoading(true)
-    const secret = await API.stripe.fetchClientSecret({
-      name: formik.values.fullName,
-      email: formik.values.email,
-      amount: selectedPlan.total,
-      subscriptionType: selectedPlan.value,
-    })
-    setClientSecret(secret)
-
-    setLoading(false)
     dispatch({ type: 'NEXT_STEP' })
   }
 

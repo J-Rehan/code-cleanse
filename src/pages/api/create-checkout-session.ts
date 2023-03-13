@@ -21,13 +21,13 @@ const subscriptions = {
     productId:
       process.env.NODE_ENV !== 'production' ? 'prod_NW8CrZoLz3zICt' : '',
     prices: {
-      oneTime:
+      recurring:
         process.env.NODE_ENV !== 'production'
-          ? 'price_1Ml5vrEw4G60H813wwiHfvmQ'
+          ? 'price_1Ml5vrEw4G60H813GUXe9ZTm'
           : '',
       default:
         process.env.NODE_ENV !== 'production'
-          ? 'price_1Ml5vrEw4G60H813GUXe9ZTm'
+          ? 'price_1Ml5vrEw4G60H813wwiHfvmQ'
           : '',
     },
   },
@@ -65,9 +65,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       })
     }
 
+    const testClock = await stripe.testHelpers.testClocks.create({
+      frozen_time: Number((new Date().getTime() / 1000).toFixed(0)),
+    })
+
     const customer = await stripe.customers.create({
       name,
       email,
+      ...(process.env.NODE_ENV !== 'production' && {
+        test_clock: testClock.id,
+      }),
     })
 
     const session = await stripe.checkout.sessions.create({
@@ -76,6 +83,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       metadata: {
         name,
         email,
+        subscriptionType,
       },
       line_items: [
         {
