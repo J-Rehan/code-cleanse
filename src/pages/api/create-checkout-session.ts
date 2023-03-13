@@ -9,36 +9,42 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 const subscriptions = {
   OneTime: {
     productId:
-      process.env.NODE_ENV !== 'production' ? 'prod_NW8ACGCE35d51z' : '',
+      process.env.NODE_ENV !== 'production'
+        ? 'prod_NW8ACGCE35d51z'
+        : 'prod_NW8ACGCE35d51z',
     prices: {
       default:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5tnEw4G60H813WVWpTSVn'
-          : '',
+          : 'price_1Ml5tnEw4G60H813WVWpTSVn',
     },
   },
   Monthly: {
     productId:
-      process.env.NODE_ENV !== 'production' ? 'prod_NW8CrZoLz3zICt' : '',
+      process.env.NODE_ENV !== 'production'
+        ? 'prod_NW8CrZoLz3zICt'
+        : 'prod_NW8CrZoLz3zICt',
     prices: {
       recurring:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5vrEw4G60H813GUXe9ZTm'
-          : '',
+          : 'price_1Ml5vrEw4G60H813GUXe9ZTm',
       default:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5vrEw4G60H813wwiHfvmQ'
-          : '',
+          : 'price_1Ml5vrEw4G60H813wwiHfvmQ',
     },
   },
   Annual: {
     productId:
-      process.env.NODE_ENV !== 'production' ? 'prod_NW8DFKk43figos' : '',
+      process.env.NODE_ENV !== 'production'
+        ? 'prod_NW8DFKk43figos'
+        : 'prod_NW8DFKk43figos',
     prices: {
       default:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5wwEw4G60H8132gL1ExuY'
-          : '',
+          : 'price_1Ml5wwEw4G60H8132gL1ExuY',
     },
   },
 }
