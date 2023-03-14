@@ -16,21 +16,18 @@ import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 const features = [
   {
     name: 'Existing Product Review',
-    image: '/images/services/product-review.jpeg',
     description:
       'For non-technical founders who have built an application that already has a lot of issues and are trying to get to the root of the problem and find a solution, we conduct a thorough review of the code and system to provide a game plan to help get the product to production.',
     icon: GlobeAltIcon,
   },
   {
     name: 'Monthly Consulting',
-    image: '/images/services/monthly-consulting.jpeg',
     description:
       'For non-technical founders who are in the early stages of development and have hired a development team, we recommend using our monthly consulting service until the project is complete. This will ensure that the code is of high quality every month, the developers are held accountable every month, and the project is scalable and bug-free.',
     icon: ScaleIcon,
   },
   {
     name: 'Hiring Assistance and Monthly Consulting',
-    image: '/images/services/hiring-assistance.jpeg',
     description:
       'For non-technical founders who need help hiring and also want to keep us on a monthly basis to ensure development is being done the right way, the product is scalable, and bug-free, we offer our hiring assistance service in addition to our monthly consulting service.',
     icon: BoltIcon,

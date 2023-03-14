@@ -239,7 +239,7 @@ const HomePage: NextPage = () => {
                         height={24}
                         className="mt-1.5"
                         alt="Previously at"
-                        src={`/images/previously-at/${engineer.lastCompany}.png`}
+                        src={engineer.lastCompanyImageUrl}
                       />
                     </div>
                   )
@@ -249,7 +249,7 @@ const HomePage: NextPage = () => {
                   <Image
                     width={104}
                     height={104}
-                    src="/images/group-image.png"
+                    src="/images/engineers/group-image.png"
                     alt="Group Image"
                     className="rounded-[28px]"
                   />
