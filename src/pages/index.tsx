@@ -244,28 +244,6 @@ const HomePage: NextPage = () => {
                     </div>
                   )
                 })}
-
-                <div className="flex flex-col items-center">
-                  <Image
-                    width={104}
-                    height={104}
-                    src="/images/engineers/group-image.png"
-                    alt="Group Image"
-                    className="rounded-[28px]"
-                  />
-                  <p className="min-w-[164px] text-dark mt-4 text-center font-semibold text-base">
-                    1000+
-                  </p>
-                  <p className="text-sm text-dark">Top Engineers</p>
-                  <p className="mt-3 text-sm text-dark2">Coming from...</p>
-                  <div className="flex space-x-2">
-                    <img
-                      className="object-contain mt-1.5 w-[120px] h-[24px]"
-                      alt="Previously at"
-                      src="/images/previously-at/others.png"
-                    />
-                  </div>
-                </div>
               </div>
             </div>
           </div>
