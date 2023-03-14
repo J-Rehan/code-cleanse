@@ -17,7 +17,7 @@ export const engineers = [
     id: '3',
     name: 'Zsolt Racz',
     role: 'Sr. Backend Enginner',
-    imageUrl: '/zsolt.jpeg',
+    imageUrl: '/images/engineers/zsolt.jpeg',
     lastCompanyImageUrl: '/images/previously-at/reddit.png',
   },
   {
@@ -26,5 +26,12 @@ export const engineers = [
     role: 'Full Stack Engineer',
     imageUrl: '/images/engineers/asim.jpeg',
     lastCompanyImageUrl: '/images/previously-at/accedo.png',
+  },
+  {
+    id: '5',
+    name: '1000+',
+    role: 'Top Engineers',
+    imageUrl: '/images/engineers/group-image.png',
+    lastCompanyImageUrl: '/images/previously-at/others.png',
   },
 ]
