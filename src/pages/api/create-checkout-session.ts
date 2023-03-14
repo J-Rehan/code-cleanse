@@ -94,12 +94,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         email,
         subscriptionType,
       },
-      discounts: [
-        {
-          coupon:
-            process.env.NODE_ENV === 'production' ? 'pNyOvKio' : 'sIlIzePy',
-        },
-      ],
       line_items: [
         {
           price: subscriptions[subscriptionType].prices.default,
