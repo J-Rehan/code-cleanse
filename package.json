@@ -27,6 +27,7 @@
     "contentful-typescript-codegen": "^3.4.0",
     "facebook-nodejs-business-sdk": "^16.0.0",
     "firebase": "^9.17.2",
+    "firebase-admin": "^11.5.0",
     "formik": "^2.2.9",
     "framer-motion": "^8.5.2",
     "micro": "^10.0.1",

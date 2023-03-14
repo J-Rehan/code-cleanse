@@ -1,5 +1,7 @@
+import { addDoc, collection } from 'firebase/firestore'
 import { useFormikContext } from 'formik'
-import React, { memo, useRef } from 'react'
+import React, { memo, useRef, useState } from 'react'
+import { firestore } from '../../../core/lib/firebase'
 import { initialValues } from '../../../pages/hire'
 import { cn } from '../../../utils/style'
 import Button from '../../shared/Button/Button'
@@ -41,6 +43,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
     onSelect,
     onClick,
   } = props
+  const [processing, setProcessing] = useState(false)
   const ref = useRef<HTMLFormElement>()
 
   return (
@@ -89,6 +92,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
             value={formik.values.fullName}
           />
           <input className="hidden" name="email" value={formik.values.email} />
+          <input id="firebaseUserId" className="hidden" name="firebaseUserId" />
           <input
             className="hidden"
             name="subscriptionType"
@@ -96,16 +100,66 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
           />
           {selected && (
             <Button
-              onClick={(event) => {
+              disabled={processing}
+              onClick={async (event) => {
                 event.stopPropagation()
-                // onSelect()
-                formik.submitForm()
-                ref.current.submit()
+                const { values } = formik
+
+                setProcessing(true)
+                const collectionName =
+                  process.env.NODE_ENV === 'production' ? 'users' : 'dev-users'
+
+                const firebaseRes = await addDoc(
+                  collection(firestore, collectionName),
+                  {
+                    name: values.fullName,
+                    email: values.email,
+                    phone: values.phone,
+                    projectName: values.projectName,
+                    helpMethods: values.helpMethod,
+                    productCategory: values.productCategory.split(','),
+                    description: values.description,
+                    developers: values.developers,
+                    plan: values.plan,
+                    paid: false,
+                  },
+                )
+
+                const form = document.createElement('form')
+                form.method = 'POST'
+                form.action = '/api/create-checkout-session'
+
+                const params = {
+                  name: values.fullName,
+                  email: values.email,
+                  subscriptionType: values.plan,
+                  firebaseUserId: firebaseRes.id,
+                }
+
+                for (const key in params) {
+                  if (params.hasOwnProperty(key)) {
+                    const hiddenField = document.createElement('input')
+                    hiddenField.type = 'hidden'
+                    hiddenField.name = key
+                    hiddenField.value = params[key]
+
+                    form.appendChild(hiddenField)
+                  }
+                }
+
+                document.body.appendChild(form)
+
+                form.submit()
+
+                // ref.current.submit()
+
+                setProcessing(false)
+                // formik.resetForm()
               }}
               type="button"
               className="py-3 mt-10"
             >
-              {loading ? 'Selecting...' : 'Select Plan'}
+              {processing ? 'Selecting...' : 'Select Plan'}
             </Button>
           )}
         </form>

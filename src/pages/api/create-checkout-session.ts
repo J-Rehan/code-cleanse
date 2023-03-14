@@ -28,11 +28,11 @@ const subscriptions = {
       recurring:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5vrEw4G60H813GUXe9ZTm'
-          : 'price_1MlEcKEw4G60H813M8uRrhQW',
+          : 'price_1MlEcKEw4G60H813ArS0vIxA',
       default:
         process.env.NODE_ENV !== 'production'
           ? 'price_1Ml5vrEw4G60H813wwiHfvmQ'
-          : 'price_1MlEcKEw4G60H813ArS0vIxA',
+          : 'price_1MlEcKEw4G60H813M8uRrhQW',
     },
   },
   Annual: {
@@ -54,10 +54,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).end()
   }
   try {
-    const { name, email, subscriptionType } = req.body as {
+    const { name, email, subscriptionType, firebaseUserId } = req.body as {
       name: string
       email: string
       subscriptionType: keyof typeof subscriptions
+      firebaseUserId: string
     }
 
     if (
@@ -71,28 +72,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       })
     }
 
-    // const testClock = await stripe.testHelpers.testClocks.create({
-    //   frozen_time: Number((new Date().getTime() / 1000).toFixed(0)),
-    // })
-
-    const customer = await stripe.customers.create({
-      name,
-      email,
-      // test_clock:
-      //   process.env.NODE_ENV === 'production' ? undefined : testClock.id,
-    })
-
     const price = await stripe.prices.retrieve(
       subscriptions[subscriptionType].prices.default,
     )
 
     const session = await stripe.checkout.sessions.create({
-      customer: customer.id,
       mode: 'subscription',
       metadata: {
-        name,
-        email,
-        subscriptionType,
+        firebaseUserId,
       },
       line_items: [
         {
@@ -104,7 +91,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         name,
       )}&email=${encodeURIComponent(
         email,
-      )}&subscriptionType=${subscriptionType}&price=${price.unit_amount}`,
+      )}&subscriptionType=${subscriptionType}&price=${
+        price.unit_amount
+      }&firebaseUserId=${firebaseUserId}`,
       cancel_url: `${domainUrl}/hire-cancel`,
     })
 

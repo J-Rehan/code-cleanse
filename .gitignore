@@ -6,6 +6,8 @@
 .pnp.js
 .env.development
 
+/**/firebase-admin-sdk.json
+
 # testing
 /coverage
 

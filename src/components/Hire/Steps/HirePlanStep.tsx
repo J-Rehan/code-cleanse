@@ -57,8 +57,6 @@ const plans = [
 const HirePlanStep: React.FC = () => {
   const formik = useFormikContext<typeof initialValues>()
   const { dispatch } = useSteps()
-  const { setClientSecret } = useStripeContext()
-  const [loading, setLoading] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [recommended, setRecommended] = useState<number | null>(null)
 

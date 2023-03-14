@@ -1,21 +1,87 @@
 /* eslint-disable @next/next/no-img-element */
-import { NextPage } from 'next'
-import Head from 'next/head'
+import { GetServerSideProps, NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
+
+import Stripe from 'stripe'
 import { PopupButton } from 'react-calendly'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
+import * as admin from 'firebase-admin'
+import sgMail from '@sendgrid/mail'
+import template from '../core/email-templates/paymentSuccess'
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  try {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_SDK as string)
+    if (!admin.apps.length) {
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+      })
+    }
+    const firestore = admin.firestore()
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2022-11-15',
+    })
+    const { session_id } = query
+    const session = await stripe.checkout.sessions.retrieve(
+      session_id as string,
+    )
+
+    if (!session) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/hire-cancel',
+        },
+        props: {},
+      }
+    }
+
+    const { firebaseUserId } = session.metadata
+    const collectionName =
+      process.env.NODE_ENV === 'production' ? 'users' : 'dev-users'
+
+    await firestore
+      .collection(collectionName)
+      .doc(firebaseUserId)
+      .update({ paid: true })
+
+    const docRes = await firestore
+      .collection(collectionName)
+      .doc(firebaseUserId)
+      .get()
+    const doc = docRes.data()
+
+    const msg = {
+      to: doc.email,
+      from: 'welcome@codecleanse.com',
+      subject: `Welcome ${
+        doc.name.split(' ')[0]
+      }! Next Steps for Your Code Cleanse Service`,
+      html: template
+        .replace('{firstName}', doc.name.split(' ')[0])
+        .replace('{projectName}', doc.projectName),
+    }
+    await sgMail.send(msg)
+
+    return {
+      props: {},
+    }
+  } catch (error) {
+    console.log(error)
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/hire-cancel',
+      },
+      props: {},
+    }
+  }
+}
 
 const HireSuccessPage: NextPage = () => {
-  const [loaded, setLoaded] = useState(false)
-  const router = useRouter()
-
-  useEffect(() => {
-    setLoaded(true)
-  }, [])
-
   return (
     <div>
       <Script id="conversion">

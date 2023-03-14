@@ -36,43 +36,7 @@ const HirePage: NextPage = () => {
     initialValues,
     validateOnMount: true,
     validationSchema: hireValidationSchema,
-    async onSubmit(values, formik) {
-      formik.setSubmitting(true)
-      formik.setFieldValue('errorMessage', '')
-      await addDoc(collection(firestore, 'users'), {
-        name: values.fullName,
-        email: values.email,
-        phone: values.phone,
-        projectName: values.projectName,
-        helpMethods: values.helpMethod,
-        productCategory: values.productCategory.split(','),
-        description: values.description,
-        developers: values.developers,
-        plan: values.plan,
-      })
-
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: values.email,
-          firstName: values.fullName.split(' ')[0],
-          projectName: values.projectName,
-        }),
-      }).then((res) => res.json())
-
-      if (res.success) {
-        router.push('/hire-success')
-        formik.resetForm()
-        formik.setSubmitting(false)
-        dispatch({ type: 'SET_STEP', payload: 0 })
-      } else {
-        console.log(res)
-      }
-    },
+    async onSubmit(values, formik) {},
   })
 
   useEffect(() => {
