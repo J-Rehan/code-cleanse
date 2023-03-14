@@ -8,6 +8,10 @@ export default function Document() {
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
+        <meta
+          name="facebook-domain-verification"
+          content="m7lr1r0pia1gncrokpslwjnqk6ekcu"
+        />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
