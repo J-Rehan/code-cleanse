@@ -1048,6 +1048,11 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/facebook-nodejs-business-sdk@^15.0.2":
+  version "15.0.2"
+  resolved "https://registry.yarnpkg.com/@types/facebook-nodejs-business-sdk/-/facebook-nodejs-business-sdk-15.0.2.tgz#edc392b5df18e0e4836eedafbfc4ef1718d31565"
+  integrity sha512-9NBRIT9uZ35VNm56N3QmWOHu/BU3YvZYCRQorzU5F8sYjQZSIEGOeMeEAQLnbykhBSghicQ2lPEUmjZLokdOdg==
+
 "@types/glob@*":
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-8.1.0.tgz#b63e70155391b0584dce44e7ea25190bbc38f2fc"

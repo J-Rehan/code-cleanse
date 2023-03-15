@@ -1,18 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetServerSideProps, NextPage } from 'next'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import Script from 'next/script'
+import * as bizSdk from 'facebook-nodejs-business-sdk'
 
 import Stripe from 'stripe'
-import { PopupButton } from 'react-calendly'
+import { PopupButton, useCalendlyEventListener } from 'react-calendly'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 import * as admin from 'firebase-admin'
 import sgMail from '@sendgrid/mail'
 import template from '../core/email-templates/paymentSuccess'
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async (request) => {
   try {
+    const { query, req } = request
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_SDK as string)
     if (!admin.apps.length) {
@@ -43,28 +44,74 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const collectionName =
       process.env.NODE_ENV === 'production' ? 'users' : 'dev-users'
 
-    await firestore
-      .collection(collectionName)
-      .doc(firebaseUserId)
-      .update({ paid: true })
-
     const docRes = await firestore
       .collection(collectionName)
       .doc(firebaseUserId)
       .get()
     const doc = docRes.data()
 
-    const msg = {
-      to: doc.email,
-      from: 'welcome@codecleanse.com',
-      subject: `Welcome ${
-        doc.name.split(' ')[0]
-      }! Next Steps for Your Code Cleanse Service`,
-      html: template
-        .replace('{firstName}', doc.name.split(' ')[0])
-        .replace('{projectName}', doc.projectName),
+    if (!doc.emailSent) {
+      const msg = {
+        to: doc.email,
+        from: 'welcome@codecleanse.com',
+        subject: `Welcome ${
+          doc.name.split(' ')[0]
+        }! Next Steps for Your Code Cleanse Service`,
+        html: template
+          .replace('{firstName}', doc.name.split(' ')[0])
+          .replace('{projectName}', doc.projectName),
+      }
+      await sgMail.send(msg)
     }
-    await sgMail.send(msg)
+
+    if (!doc.facebookTrackingLogged) {
+      const { Content, CustomData, EventRequest, UserData, ServerEvent } =
+        bizSdk
+      const fbConversionAccessToken = process.env.FB_CONVERSION_ACCESS_TOKEN
+      const pixelId = process.env.FB_PIXEL_ID
+
+      bizSdk.FacebookAdsApi.init(fbConversionAccessToken)
+      let currentTimestamp = Math.floor(new Date().getTime() / 1000)
+      const userData = new UserData()
+        .setLastName(doc.name?.split(' ')[1])
+        .setClientUserAgent(req.headers['user-agent'])
+        .setEmail(doc.email)
+        .setFirstName(doc.name?.split(' ')[0])
+        .setClientIpAddress(
+          req.socket.remoteAddress || req.connection.remoteAddress,
+        )
+        .setPhone(doc.phone)
+        .setFbp(`fb.1.${currentTimestamp}.1098115397`)
+        .setFbc(`fb.1.${currentTimestamp}.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890`)
+
+      const content = new Content().setId(doc.plan).setQuantity(1)
+
+      const customData = new CustomData()
+        .setContents([content])
+        .setCurrency('usd')
+        .setValue(session.amount_total / 100)
+
+      const serverEvent = new ServerEvent()
+        .setCustomData(customData)
+        .setEventName('Purchase')
+        .setEventTime(currentTimestamp)
+        .setEventSourceUrl('https://www.codecleanse.com')
+        .setActionSource('website')
+        .setEventId('Purchase')
+        .setUserData(userData)
+
+      const eventsData = [serverEvent]
+      const eventRequest = new EventRequest(
+        fbConversionAccessToken,
+        pixelId,
+      ).setEvents(eventsData)
+      eventRequest.execute()
+    }
+
+    await firestore
+      .collection(collectionName)
+      .doc(firebaseUserId)
+      .update({ paid: true, emailSent: true, facebookTrackingLogged: true })
 
     return {
       props: {},
@@ -82,6 +129,20 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 }
 
 const HireSuccessPage: NextPage = () => {
+  useCalendlyEventListener({
+    onEventScheduled: (e) => {
+      fetch('/api/log-schedule-event', {
+        method: 'POST',
+      })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+  })
+
   return (
     <div>
       <Script id="conversion">
