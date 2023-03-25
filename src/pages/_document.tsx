@@ -12,6 +12,10 @@ export default function Document() {
           name="facebook-domain-verification"
           content="m7lr1r0pia1gncrokpslwjnqk6ekcu"
         />
+        <meta
+          name="google-site-verification"
+          content="c6vbK_MhR4xsDpHXCjFs84nZ1XvUqqWwFA47PNHUG08"
+        />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
