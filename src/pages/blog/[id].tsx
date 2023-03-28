@@ -7,6 +7,7 @@ import { IBlog, IBlogFields } from '../../@types/generated/contentful'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useRouter } from 'next/router'
 import CloseHeader from '../../components/shared/CloseHeader/CloseHeader'
+import Head from 'next/head'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const client = createClient({
@@ -69,6 +70,9 @@ const BlogDetailPage: NextPage<Props> = (props) => {
 
   return (
     <div>
+      <Head>
+        <title>{blog.fields.title} | Code Cleanse</title>
+      </Head>
       <CloseHeader />
       <div className="max-w-[1200px] mx-auto px-16">
         <div className="mt-6 flex items-center">

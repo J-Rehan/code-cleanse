@@ -46,11 +46,13 @@ const HirePage: NextPage = () => {
 
   return (
     <StripeContextProvider>
+      <Head>
+        <title>
+          Hire Experts - {state.steps[state.currentStep].name} | Code Cleanse
+        </title>
+      </Head>
       <FormikProvider value={formik}>
         <Form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
-          <Head>
-            <title>Hire Code Cleanse</title>
-          </Head>
           <div className="h-screen flex flex-col md:bg-[#F8F8F8]">
             <CloseHeader />
             <StepsHeader />

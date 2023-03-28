@@ -5,10 +5,14 @@ import { features } from '../core/config/app'
 import Button from '../components/shared/Button/Button'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 import StickyAction from '../components/shared/StickyAction/StickyAction'
+import Head from 'next/head'
 
 const BeginHirePage: NextPage = () => {
   return (
     <div>
+      <Head>
+        <title>Hire Overview | Code Cleanse</title>
+      </Head>
       <CloseHeader />
       <StickyAction redirectUrl="/hire" scrollThreshold={0} />
       <div className="px-8 mt-10 py-10 bg-[#f8f8f8]">

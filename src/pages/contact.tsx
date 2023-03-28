@@ -5,11 +5,15 @@ import { Switch } from '@headlessui/react'
 import { useState } from 'react'
 import { cn } from '../utils/style'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
+import Head from 'next/head'
 
 const ContactPage: NextPage = () => {
   const [agreed, setAgreed] = useState(false)
   return (
     <div>
+      <Head>
+        <title>Contact | Code Cleanse</title>
+      </Head>
       <CloseHeader />
 
       <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 lg:py-24">

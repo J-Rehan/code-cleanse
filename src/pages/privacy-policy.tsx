@@ -1,9 +1,13 @@
 import { NextPage } from 'next'
+import Head from 'next/head'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 
 const PrivacyPolicyPage: NextPage = () => {
   return (
     <div>
+      <Head>
+        <title>Privacy Policy | Code Cleanse</title>
+      </Head>
       <CloseHeader />
       <div className="py-8 px-12 max-w-5xl mx-auto">
         <h2 className="text-center text-2xl font-semibold text-[#1f2937]">

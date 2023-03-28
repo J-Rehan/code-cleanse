@@ -1,5 +1,6 @@
 import { createClient } from 'contentful'
 import { GetServerSideProps, NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IBlog } from '../../@types/generated/contentful'
@@ -41,6 +42,9 @@ const BlogPage: NextPage<Props> = (props) => {
 
   return (
     <div>
+      <Head>
+        <title>Blog | Code Cleanse</title>
+      </Head>
       <CloseHeader />
 
       <div className="bg-white px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">

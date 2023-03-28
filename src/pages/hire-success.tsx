@@ -10,6 +10,7 @@ import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
 import * as admin from 'firebase-admin'
 import sgMail from '@sendgrid/mail'
 import template from '../core/email-templates/paymentSuccess'
+import Head from 'next/head'
 
 export const getServerSideProps: GetServerSideProps = async (request) => {
   try {
@@ -145,6 +146,9 @@ const HireSuccessPage: NextPage = () => {
 
   return (
     <div>
+      <Head>
+        <title>Thank You | Code Cleanse</title>
+      </Head>
       <Script id="conversion">
         {`
             var urlParams = new URLSearchParams(window.location.search);

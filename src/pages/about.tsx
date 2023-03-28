@@ -41,7 +41,7 @@ const AboutPage: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>About - Code Cleanse</title>
+        <title>About | Code Cleanse</title>
       </Head>
       <NextSeo
         title="Code Cleanse - Simplifying software development for non-technical"

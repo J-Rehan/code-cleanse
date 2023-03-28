@@ -12,6 +12,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '../utils/style'
 import CloseHeader from '../components/shared/CloseHeader/CloseHeader'
+import Head from 'next/head'
 
 const features = [
   {
@@ -64,6 +65,9 @@ const monthlyFeatures = [
 const UserDetailPage: NextPage = () => {
   return (
     <div>
+      <Head>
+        <title>Services | Code Cleanse</title>
+      </Head>
       <CloseHeader />
 
       <div className="bg-white py-12">

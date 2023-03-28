@@ -17,6 +17,8 @@ export default function Document() {
           content="c6vbK_MhR4xsDpHXCjFs84nZ1XvUqqWwFA47PNHUG08"
         />
 
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
