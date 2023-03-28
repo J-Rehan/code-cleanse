@@ -1,5 +1,10 @@
+import { addDoc, collection } from 'firebase/firestore'
 import { useFormikContext } from 'formik'
+import { useState } from 'react'
+import { userCollection } from '../../../core/config/app'
+import { firestore } from '../../../core/lib/firebase'
 import useSteps from '../../../hooks/useSteps'
+import { initialValues } from '../../../pages/hire'
 import Button from '../../shared/Button/Button'
 import FormikTextInput from '../../shared/Formik/FormikTextInput/FormikTextInput'
 
@@ -21,10 +26,23 @@ const normalizeInput = (value: any, previousValue: any) => {
 
 const AboutYouStep: React.FC = () => {
   const { state, dispatch } = useSteps()
-  const formik = useFormikContext()
+  const [processing, setProcessing] = useState(false)
+  const formik = useFormikContext<typeof initialValues>()
 
-  const nextStep = () => {
+  const { values } = formik
+
+  const nextStep = async () => {
+    setProcessing(true)
+    const firebaseRes = await addDoc(collection(firestore, userCollection), {
+      name: values.fullName,
+      email: values.email,
+      phone: values.phone,
+      createdAt: new Date().toISOString(),
+      paid: false,
+    })
+    dispatch({ type: 'SET_FIREBASE_DOC_ID', payload: firebaseRes.id })
     dispatch({ type: 'NEXT_STEP' })
+    setProcessing(false)
   }
 
   const step = state.steps.find((step) => step.name === 'Sign Up')
@@ -73,12 +91,18 @@ const AboutYouStep: React.FC = () => {
 
         <Button
           type="button"
-          disabled={disabled}
+          disabled={processing || disabled}
           onClick={nextStep}
           className="mt-4"
         >
           <span>
-            <strong>Next:</strong> Your project
+            {processing ? (
+              <span>Processing...</span>
+            ) : (
+              <span>
+                <strong>Next:</strong> Your project
+              </span>
+            )}
           </span>
         </Button>
       </div>

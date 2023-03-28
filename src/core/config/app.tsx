@@ -1,3 +1,6 @@
+export const userCollection =
+  process.env.NODE_ENV === 'production' ? 'users' : 'dev-users'
+
 export const features = [
   {
     id: '1',

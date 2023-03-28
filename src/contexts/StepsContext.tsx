@@ -2,6 +2,7 @@ import React, { createContext, PropsWithChildren, useReducer } from 'react'
 
 const initialState = {
   currentStep: 0,
+  firebaseDocId: '',
   steps: [
     {
       index: 0,
@@ -22,7 +23,7 @@ const initialState = {
 }
 
 type InitialState = typeof initialState
-type ActionTypes = 'NEXT_STEP' | 'SET_STEP'
+type ActionTypes = 'NEXT_STEP' | 'SET_STEP' | 'SET_FIREBASE_DOC_ID'
 
 export const StepsContext = createContext<{
   state: InitialState
@@ -42,6 +43,8 @@ const stepsReducer = (
       return { ...state, currentStep: state.currentStep + 1 }
     case 'SET_STEP':
       return { ...state, currentStep: action.payload }
+    case 'SET_FIREBASE_DOC_ID':
+      return { ...state, firebaseDocId: action.payload }
     default:
       return state
   }

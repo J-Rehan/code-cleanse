@@ -1,7 +1,9 @@
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
 import { useFormikContext } from 'formik'
 import React, { memo, useRef, useState } from 'react'
+import { userCollection } from '../../../core/config/app'
 import { firestore } from '../../../core/lib/firebase'
+import useSteps from '../../../hooks/useSteps'
 import { initialValues } from '../../../pages/hire'
 import { cn } from '../../../utils/style'
 import Button from '../../shared/Button/Button'
@@ -45,6 +47,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
   } = props
   const [processing, setProcessing] = useState(false)
   const ref = useRef<HTMLFormElement>()
+  const { state } = useSteps()
 
   return (
     <div
@@ -106,34 +109,20 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
                 const { values } = formik
 
                 setProcessing(true)
-                const collectionName =
-                  process.env.NODE_ENV === 'production' ? 'users' : 'dev-users'
-
-                const firebaseRes = await addDoc(
-                  collection(firestore, collectionName),
-                  {
-                    name: values.fullName,
-                    email: values.email,
-                    phone: values.phone,
-                    projectName: values.projectName,
-                    helpMethods: values.helpMethod,
-                    productCategory: values.productCategory.split(','),
-                    description: values.description,
-                    developers: values.developers,
-                    plan: values.plan,
-                    paid: false,
-                  },
-                )
 
                 const form = document.createElement('form')
                 form.method = 'POST'
                 form.action = '/api/create-checkout-session'
 
+                updateDoc(doc(firestore, userCollection, state.firebaseDocId), {
+                  plan: values.plan,
+                })
+
                 const params = {
                   name: values.fullName,
                   email: values.email,
                   subscriptionType: values.plan,
-                  firebaseUserId: firebaseRes.id,
+                  firebaseUserId: state.firebaseDocId,
                 }
 
                 for (const key in params) {
@@ -148,13 +137,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
                 }
 
                 document.body.appendChild(form)
-
                 form.submit()
-
-                // ref.current.submit()
-
-                setProcessing(false)
-                // formik.resetForm()
               }}
               type="button"
               className="py-3 mt-10"

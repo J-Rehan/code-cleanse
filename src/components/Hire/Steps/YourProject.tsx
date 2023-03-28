@@ -1,6 +1,9 @@
+import { collection, doc, updateDoc } from 'firebase/firestore'
 import { FieldArray, useFormikContext } from 'formik'
 import Image from 'next/image'
 import Select from 'react-select'
+import { userCollection } from '../../../core/config/app'
+import { firestore } from '../../../core/lib/firebase'
 import useSteps from '../../../hooks/useSteps'
 import Button from '../../shared/Button/Button'
 import FormikCheckboxGroup, {
@@ -83,8 +86,16 @@ const YourProject: React.FC = () => {
   const disabled = !!Object.keys(formik.errors).find((key) =>
     step?.fields.includes(key),
   )
+  const { values } = formik
 
-  const nextStep = () => {
+  const nextStep = async () => {
+    updateDoc(doc(firestore, userCollection, state.firebaseDocId), {
+      projectName: values.projectName,
+      helpMethods: values.helpMethod,
+      productCategory: values.productCategory.split(','),
+      description: values.description,
+      developers: values.developers,
+    })
     dispatch({ type: 'NEXT_STEP' })
   }
 
