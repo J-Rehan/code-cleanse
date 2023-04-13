@@ -133,6 +133,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       metadata: {
         firebaseUserId,
       },
+      discounts: [
+        {
+          coupon: 'cAHaDMwm',
+        },
+      ],
       line_items: [
         {
           price: subscriptions[subscriptionType].prices.default,
