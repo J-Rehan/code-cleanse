@@ -20,6 +20,7 @@ const HomePage: NextPage = () => {
       <Head>
         <title>
           Code Cleanse - Simplifying software development for non-technical
+          founders
         </title>
         <meta
           name="description"
@@ -27,7 +28,7 @@ const HomePage: NextPage = () => {
         />
       </Head>
       <NextSeo
-        title="Code Cleanse - Simplifying software development for non-technical"
+        title="Code Cleanse - Simplifying software development for non-technical founders"
         description="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
         canonical="https://www.codecleanse.com"
       />

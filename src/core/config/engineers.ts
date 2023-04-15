@@ -16,7 +16,7 @@ export const engineers = [
   {
     id: '3',
     name: 'Zsolt Racz',
-    role: 'Sr. Backend Enginner',
+    role: 'Sr. Backend Engineer',
     imageUrl: '/images/engineers/zsolt.jpeg',
     lastCompanyImageUrl: '/images/previously-at/reddit.png',
   },
