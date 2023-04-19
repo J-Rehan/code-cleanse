@@ -39,6 +39,13 @@ export const hireValidationSchema = Yup.object()
     plan: Yup.mixed()
       .oneOf(['OneTime', 'Monthly', 'Annual'])
       .required('Please select a plan!'),
+    developers: Yup.array().of(
+      Yup.object().shape({
+        name: Yup.string(),
+        email: Yup.string().email('Invalid email'),
+        role: Yup.string(),
+      }),
+    ),
   })
   .required('All the fields are required')
 

@@ -14,7 +14,11 @@ const BeginHirePage: NextPage = () => {
         <title>Hire Overview | Code Cleanse</title>
       </Head>
       <CloseHeader />
-      <StickyAction redirectUrl="/hire" scrollThreshold={0} />
+      <StickyAction
+        title="Tell us about yourself"
+        redirectUrl="/hire"
+        scrollThreshold={0}
+      />
       <div className="px-8 mt-10 py-10 bg-[#f8f8f8]">
         <div className="max-w-[1024px] mx-auto">
           <h2 className="text-3xl text-center md:px-20 text-dark font-semibold mb-8">
@@ -51,7 +55,7 @@ const BeginHirePage: NextPage = () => {
         </div>
       </div>
 
-      <div className="pt-8 flex flex-col items-center justify-center">
+      <div className="pt-8 flex flex-col items-center justify-center pb-32">
         <h3 className="text-2xl mb-8 font-semibold">
           Here&apos;s a sample Report
         </h3>

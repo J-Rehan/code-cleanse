@@ -95,7 +95,7 @@ const HirePlanStep: React.FC = () => {
       <div className="bg-[#ddd] w-full h-[1px] max-w-[852px] mx-auto mb-6" />
 
       <p className="text-center mb-8">
-        Our Team Recommends the <strong>Annual Plan</strong> for{' '}
+        Our Team Recommends the <strong>{plans[recommended]?.title}</strong> for{' '}
         <strong>{formik.values.projectName}</strong>
       </p>
 
@@ -152,10 +152,10 @@ const HirePlanStep: React.FC = () => {
               return (
                 <PricingCard
                   {...plan}
-                  isRecommended={recommended === currentStep}
                   key={plan.id}
-                  selected={index === currentStep}
                   onSelect={handleSelect}
+                  selected={index === currentStep}
+                  isRecommended={recommended === currentStep}
                 />
               )
             })}

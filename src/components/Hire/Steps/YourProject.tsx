@@ -1,6 +1,5 @@
-import { collection, doc, updateDoc } from 'firebase/firestore'
-import { FieldArray, useFormikContext } from 'formik'
-import Image from 'next/image'
+import { doc, updateDoc } from 'firebase/firestore'
+import { useFormikContext } from 'formik'
 import Select from 'react-select'
 import { userCollection } from '../../../core/config/app'
 import { firestore } from '../../../core/lib/firebase'
@@ -142,7 +141,7 @@ const YourProject: React.FC = () => {
             </p>
           </div>
 
-          <div className="mb-auto">
+          <div className="mb-auto ">
             <FormikTextInput
               required
               autoFocus
@@ -164,12 +163,13 @@ const YourProject: React.FC = () => {
               )}
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 react-select-reset">
               <label htmlFor="" className="mb-1 text-sm font-normal">
                 What are you building?
               </label>
               <Select
                 isMulti
+                className="rc-select-reset"
                 classNames={{ control: () => 'p-2' }}
                 styles={{ control: (base) => ({ ...base, borderRadius: 8 }) }}
                 value={productCategoryOpts.filter((option) =>
@@ -226,7 +226,7 @@ const YourProject: React.FC = () => {
                 className="mt-6"
               />
 
-              <div className="mt-6">
+              <div className="mt-6 react-select-reset">
                 <label htmlFor="" className="mb-1 text-sm font-normal">
                   Developer&lsquo;s Role
                 </label>
@@ -246,13 +246,24 @@ const YourProject: React.FC = () => {
                     )
                   }}
                 />
-                {/* {formik.errors.productCategory &&
-                  formik.touched.productCategory && (
-                    <p className="text-red-500 text-sm font-normal mt-1">
-                      {formik.errors.productCategory as any}
-                    </p>
-                  )} */}
               </div>
+
+              {formik.values.developers?.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    formik.setFieldValue(
+                      'developers',
+                      formik.values.developers.filter(
+                        (dev) => dev.email !== developer.email,
+                      ),
+                    )
+                  }
+                  className="border p-4 text-sm rounded-lg w-full mt-4 border-[#DDDDDD]"
+                >
+                  Remove
+                </button>
+              )}
             </div>
           )
         })}

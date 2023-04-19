@@ -138,3 +138,7 @@ ul.slider.animated {
     transform: rotate(360deg);
   }
 }
+
+.react-select-reset input:focus {
+  box-shadow: none;
+}

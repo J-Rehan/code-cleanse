@@ -1,4 +1,4 @@
-import AboutYouStep from '../../components/Hire/Steps/AboutYouStep'
+import SignUp from '../../components/Hire/Steps/SignUpStep'
 import HirePlanStep from '../../components/Hire/Steps/HirePlanStep'
 import PaymentStep from '../../components/Hire/Steps/PaymentStep'
 import YourProject from '../../components/Hire/Steps/YourProject'
@@ -6,7 +6,7 @@ import YourProject from '../../components/Hire/Steps/YourProject'
 export const steps = [
   {
     id: 'sign-up',
-    component: <AboutYouStep />,
+    component: <SignUp />,
   },
   {
     id: 'your-project',

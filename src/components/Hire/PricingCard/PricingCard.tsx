@@ -60,7 +60,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
     >
       {discountPercent && (
         <div
-          className="absolute -top-1.5 right-4 w-[56px] h-[62px] bg-no-repeat flex justify-center flex-col items-center text-white text-sm pb-1"
+          className="absolute -top-1.5 right-4 w-[56px] h-[62px] bg-no-repeat flex justify-center flex-col items-center text-white pb-1 text-xs"
           style={{ backgroundImage: "url('/label.png')" }}
         >
           <p>Save</p>
@@ -78,7 +78,7 @@ const PricingCard: React.FC<PricingCardProps> = (props) => {
         )}
       </div>
       <div className="pt-2 px-6 pb-4 border-b border-[#ddd] flex flex-col items-center">
-        <h2 className="text-xl text-black font-[300]">{title}</h2>
+        <h2 className="text-xl text-black font-[300] mt-5">{title}</h2>
         <h3 className="mt-2 text-green font-[500] text-xl">
           {formatter.format(cost)}
           {isOneTime && ' /mo'}

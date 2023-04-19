@@ -32,11 +32,11 @@ const HomePage: NextPage = () => {
         description="Hire the top 1% engineers to Review your code, Manage your development team, Ensure your app is scalable, Ensure transparency in your development."
         canonical="https://www.codecleanse.com"
       />
-      <StickyAction redirectUrl="/begin-hire" />
+      <StickyAction redirectUrl="/begin-hire" title="Hire Experts Now" />
       <div>
         <Header>
           <div className="flex flex-col items-center p-6">
-            <h4 className="text-white text-center text-lg md:text-2xl leading-7 px-4 py-2 mb-4 border-[1px] border-white rounded font-bold">
+            <h4 className="text-white text-center text-xs 362:text-base sm:text-lg md:text-2xl leading-7 px-4 py-2 mb-4 border-[1px] border-white rounded font-bold">
               Are you a non technical founder?
             </h4>
 
@@ -45,7 +45,7 @@ const HomePage: NextPage = () => {
               <br />
               top 1% engineers <span className="font-normal">to</span>
               <br />
-              <div className="text-aqua">
+              <div className="text-aqua h-[3.5em] md:h-[2.5em]">
                 <Typewriter
                   loop
                   cursor
@@ -313,7 +313,7 @@ const HomePage: NextPage = () => {
                 })}
               </div>
             </div>
-            <Link href="/begin-hire">
+            <Link href="/hire">
               <Button
                 onClick={() => {}}
                 className="md:max-w-[500px] mx-auto mt-12"

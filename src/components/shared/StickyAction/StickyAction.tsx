@@ -4,10 +4,11 @@ import React, { useEffect, useState } from 'react'
 interface StickyActionProps {
   scrollThreshold?: number
   redirectUrl?: string
+  title: string
 }
 
 const StickyAction: React.FC<StickyActionProps> = (props) => {
-  const { scrollThreshold = 600, redirectUrl } = props
+  const { scrollThreshold = 600, redirectUrl, title } = props
 
   const [scrolled, setScrolled] = useState(0)
 
@@ -82,7 +83,7 @@ const StickyAction: React.FC<StickyActionProps> = (props) => {
           href={redirectUrl}
           className="bg-white max-w-[280px] flex items-center justify-center rounded-lg w-full p-4 text-black font-bold text-base"
         >
-          Hire Experts Now
+          {title}
         </Link>
       </div>
     </div>

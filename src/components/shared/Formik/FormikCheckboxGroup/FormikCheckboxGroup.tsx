@@ -30,71 +30,74 @@ const FormikCheckboxGroup: React.FC<FormikTextInputProps> = (props) => {
             <div key={item.value} className="py-4">
               <label className="flex" htmlFor={`${name}-${item.value}`}>
                 {isChecked ? (
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_301_3281)">
-                      <rect
-                        x="0.5"
-                        y="0.5"
-                        width="23"
-                        height="23"
-                        rx="1.5"
-                        fill="#009BE0"
-                        stroke="#009BE0"
-                      />
-                      <mask
-                        id="mask0_301_3281"
-                        maskUnits="userSpaceOnUse"
-                        x="0"
-                        y="0"
-                        width="24"
-                        height="24"
-                      >
-                        <rect width="24" height="24" fill="#D9D9D9" />
-                      </mask>
-                      <g mask="url(#mask0_301_3281)">
-                        <path
-                          d="M9.55001 17.3L4.57501 12.35L5.30001 11.625L9.55001 15.875L18.7 6.72498L19.425 7.44998L9.55001 17.3Z"
+                  <div className="h-6 w-6">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clipPath="url(#clip0_301_3281)">
+                        <rect
+                          x="0.5"
+                          y="0.5"
+                          width="23"
+                          height="23"
+                          rx="1.5"
+                          fill="#009BE0"
+                          stroke="#009BE0"
+                        />
+                        <mask
+                          id="mask0_301_3281"
+                          maskUnits="userSpaceOnUse"
+                          x="0"
+                          y="0"
+                          width="24"
+                          height="24"
+                        >
+                          <rect width="24" height="24" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_301_3281)">
+                          <path
+                            d="M9.55001 17.3L4.57501 12.35L5.30001 11.625L9.55001 15.875L18.7 6.72498L19.425 7.44998L9.55001 17.3Z"
+                            fill="white"
+                          />
+                        </g>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_301_3281">
+                          <rect width="24" height="24" rx="3" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                ) : (
+                  <div className="h-6 w-6">
+                    <svg
+                      className="h-6 w-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clipPath="url(#clip0_301_3251)">
+                        <rect
+                          x="0.5"
+                          y="0.5"
+                          width="23"
+                          height="23"
+                          rx="2.5"
                           fill="white"
+                          stroke="#333333"
                         />
                       </g>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_301_3281">
-                        <rect width="24" height="24" rx="3" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                ) : (
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_301_3251)">
-                      <rect
-                        x="0.5"
-                        y="0.5"
-                        width="23"
-                        height="23"
-                        rx="2.5"
-                        fill="white"
-                        stroke="#333333"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_301_3251">
-                        <rect width="24" height="24" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                      <defs>
+                        <clipPath id="clip0_301_3251">
+                          <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
                 )}
                 <Field
                   className="hidden"

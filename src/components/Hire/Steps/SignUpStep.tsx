@@ -24,7 +24,7 @@ const normalizeInput = (value: any, previousValue: any) => {
   }
 }
 
-const AboutYouStep: React.FC = () => {
+const SignUp: React.FC = () => {
   const { state, dispatch } = useSteps()
   const [processing, setProcessing] = useState(false)
   const formik = useFormikContext<typeof initialValues>()
@@ -52,7 +52,7 @@ const AboutYouStep: React.FC = () => {
   )
 
   return (
-    <div className="md:relative md:w-[520px] md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
+    <div className="md:relative md:w-[520px] h-full md:mx-auto md:bg-white md:mt-8 md:rounded-2xl md:border md:border-[#DDDDDD]">
       <div className="py-8 px-6 flex flex-col h-full">
         <h2 className="text-dark text-2xl font-normal text-center">
           Let&apos;s get started
@@ -110,4 +110,4 @@ const AboutYouStep: React.FC = () => {
   )
 }
 
-export default AboutYouStep
+export default SignUp
