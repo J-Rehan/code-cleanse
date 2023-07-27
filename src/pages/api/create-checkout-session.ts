@@ -133,11 +133,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       metadata: {
         firebaseUserId,
       },
-      // discounts: [
-      //   {
-      //     coupon: 'cAHaDMwm',
-      //   },
-      // ],
+      discounts: [
+        {
+          coupon: 'Q5LI6sk4',
+        },
+      ],
       line_items: [
         {
           price: subscriptions[subscriptionType].prices.default,
@@ -148,9 +148,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         name,
       )}&email=${encodeURIComponent(
         email,
-      )}&subscriptionType=${subscriptionType}&price=${
-        price.unit_amount
-      }&firebaseUserId=${firebaseUserId}`,
+      )}&subscriptionType=${subscriptionType}&price=${price.unit_amount
+        }&firebaseUserId=${firebaseUserId}`,
       cancel_url: `${domainUrl}/hire-cancel`,
     })
 
